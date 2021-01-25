@@ -1,7 +1,5 @@
 # Flask React Project
 
-#Test Comment Two! This is a new branch. 
-
 This is the backend for the Flask React project.
 
 ## Getting started
