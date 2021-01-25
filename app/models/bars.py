@@ -15,7 +15,10 @@ class Bar(db.Model):
   barSeats = db.Column(db.Integer, nullable = False)
   dayAndTime = db.Column(db.JSONB, nullable = False)
   bannerImg = db.Column(db.String(1000), nullable = False)
-  ownerId = db.Column(db.Integer, nullable = False)
+  ownerId = db.Column(db.Integer, nullable = False, ForeignKey("users.id"))
+  user = db.relationship("User", back_populates = "bars")
+  reviews = db.relationship("Review", back_populates = "bar")
+
 
   def to_dict(self):
     return {
