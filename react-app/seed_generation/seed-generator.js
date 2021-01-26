@@ -33,14 +33,14 @@ const getDrinkImage = async () => {
 const makeUsers = async () => {
   const users = []
   for(let i = 0; i<100; i++) {
-      const profileImage = await getDrinkImage()
+      const profileImg = await getDrinkImage()
       users.push({
           email: faker.internet.email(),
           username: faker.internet.userName(),
           password: faker.internet.password(),
           firstName: faker.name.firstName(),
           lastName: faker.name.lastName(),
-          profileImage
+          profileImg
       })
   }
   return users
@@ -59,11 +59,11 @@ const getImage = async () => {
 let postNumber = 100;
 
 const generateBar = async (id) => {
-  
+
   const images = []
   const imNum = getRandom(5, 20)
-  
-  
+
+
   for (let i = 0; i < imNum; i++) {
     const photoUrl = await getImage()
     images.push({photoUrl, barId:id})
@@ -77,7 +77,7 @@ const generateBar = async (id) => {
   }
   const bannerImg = await getDrinkImage()
   const businessInfo = {
-    
+
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
     name: `${randomArr(barRelated)} ${extraInfo.businessCategory}`,
     phoneNumber: faker.phone.phoneNumber(),
@@ -133,7 +133,6 @@ const generateBar = async (id) => {
       ambience: Math.min(Math.max(rating + getRandom(-1, 1), 1), 5),
       value: Math.min(Math.max(rating + getRandom(-1, 1), 1), 5),
       userId,
-      rating,
       barId:id,
       review: title
     }
