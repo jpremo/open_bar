@@ -11,10 +11,14 @@ function Home() {
                  <img src={HomeBanner} />
                 <div id="home-page-overlay">
                     <h1>Find Your Table For Any Occasion</h1>
-                    <div>
+                    
+                    <div id="search-container">
                     <CalendarContainer/>
                     </div>
                 </div>
+            </div>
+            <div id="bar-list">
+
             </div>
             <div id="google-map-container">
                 <MapContainer/>
