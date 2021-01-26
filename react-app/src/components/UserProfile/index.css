@@ -3,6 +3,7 @@
     height: 225px;
     display: flex;
     align-items: center;
+    margin: 0;
 }
 
 #user-profile-container img{
