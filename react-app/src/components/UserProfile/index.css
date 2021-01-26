@@ -1,0 +1,11 @@
+#user-profile-container {
+    background-color: rgb(245, 245, 245);
+    height: 225px;
+    display: flex;
+    align-items: center;
+}
+
+#user-profile-container img{
+    height: 200px;
+    padding: 10px;
+}

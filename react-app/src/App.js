@@ -4,10 +4,11 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
+import UsersList from "./components/savedFiles/UsersList";
+import UserProfile from "./components/UserProfile";
 import { authenticate } from "./services/auth";
 import Home from "./components/Home/Home";
+
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -47,11 +48,12 @@ function App() {
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
-          <User />
+          <UserProfile />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <h1>My Home Page</h1>
         </ProtectedRoute>
+
       </Switch>
     </BrowserRouter>
   );
