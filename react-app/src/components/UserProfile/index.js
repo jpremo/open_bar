@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Favorites from "./Favorites"
 import "./index.css"
 
 function User() {
@@ -26,13 +27,18 @@ function User() {
     return (
         <>
             <div id="user-profile-container">
-                <div id="img-container">
+                <div id="img-box">
                     <img alt="nope" src={user.profileImg} />
                 </div>
-                <div>
-                    <h3>{`${user.firstName} ${user.lastName}`}</h3>
-                    <h5>{`Username: ${user.username}`}</h5>
+                <div id="user-info-box">
+                    <div id="user-info-text">
+                        <h3>{`${user.firstName} ${user.lastName}`}</h3>
+                        <h5>{`Username: ${user.username}`}</h5>
+                    </div>
                 </div>
+            </div>
+            <div>
+                <Favorites />
             </div>
 
         </>

@@ -1,5 +1,5 @@
 #user-profile-container {
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(255, 204, 93);
     height: 225px;
     display: flex;
     align-items: center;
@@ -8,4 +8,10 @@
 #user-profile-container img{
     height: 200px;
     padding: 10px;
+}
+
+
+#user-info-text {
+    padding-left: 25px;
+    padding-right: 25px;
 }
