@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "faker": "^5.2.0",
     "http-proxy-middleware": "^1.0.5",
     "react": "^17.0.1",
     "react-dom": "^16.13.1",
@@ -38,6 +39,7 @@
   },
   "proxy": "http://localhost:5000",
   "devDependencies": {
+    "node-fetch": "^2.6.1",
     "redux-logger": "^3.0.6"
   }
 }
