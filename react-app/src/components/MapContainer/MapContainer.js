@@ -8,8 +8,9 @@ const MapContainer = () => {
   
 
   const mapStyles = {        
-    height: "100%",
-    width: "100%"};
+    width: '400px',
+  height: '400px'
+};
   
   const defaultCenter = {
     lat: 40.7128, lng: -74.0060

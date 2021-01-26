@@ -1,6 +1,21 @@
+
+#banner-image {
+  width: 1485px;
+  height:100%;
+  object-fit: fill;
+
+
+}
+.info-on-image{
+ position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 #google-map-container{
-    padding-top: 68px;
+   padding-top: 68px;
   position: relative;
   width: 50%;
-  height: 430px;  
+  height: 50%;
 }
