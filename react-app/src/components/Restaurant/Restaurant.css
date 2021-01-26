@@ -1,0 +1,18 @@
+#backgroundImgProper {
+  display: block;
+  margin: auto;
+}
+
+#columnsDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#leftColumn {
+  /* flex: 2 1 auto; */
+}
+
+#rightColumn {
+  /* flex: 1 1 auto; */
+}

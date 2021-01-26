@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
+import Restaurant from "./components/Restaurant/Restaurant"
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -38,6 +39,9 @@ function App() {
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+        </Route>
+        <Route path="/restaurants/:restaurantId">
+          <Restaurant />
         </Route>
         <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
           <UsersList/>
