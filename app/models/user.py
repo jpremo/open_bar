@@ -32,11 +32,15 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
+        nums = []
+        for b in self.favoriteBars:
+            nums.append(b.to_dict()['id'])
         return {
             "id": self.id,
             "username": self.username,
             "firstName": self.firstName,
             "lastName": self.lastName,
             "profileImg": self.profileImg,
-            "email": self.email
+            "email": self.email,
+            "favoriteBars": nums,
         }

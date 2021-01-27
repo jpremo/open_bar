@@ -11,7 +11,7 @@ export const clearSearchInfo = () => ({
 });
 
 
-export const searchBusinesses = (url, location) => async (dispatch) => {
+export const searchBusinesses = (url, location, id) => async (dispatch) => {
     let coordString = 'NoLocation'
     if (location) {
         //   let loc = await tt.services.fuzzySearch({
@@ -25,7 +25,7 @@ export const searchBusinesses = (url, location) => async (dispatch) => {
         coordString = '-73.93,40.73'
     }
 
-    let res = await fetch(url + `&coord=${coordString}`);
+    let res = await fetch(url + `&coord=${coordString}&id=${id}`);
     res = await res.json()
     console.log('res\n', res)
     dispatch(search(res))

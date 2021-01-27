@@ -10,12 +10,14 @@ import SearchBar from './SearchBar'
 function SearchResults() {
     const location = useLocation()
     const dispatch = useDispatch()
+    let user = useSelector(state => state.session.user)
+    console.log('state', user)
     const loc = location.search.slice(location.search.indexOf('location=') + 9)
     useEffect(() => {
         dispatch(clearSearchInfo())
         const url = `/api/search/${location.search}`
-        console.log('url', url, loc)
-        dispatch(searchBusinesses(url, loc))
+        // console.log('url', url, loc, user, user.id)
+        dispatch(searchBusinesses(url, loc, user.id))
     }, [dispatch])
     return (
         <div>
