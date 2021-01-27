@@ -1,10 +1,11 @@
-import React from "react"
-import Reviews from "./Reviews/Reviews"
-import Photos from "./Photos/Photos"
+import './Bar.css'
+import BarJSON from "./BarJSON/BarJSON"
 import Favorite from "../Favorite/Favorite"
 import MapContainer from "../MapContainer/MapContainer"
-import BarJSON from "./BarJSON/BarJSON"
-import './Bar.css'
+import Photos from "./Photos/Photos"
+import React from "react"
+import Reservation from "../Reservation/Reservation"
+import Reviews from "./Reviews/Reviews"
 import sushi from './sushi-bar.jpeg' // to be deleted
 import { useParams } from 'react-router-dom'
 
@@ -44,9 +45,11 @@ function Bar () { // update all values with redux
         </div>
         <div id='rightColumn'>
           <div>
+            <Reservation />
+          </div>
+          <div>
             <Favorite />
           </div>
-          <h2>Placeholder for reservations component</h2>
           <div id="google-map-container">
             <MapContainer/>
           </div>
