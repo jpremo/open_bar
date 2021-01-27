@@ -13,7 +13,6 @@ function Home() {
                     <h1>Find Your Table For Any Occasion</h1>
                     <div id="search-container">
                         <div id="calender-search">
-                        <i class="fas fa-calendar-week"></i>
                         <CalendarContainer/>
                         </div>
                     
@@ -25,9 +24,6 @@ function Home() {
             </div>
             <div id="bar-list">
                 <h1> Whenever, wherever you’re thirsty — find it on OpenBar</h1>
-            </div>
-            <div id="google-map-container">
-                <MapContainer/>
             </div>
         </div>
     )
