@@ -1,17 +1,21 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import './SearchBar.css'
-function SearchBar() {
+function SearchBar({setLoaded, loaded}) {
     const [searchBusiness, setSearchBusiness] = useState('')
     const [searchLocation, setSearchLocation] = useState('')
     const history = useHistory()
     const search = (event) => {
         if (event.keyCode === 13) {
+            debugger
+            console.log(loaded)
             history.push(`/search/?business=${searchBusiness}&location=${searchLocation}`)
+            setLoaded(false)
         }
     }
     const searchClick = (event) => {
         history.push(`/search/?business=${searchBusiness}&location=${searchLocation}`)
+        setLoaded(false)
     }
     return (
         <div id='search-bars'>

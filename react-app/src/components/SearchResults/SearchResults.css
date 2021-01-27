@@ -1,0 +1,62 @@
+.bar-box {
+  border-top: 1px solid black;
+  padding: 10px 5px;
+}
+
+.bar-address {
+  padding: 5px 0 0 10px;
+  font-size: 22px;
+}
+
+.bar-description {
+  padding: 10px 0 0 20px;
+  font-size: 18px;
+}
+
+.bar-link {
+  font-size: 28px;
+  color: black;
+  text-decoration: none;
+}
+
+.bar-link:hover {
+  text-decoration: underline;
+}
+
+.star-container {
+  display: flex;
+  width: auto;
+  margin: 5px 0 0 20px;
+  align-items: flex-end;
+}
+
+.review-number {
+  color: black;
+  /* -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: black; */
+  font-size: 20px;
+  align-self: center;
+}
+
+.star {
+    background-color: rgba(128, 128, 128, 0.911);
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+  }
+
+  .star-filled {
+    background-color: rgba(246, 150, 25, 0.911);
+  }
+
+  .star-half-filled {
+    background: linear-gradient(
+      90deg,
+      rgba(246, 150, 25, 0.911) 50%,
+      rgba(128, 128, 128, 0.911) 50%
+    );
+  }
