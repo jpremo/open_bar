@@ -1,11 +1,9 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import session from './session'
-import spots from './spot'
+import userFavorites from "./favorites"
 
 const rootReducer = combineReducers({
-  session,
-  spots
+  userFavorites
 
 });
 

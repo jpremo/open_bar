@@ -38,7 +38,7 @@ function User() {
                 </div>
             </div>
             <div>
-                <Favorites />
+                <Favorites user={user}/>
             </div>
 
         </>
