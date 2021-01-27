@@ -1,5 +1,6 @@
-import BusinessBox from './BusinessBox'
-import './HomePage.css'
+import BarBox from './BarBox'
+import React from 'react'
+
 function BarList({ barList, name }) {
     if (!barList || barList.length === 0) return (
         <>

@@ -44,7 +44,7 @@ function App() {
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
         <Route path="/search" exact={true}>
-          {/* <SearchResults authenticated={authenticated} setAuthenticated={setAuthenticated} /> */}
+          <SearchResults authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
         <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
           <UsersList/>
