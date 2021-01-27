@@ -111,6 +111,8 @@
   margin: 0.5em;
   padding: 0.5em;
   padding-bottom: 1em;
+  padding-top: 0em;
+  margin-top: 0em;
 }
 
 .reservation-title {
