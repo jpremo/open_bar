@@ -3,6 +3,8 @@ import React from 'react'
 import HomeBanner from "./HomeBanner.jpg"
 import CalendarContainer from "../Calendar/Calendar"
 import MapContainer from "../MapContainer/MapContainer"
+import DropDown from "../DropDown/DropDown"
+
 import "./Home.css"
 function Home() {
     return (
@@ -13,11 +15,10 @@ function Home() {
                     <h1>Find Your Table For Any Occasion</h1>
                     <div id="search-container">
                         <div id="calender-search">
-                        <CalendarContainer/>
+                            <CalendarContainer/>
                         </div>
-                    
                         <div id="people-search">
-                        <h1>people</h1>
+                            <DropDown/>
                         </div>
                     </div>
                 </div>
