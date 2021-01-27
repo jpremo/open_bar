@@ -25,6 +25,8 @@ def search():
     coord = request.args.get('coord')
     business = request.args.get('business')
     searchId = request.args.get('id')
+    if business=='' and coord=='NoLocation':
+        return {"searchResults": []}
     if searchId and searchId != 'undefined':
         searchId = int(searchId)
     lng = 0

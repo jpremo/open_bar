@@ -4,8 +4,7 @@ import React from 'react'
 function BarBox({bar}) {
     let desc = bar.description
     if(bar.description.length > 500) desc = bar.description.slice(0,500) + '...'
-
-    let stars = Math.round(bar.averageRating * 2)
+    let stars = Math.round(bar.ratings.overall * 2)
     const starsArr = []
     for (let i = 0; i < 5; i++) {
         if (stars <= 0) {
@@ -21,7 +20,7 @@ function BarBox({bar}) {
     return(
         <div className='bar-box'>
             <Link to={`/bar/${bar.id}`} className='bar-link'>{bar.name}</Link>
-            <div className='bar-address'>{bar.address}</div>
+            <div className='bar-address'>{bar.street} {bar.state} {bar.zipcode}</div>
             <div className='star-container'>
                             {starsArr.map((el, ind) => {
                                 return (
@@ -29,7 +28,7 @@ function BarBox({bar}) {
                                         <i className="fas fa-star fa-xs" id='innerstar-1' style={{ color: 'white', paddingBottom: '1px', paddingRight: '1px', opacity: '1' }}></i>
                                     </div>)
                             })}
-                            <div className='review-number'>{(bar.reviewNumber === 1) ? `1 Review` : `${bar.reviewNumber} Reviews`}</div>
+                            <div className='review-number'>{(bar.review_total === 1) ? `1 Review` : `${bar.review_total} Reviews`}</div>
                         </div>
             <div className='bar-description'>{desc}</div>
         </div>
