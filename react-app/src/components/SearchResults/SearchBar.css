@@ -1,11 +1,22 @@
+#search-bars{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
 .search-bar{
     margin: 0px 3px;
     height: 20px;
     width: 200px;
-    background-color: rgb(211, 211, 211);
+    color: white;
+    background-color: rgba(8, 59, 102, 0.7);
     border-radius: 8px;
     border: 2px solid black;
     font-size: 15px;
+  }
+
+  .search-bar::placeholder{
+    color: rgb(182, 181, 181);
   }
 
   .search-bar:focus{

@@ -2,14 +2,14 @@ import React, {useState} from 'react';
 import { GoogleMap, LoadScript, Marker} from '@react-google-maps/api';
 import {useSelector} from 'react-redux'
 
-const MapContainer = () => {
+const SearchMap = () => {
 
   const[selectedApt,setSelectedApt] = useState(null)
 
 
   let mapStyles = {
-    width: '400px',
-    height: '400px'
+    width: '35vw',
+    height: '80vh'
   };
 
   const defaultCenter = {
@@ -31,4 +31,4 @@ const MapContainer = () => {
   )
 }
 
-export default MapContainer;
+export default SearchMap;
