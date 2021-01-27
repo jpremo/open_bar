@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from app.models import Bar, Review, Image, favorites, User
+from app.models import Bar, Review, Image, favorites, User, db
 from flask import request
 import itertools
 search_routes = Blueprint('search', __name__)
@@ -51,3 +51,19 @@ def search():
 
     # return {'test': 1.264}
     return jsonify({"searchResults": search_results})
+
+
+
+@search_routes.route('/popular')
+def popular():
+
+    
+    search_results = Bar.query.join(Review).join(Image).group_by(Bar.id).order_by(db.func.count(Review.id).desc()).limit(5).all()
+    # .order_by(len(Bar.reviews).desc())
+    print(search_results)
+    search_results = list(map(parse_results,search_results))
+    print('\n', 'Search Results \n', search_results, '\n length \n', len(search_results), '\n')
+
+    # return {'test': 1.264}
+    return jsonify({"mostPopular": search_results})
+

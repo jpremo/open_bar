@@ -1,14 +1,33 @@
 const SEARCH = '/bars/search'
 const CLEAR_SEARCH = '/bars/clearSearch'
+const POPULAR = '/bars/popular'
 
 const search = (businesses) => ({
     type: SEARCH,
     payload: businesses
 });
 
+const popular = (businesses) => ({
+    type: POPULAR,
+    payload: businesses
+});
+
 export const clearSearchInfo = () => ({
     type: CLEAR_SEARCH
 });
+
+export const homeDisplayBussinesses = () => async (dispatch) => {
+    
+
+    let res = await fetch("/api/search/popular",{
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+    res = await res.json()
+    dispatch(popular(res))
+};
+
 
 
 export const searchBusinesses = (url, location, id) => async (dispatch) => {
@@ -45,6 +64,9 @@ function reducer(state = initialState, action) {
             newState.searchCenter = null;
             return newState;
         case SEARCH:
+            newState = Object.assign({}, state, { ...action.payload });
+            return newState;
+        case POPULAR:
             newState = Object.assign({}, state, { ...action.payload });
             return newState;
         default:

@@ -1,12 +1,28 @@
 // use rcfe
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import HomeBanner from "./HomeBanner.jpg"
 import CalendarContainer from "../Calendar/Calendar"
 import MapContainer from "../MapContainer/MapContainer"
 import DropDown from "../DropDown/DropDown"
+import {homeDisplayBussinesses} from '../../store/bars'
 
 import "./Home.css"
 function Home() {
+
+    const dispatch = useDispatch()
+    let user = useSelector(state => state.session.user)
+    let results = useSelector(state => state.bars.searchResults)
+
+    useEffect(() => {
+        (async () => {
+            // await dispatch(clearSearchInfo())
+            await dispatch(homeDisplayBussinesses())
+
+
+        })();
+    }, [dispatch])
+
     return (
         <div>
             <div id="home-image-container">
