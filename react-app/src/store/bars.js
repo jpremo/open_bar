@@ -25,9 +25,12 @@ export const searchBusinesses = (url, location, id) => async (dispatch) => {
         coordString = '-73.93,40.73'
     }
 
-    let res = await fetch(url + `&coord=${coordString}&id=${id}`);
+    let res = await fetch(url + `&coord=${coordString}&id=${id}`,{
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
     res = await res.json()
-    console.log('res\n', res)
     dispatch(search(res))
 };
 

@@ -4,10 +4,10 @@ from flask import request
 import itertools
 search_routes = Blueprint('search', __name__)
 
-def parse_results(res, user):
+def parse_results(res):
     d = res.to_dict()
 
-    d['images'] = [img.to_dict() for img in res.images]
+    # d['images'] = [img.to_dict() for img in res.images]
     d['reviews'] = [rev.to_dict() for rev in res.reviews]
     d['review_total'] = len(d['reviews'])
     d['ratings'] = {
@@ -17,18 +17,16 @@ def parse_results(res, user):
         "ambience": sum(d['ambience'] for d in d['reviews']) / d['review_total'],
         "value": sum(d['value'] for d in d['reviews']) / d['review_total'],
         }
-    d['favorited'] = False
-    print(user, '\n')
-    # if user and d['id'] in [bar.to_dict()['id'] for bar in user.favoriteBars]:
-    #     d['favorited'] = True
-    # return d
+    del d['reviews']
+    return d
 
 @search_routes.route('/')
 def search():
     coord = request.args.get('coord')
     business = request.args.get('business')
-    searchId = int(request.args.get('id'))
-
+    searchId = request.args.get('id')
+    if searchId and searchId != 'undefined':
+        searchId = int(searchId)
     lng = 0
     lat = 0
     lngRange = 10000
@@ -45,10 +43,9 @@ def search():
         Bar.longitude.between(lng-lngRange, lng+lngRange),
         Bar.latitude.between(lat-latRange, lat+latRange),
     ).all()
-    user = User.query.filter(User.id==searchId).first()
 
-    search_results = list(map(parse_results,search_results, itertools.repeat(user, len(search_results))))
-    # [{el.to_dict(), 'reviews'= el.reviews} for el in search_results]
-    print('\n', search_results, '\n')
-    print('user', [bar.to_dict() for bar in user.favoriteBars], '\n')
-    return {"searched": True}
+    search_results = list(map(parse_results,search_results))
+    print('\n', 'Search Results \n', search_results, '\n length \n', len(search_results), '\n')
+
+    # return {'test': 1.264}
+    return jsonify({"searchResults": search_results})
