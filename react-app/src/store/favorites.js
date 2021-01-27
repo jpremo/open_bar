@@ -1,5 +1,3 @@
-import { fetch } from './csrf.js';
-
 const SET_USER_FAVORITES = 'userFavorites/setUserFavorites';
 
 const setUserFavorites = (userFavorites) => ({
@@ -10,9 +8,11 @@ const setUserFavorites = (userFavorites) => ({
 
 export const fetchUserFavorites = (userId) => {
   return async(dispatch) => {
-    const response = await fetch(`/api/groups/${userId}/favorites`)
+    const response = await fetch(`/api/users/${userId}/favorites`)
+    const data = await response.json()
+    console.log(data)
     dispatch(
-      setUserFavorites(response.data.favorites)
+      setUserFavorites(data.favorites)
     )
   }
 }
@@ -26,8 +26,7 @@ function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER_FAVORITES:
       newState = Object.assign({}, state)
-      newState = action.userFavorites;
-      return newState;
+      return newState
     default:
       return state;
   }

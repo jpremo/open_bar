@@ -17,8 +17,8 @@ class Reservation(db.Model):
         return {
             "id": self.id,
             "partySize": self.partySize,
-            "date": self.date,
-            "time": self.time,
+            "date": f'{self.date}',
+            "time": f'{self.time}',
             "barId": self.barId,
             "userId": self.userId
         }

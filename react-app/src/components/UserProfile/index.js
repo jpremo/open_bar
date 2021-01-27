@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
 import Favorites from "./Favorites"
 import "./index.css"
 
@@ -20,6 +21,8 @@ function User() {
         })();
     }, [userId]);
 
+    const userState = useSelector(state => state.session.user)
+
     if (!user) {
         return null;
     }
@@ -38,7 +41,7 @@ function User() {
                 </div>
             </div>
             <div>
-                <Favorites user={user}/>
+                <Favorites user={userState}/>
             </div>
 
         </>

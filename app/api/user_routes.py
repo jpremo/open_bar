@@ -16,12 +16,14 @@ def users():
 @login_required
 def user(id):
     user = User.query.get(id)
-    print(f'YOOOOOOOO!!!!!!  {user}')
     return user.to_dict()
 
 
 @user_routes.route('/<int:id>/favorites')
-def userFavorites(id):
-    favorites = Bar.query.all()
-    print(f'YOOOOOOOO!!!!!!  {favorites}')
-    return favorites.to_dict()
+def userfavorites(id):
+    print("Hey!!!!!")
+    user = User.query.get(int(id))
+    bars = user.to_dict()["favoriteBars"]
+    # print(f'YOOOOOOOO!!!!!!  {userFavorites}')
+    print(bars)
+    return {"favorites": bars}
