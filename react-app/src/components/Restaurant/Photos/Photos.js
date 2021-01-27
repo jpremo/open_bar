@@ -3,7 +3,17 @@ import Photo from "./Photo/Photo"
 
 function Photos () {
   return (
-    <h1>Placeholder photo</h1>
+    <div>
+      <h1>See X Photos</h1>
+      <div id='photos'>
+        <div id='first-photo'>
+          {[1].map(imageNum => {return <Photo key={imageNum} props={imageNum}/>})}
+        </div>
+        <div id='stacked-photos'>
+          {[4, 5, 2, 3].map(imageNum => {return <Photo key={imageNum} props={imageNum}/>})}
+        </div>
+      </div>
+    </div>
   );
 }
 

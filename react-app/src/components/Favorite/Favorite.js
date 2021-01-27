@@ -2,7 +2,9 @@ import React from "react"
 
 function Favorite () {
   return (
-    <h1>Placeholder favorite</h1>
+    <div>
+      <h1>Placeholder favorite</h1>
+    </div>
   );
 }
 

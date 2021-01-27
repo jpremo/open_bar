@@ -5,8 +5,11 @@ import Favorite from "../Favorite/Favorite"
 import RestaurantJSON from "./RestaurantJSON/RestaurantJSON"
 import './Restaurant.css'
 import sushi from './sushi-restaurant.jpeg' // to be deleted
+import { useParams } from 'react-router-dom'
 
 function Restaurant () { // update all values with redux
+  const { restaurantId }  = useParams();
+
   return (
     <div>
       <div id='backgroundImg'>
@@ -14,35 +17,34 @@ function Restaurant () { // update all values with redux
       </div>
       <div id='columnsDiv'>
         <div id='leftColumn'>
-          <div>
-            <h1>Sushi Restaurant name</h1>
-            <ul>
-              <li>Review Average Score Placeholder</li>
-              <li>Number of Ratings Placeholder</li>
-            </ul>
+          <div className='BorderBottom BorderTop'>
+            <h1 id='RestaurantName'>Sushi Restaurant name {restaurantId}</h1>
           </div>
+          <span id='summary-span'>
+            <span id ='summary-span-1'>Review Average Score Placeholder</span>
+            <span id ='summary-span-2'>Number of Ratings Placeholder</span>
+          </span>
           <div>
             <Photos />
           </div>
           <div>
-            <h6>What placeholder-number of people are saying</h6>
-            <ul>
-              <li>Food</li>
-              <li>Service</li>
-              <li>Ambience</li>
-              <li>Value</li>
-            </ul>
+            <h3 className='BorderBottom'>What placeholder-number of people are saying</h3>
+            <div className='BorderBottom bottom-padding'>
+              <span className='BorderRight'>Overall</span>
+              <span className='BorderRight'>Food</span>
+              <span className='BorderRight'>Service</span>
+              <span className='BorderRight'>Ambience</span>
+              <span>Value</span>
+            </div>
           </div>
           <div>
-            <h2>Placeholder for Reviews component</h2>
             <Reviews />
           </div>
         </div>
         <div id='rightColumn'>
-          <h1>Other Side</h1>
           <h2>Placeholder for reservations component</h2>
           <h2>Placeholder for maps component</h2>
-          <h2>Placeholder for json data component</h2>
+          <RestaurantJSON />
         </div>
       </div>
     </div>
