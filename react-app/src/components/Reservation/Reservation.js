@@ -1,5 +1,5 @@
 import CalendarContainer from '../Calendar/Calendar'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import TimePicker from 'react-time-picker'
 
 export default function Reservation() {
@@ -9,10 +9,6 @@ export default function Reservation() {
   // const currentHour = today.getHours();
   // const currentMinute = today.getMinutes();
   // const currentSecond = today.getSeconds();
-
-  // useEffect(() => {
-  //   // do somethin or other
-  // })
 
   const dropdownOptionsForNumberOfPeople = []
   for (let i = 3; i < 20; i++) {
@@ -35,7 +31,7 @@ export default function Reservation() {
         <div>
           <select id='party-size-dropdown'>
             <option>For 1</option>
-            <option selected>For 2</option>
+            <option defaultValue>For 2</option>
             {dropdownOptionsForNumberOfPeople.map(num => {
               return <option key={num}>For {num}</option>
             })}

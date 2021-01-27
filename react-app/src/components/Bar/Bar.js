@@ -3,7 +3,7 @@ import BarJSON from "./BarJSON/BarJSON"
 import Favorite from "../Favorite/Favorite"
 import MapContainer from "../MapContainer/MapContainer"
 import Photos from "./Photos/Photos"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Reservation from "../Reservation/Reservation"
 import Reviews from "./Reviews/Reviews"
 import sushi from './sushi-bar.jpeg' // to be deleted
@@ -11,6 +11,21 @@ import { useParams } from 'react-router-dom'
 
 function Bar () { // update all values with redux
   const { barId }  = useParams();
+
+  const [barData, setBarData] = useState({});
+
+  let data = {}
+
+  useEffect( () => {
+    async function getBarData(barId) {
+      const barRawData = await fetch(`http://localhost:5000/api/bars/${barId}`);
+      const barJSONData = await barRawData.json();
+      setBarData(barJSONData);
+      data = barJSONData;
+      console.log(barJSONData, barData, data)
+    }
+    getBarData(barId);
+  }, [])
 
   return (
     <div>
