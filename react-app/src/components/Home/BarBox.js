@@ -1,9 +1,8 @@
 import {Link} from 'react-router-dom'
 import React from 'react'
+import './Home.css'
 
 function BarBox({bar}) {
-    let desc = bar.description
-    if(bar.description.length > 500) desc = bar.description.slice(0,500) + '...'
     let stars = Math.round(bar.ratings.overall * 2)
     const starsArr = []
     for (let i = 0; i < 5; i++) {
@@ -18,10 +17,13 @@ function BarBox({bar}) {
     }
 
     return(
-        <div className='bar-box'>
-            <Link to={`/bar/${bar.id}`} className='bar-link'>{bar.name}</Link>
-            <div className='bar-address'>{bar.street} {bar.state} {bar.zipcode}</div>
-            <div className='star-container'>
+        <div className='bar-box-home'>
+        <div>
+        <img id="picture-bar-box" src={bar.bannerImg}/>
+        </div>
+        <div id="info-bar-box">
+         <Link to={`/bar/${bar.id}`} className='bar-link'>{bar.name}</Link>
+            <div className='home-star-container'>
                             {starsArr.map((el, ind) => {
                                 return (
                                     <div className={`star ${el}`} key={ind}>
@@ -30,7 +32,7 @@ function BarBox({bar}) {
                             })}
                             <div className='review-number'>{(bar.review_total === 1) ? `1 Review` : `${bar.review_total} Reviews`}</div>
                         </div>
-            <div className='bar-description'>{desc}</div>
+                        </div>
         </div>
     )
 }

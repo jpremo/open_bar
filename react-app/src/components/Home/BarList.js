@@ -13,8 +13,9 @@ function BarList({ barList, name }) {
         </>
     )
     return (
-        <div className='list-box'>
+        <div className='home-list-box'>
             <h1>{name}</h1>
+            <br></br>
             {barList.map((el, ind) => {
                 return (
                     <BarBox bar={el} key={ind} />

@@ -8,7 +8,7 @@ import DropDown from "../DropDown/DropDown"
 import {homeDisplayBussinesses} from '../../store/bars'
 
 import "./Home.css"
-import BarList from '../SearchResults/BarList'
+import BarList from '../Home/BarList'
 function Home() {
 
     const dispatch = useDispatch()
@@ -42,7 +42,10 @@ function Home() {
             </div>
             <div id="bar-list">
                 <h1> Whenever, wherever you’re thirsty — find it on OpenBar</h1>
-                <BarList barList={results} />
+                <div id="list">
+                <BarList barList={results} />       
+                </div>
+                
             </div>
         </div>
     )
