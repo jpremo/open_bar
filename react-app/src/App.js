@@ -7,7 +7,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
-import Restaurant from "./components/Restaurant/Restaurant"
+import Bar from "./components/Bar/Bar"
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -40,8 +40,8 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
-        <Route path="/restaurants/:restaurantId">
-          <Restaurant />
+        <Route path="/bars/:barId">
+          <Bar />
         </Route>
         <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
           <UsersList/>

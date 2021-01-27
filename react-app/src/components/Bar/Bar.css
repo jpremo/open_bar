@@ -34,7 +34,7 @@
   padding-right: 0.5em;
 }
 
-#RestaurantName {
+#barName {
   font-size: 48px;
   font-weight: 700;
   line-height: 56px;
@@ -71,11 +71,11 @@
   padding-top: 1em;
 }
 
-#restaurant-JSON {
+#bar-JSON {
   list-style: none;
 }
 
-#restaurant-JSON-element {
+#bar-JSON-element {
   padding: 0.5em;
 }
 
@@ -96,4 +96,9 @@
 
 #shrink-other-imgs {
   height: 6em;
+}
+
+#favorite-div {
+  display: block;
+  margin: auto;
 }

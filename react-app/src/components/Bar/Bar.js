@@ -2,14 +2,14 @@ import React from "react"
 import Reviews from "./Reviews/Reviews"
 import Photos from "./Photos/Photos"
 import Favorite from "../Favorite/Favorite"
-// import MapContainer from "../MapContainer/MapContainer"
-import RestaurantJSON from "./RestaurantJSON/RestaurantJSON"
-import './Restaurant.css'
-import sushi from './sushi-restaurant.jpeg' // to be deleted
+import MapContainer from "../MapContainer/MapContainer"
+import BarJSON from "./BarJSON/BarJSON"
+import './Bar.css'
+import sushi from './sushi-bar.jpeg' // to be deleted
 import { useParams } from 'react-router-dom'
 
-function Restaurant () { // update all values with redux
-  const { restaurantId }  = useParams();
+function Bar () { // update all values with redux
+  const { barId }  = useParams();
 
   return (
     <div>
@@ -19,7 +19,7 @@ function Restaurant () { // update all values with redux
       <div id='columnsDiv'>
         <div id='leftColumn'>
           <div className='BorderBottom BorderTop'>
-            <h1 id='RestaurantName'>Sushi Restaurant name {restaurantId}</h1>
+            <h1 id='BarName'>Sushi Bar name {barId}</h1>
           </div>
           <span id='summary-span'>
             <span id ='summary-span-1'>Review Average Score Placeholder</span>
@@ -43,16 +43,18 @@ function Restaurant () { // update all values with redux
           </div>
         </div>
         <div id='rightColumn'>
+          <div>
+            <Favorite />
+          </div>
           <h2>Placeholder for reservations component</h2>
           <div id="google-map-container">
-            <h2>Map will go here</h2>
-            {/* <MapContainer/> */}
+            <MapContainer/>
           </div>
-          <RestaurantJSON />
+          <BarJSON />
         </div>
       </div>
     </div>
   );
 }
 
-export default Restaurant;
+export default Bar;

@@ -10,7 +10,7 @@ export default function Photo(props) {
 
   const img = imgList[props.props - 1];
   let idType = 'shrink-other-imgs';
-  if (props.props - 1 == 0) {
+  if (props.props - 1 === 0) {
     idType = 'shrink-first-img';
   }
 

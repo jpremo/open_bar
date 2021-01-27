@@ -2,8 +2,9 @@ import React from "react"
 
 function Favorite () {
   return (
-    <div>
-      <h1>Placeholder favorite</h1>
+    <div id='favorite-div'>
+      <h2>Placeholder favorite</h2>
+      <button>Add Me To Your Favorites!</button>
     </div>
   );
 }

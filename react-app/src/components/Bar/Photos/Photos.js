@@ -10,7 +10,7 @@ function Photos () {
           {[1].map(imageNum => {return <Photo key={imageNum} props={imageNum}/>})}
         </div>
         <div id='stacked-photos'>
-          {[4, 5, 2, 3].map(imageNum => {return <Photo key={imageNum} props={imageNum}/>})}
+          {[2, 3, 4, 5].map(imageNum => {return <Photo key={imageNum} props={imageNum}/>})}
         </div>
       </div>
     </div>
