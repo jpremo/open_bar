@@ -2,7 +2,7 @@ import React from "react"
 import Reviews from "./Reviews/Reviews"
 import Photos from "./Photos/Photos"
 import Favorite from "../Favorite/Favorite"
-import MapContainer from "../MapContainer/MapContainer"
+// import MapContainer from "../MapContainer/MapContainer"
 import RestaurantJSON from "./RestaurantJSON/RestaurantJSON"
 import './Restaurant.css'
 import sushi from './sushi-restaurant.jpeg' // to be deleted
@@ -44,9 +44,10 @@ function Restaurant () { // update all values with redux
         </div>
         <div id='rightColumn'>
           <h2>Placeholder for reservations component</h2>
-          {/* <div id="google-map-container">
-            <MapContainer/>
-          </div> */}
+          <div id="google-map-container">
+            <h2>Map will go here</h2>
+            {/* <MapContainer/> */}
+          </div>
           <RestaurantJSON />
         </div>
       </div>
