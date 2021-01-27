@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Select from 'react-select'
+import "./DropDown.css"
 
 const options = [
   { value: '1', label: '1 Person' },
@@ -28,9 +29,9 @@ function DropDown() {
     const[people, setPeople] = useState({})
 
     return (
-        <div>
+        <div id="dropdown">
             <i class="fas fa-user-friends"></i>
-            <Select options={options} placeholder="Select Number of Guests" onChange={setPeople} />
+            <Select id="select-drop" options={options} placeholder="Select Number of Guests" onChange={setPeople} />
         </div>
          
     )

@@ -1,0 +1,9 @@
+#dropdown{
+    display:flex;
+    flex-direction: row;
+    
+}
+
+#select-drop{
+     width: 200px;
+}

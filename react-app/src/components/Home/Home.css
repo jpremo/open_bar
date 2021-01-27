@@ -42,8 +42,9 @@
   display: flex;
   flex-direction: row;
   background-color: white;
-  vertical-align: center;
-}
+  vertical-align: center; 
+ }
+
 #people-search{
   background-color: red;
   width: 200px;
