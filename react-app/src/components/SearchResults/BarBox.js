@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 
-function BarBox({ bar }) {
+function BarBox({ bar, ind }) {
     let desc = bar.description
     if (bar.description.length > 500) desc = bar.description.slice(0, 500) + '...'
     let stars = Math.round(bar.ratings.overall * 2)
@@ -19,7 +19,7 @@ function BarBox({ bar }) {
 
     return (
         <div className='bar-box'>
-            <Link to={`/bar/${bar.id}`} className='bar-link'>{bar.name}</Link>
+            <Link to={`/bar/${bar.id}`} className='bar-link'>{ind+1}. {bar.name}</Link>
             <div className='bar-address'>{bar.street} {bar.state} {bar.zipcode}</div>
             <div className='star-container'>
                 {starsArr.map((el, ind) => {

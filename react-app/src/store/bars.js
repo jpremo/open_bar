@@ -13,16 +13,15 @@ export const clearSearchInfo = () => ({
 
 export const searchBusinesses = (url, location, id) => async (dispatch) => {
     let coordString = 'NoLocation'
+    const tt = window.tt
     if (location) {
-        //   let loc = await tt.services.fuzzySearch({
-        //     key: 'g0ZS3ih3olA15iG2cSglfY1YrEJO8DKR',
-        //     query: location
-        //   }).go()
-        // let loc = 'placeholder'
-        // coordString = `${loc.results[0].position.lng},${loc.results[0].position.lat}`
-
+          let loc = await tt.services.fuzzySearch({
+            key: 'g0ZS3ih3olA15iG2cSglfY1YrEJO8DKR',
+            query: location
+          }).go()
+        coordString = `${loc.results[0].position.lng},${loc.results[0].position.lat}`
         //defaulting to new york
-        coordString = '-73.93,40.73'
+        // coordString = '-73.93,40.73'
     }
 
     let res = await fetch(url + `&coord=${coordString}&id=${id}`,{

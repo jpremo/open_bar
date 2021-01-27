@@ -4,6 +4,7 @@ from flask import request
 import itertools
 search_routes = Blueprint('search', __name__)
 
+
 def parse_results(res):
     d = res.to_dict()
 
@@ -16,16 +17,17 @@ def parse_results(res):
         "service": sum(d['service'] for d in d['reviews']) / d['review_total'],
         "ambience": sum(d['ambience'] for d in d['reviews']) / d['review_total'],
         "value": sum(d['value'] for d in d['reviews']) / d['review_total'],
-        }
+    }
     del d['reviews']
     return d
+
 
 @search_routes.route('/')
 def search():
     coord = request.args.get('coord')
     business = request.args.get('business')
     searchId = request.args.get('id')
-    if business=='' and coord=='NoLocation':
+    if business == '' and coord == 'NoLocation':
         return {"searchResults": []}
     if searchId and searchId != 'undefined':
         searchId = int(searchId)
@@ -41,13 +43,20 @@ def search():
         lngRange = .33
     search_str = f'%{business}%'
     search_results = Bar.query.join(Review).join(Image).filter(
-        Bar.name.like(search_str),
+        Bar.name.ilike(search_str),
         Bar.longitude.between(lng-lngRange, lng+lngRange),
         Bar.latitude.between(lat-latRange, lat+latRange),
     ).all()
 
-    search_results = list(map(parse_results,search_results))
-    print('\n', 'Search Results \n', search_results, '\n length \n', len(search_results), '\n')
+    search_results = list(map(parse_results, search_results))
+    if(coord == 'NoLocation'):
+        if(len(search_results) > 0):
+            lng= search_results[0]['longitude']
+            lat= search_results[0]['latitude']
+
+
+    print('\n', 'Search Results \n', search_results,
+          '\n length \n', len(search_results), '\n')
 
     # return {'test': 1.264}
-    return jsonify({"searchResults": search_results})
+    return jsonify({"searchResults": search_results, "searchCenter": {"longitude": lng, "latitude": lat}})

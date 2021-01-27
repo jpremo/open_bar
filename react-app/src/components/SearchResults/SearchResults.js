@@ -15,12 +15,13 @@ function SearchResults() {
     const dispatch = useDispatch()
     let user = useSelector(state => state.session.user)
     let results = useSelector(state => state.bars.searchResults)
+    let center = useSelector(state => state.bars.searchCenter)
     console.log('state', user)
     const history = useHistory()
     const locLoc = location.search.indexOf('location=') + 9
-    const loc = location.search.slice(locLoc)
+    const loc = location.search.slice(locLoc).split('%20').join(' ')
     const busLoc = location.search.indexOf('business=') + 9
-    const bus = location.search.slice(busLoc, locLoc-10)
+    const bus = location.search.slice(busLoc, locLoc-10).split('%20').join(' ')
     const url = `/api/search/${location.search}`
 
     const pageBar = (resultNumber, currentPage) => {
@@ -93,7 +94,7 @@ function SearchResults() {
             <div id="results-wrapper">
                 <SearchBar setLoaded={setLoaded} loaded={loaded} bus={bus} loc={loc}/>
                     <div id="google-map-container" className='search-results-map'>
-                        <SearchMap />
+                        <SearchMap center={center} bars={pageContent}/>
                     </div>
                 <div id='main-content-wrapper'>
                     <BarList barList={pageContent} />
