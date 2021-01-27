@@ -1,0 +1,25 @@
+.search-bar{
+    margin: 0px 3px;
+    height: 20px;
+    width: 200px;
+    background-color: rgb(211, 211, 211);
+    border-radius: 8px;
+    border: 2px solid black;
+    font-size: 15px;
+  }
+
+  .search-bar:focus{
+    /* border: 2px solid white; */
+    box-shadow: 2px 2px gray;
+    outline: none;
+  }
+
+  #search-icon{
+    position: relative;
+    top: 2px;
+    margin-right: 3px;
+  }
+
+  #search-icon:hover{
+    cursor: pointer;
+  }

@@ -24,7 +24,7 @@ function SearchResults() {
             if (!location.search.includes('location=') || !location.search.includes('business=')) {
                 history.push(`/search/?business=&location=`)
             } else {
-                dispatch(clearSearchInfo())
+                await dispatch(clearSearchInfo())
                 await dispatch(searchBusinesses(url, loc, user.id))
             }
             setLoaded(true)
@@ -32,6 +32,7 @@ function SearchResults() {
         })();
     }, [dispatch, loaded])
     if (loaded) {
+        debugger
         return (
             <div>
                 <SearchBar setLoaded={setLoaded} loaded={loaded} />
