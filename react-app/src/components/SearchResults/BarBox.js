@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import React from 'react'
 
-function BarBox({ bar, ind }) {
+function BarBox({ bar, ind, confirmReservation }) {
     let desc = bar.description
     if (bar.description.length > 500) desc = bar.description.slice(0, 500) + '...'
     let stars = Math.round(bar.ratings.overall * 2)
@@ -32,6 +32,15 @@ function BarBox({ bar, ind }) {
             </div>
             <div className='ratings-list'>Ambience {Math.round(bar.ratings.ambience*10)/10} | Food {Math.round(bar.ratings.food*10)/10} | Service {Math.round(bar.ratings.service*10)/10} | Value {Math.round(bar.ratings.value*10)/10}</div>
             <div className='bar-description'>{desc}</div>
+            <div className='time-slot-container'>
+            {bar.time_slots.map((time, ind) => {
+                    return (
+                        <div className='search-page-link' key={ind} id={`${bar.id}-${time[0]}-${time[1]}`} onClick={(e) => confirmReservation(e)}>
+                            <div>{time[1]}</div>
+                            <div className='date-text'>{time[0].split('/').slice(0,2).join('/')}</div>
+                        </div>)
+                })}
+            </div>
         </div>
     )
 }

@@ -128,3 +128,13 @@
     right: 1%;
     width: auto;
 }
+
+.time-slot-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-text{
+  font-size: 16px;
+  text-align: center;
+}

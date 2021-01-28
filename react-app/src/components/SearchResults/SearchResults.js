@@ -97,7 +97,7 @@ function SearchResults() {
                         <SearchMap center={center} bars={pageContent}/>
                     </div>
                 <div id='main-content-wrapper'>
-                    <BarList barList={pageContent} />
+                    <BarList barList={pageContent} userId={user.id}/>
                     <div id='page-bar-wrapper'>
                         {pageBar(resultCount, page)}
                     </div>
