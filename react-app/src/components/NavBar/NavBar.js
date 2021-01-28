@@ -1,36 +1,31 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import LogoutButton from '../auth/LogoutButton';
+import './NavBar.css';
+import picture from "./open_bar_logo.png"
 
 const NavBar = ({ setAuthenticated }) => {
   return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink to="/" exact={true} activeClassName="active">
+    <div id="top-nav-bar">
+       <NavLink exact to="/">
+        <img id="nav-bar-logo-picture" src={picture}/>
+         </NavLink>
+      <div id="nav-bar-menu">
+          <NavLink to="/" exact={true} className="nav-link" activeClassName="active">
             Home
           </NavLink>
-        </li>
-        <li>
-          <NavLink to="/login" exact={true} activeClassName="active">
+          <NavLink to="/login" exact={true} className="nav-link" activeClassName="active">
             Login
           </NavLink>
-        </li>
-        <li>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
+          <NavLink to="/sign-up" exact={true} className="nav-link" activeClassName="active">
             Sign Up
           </NavLink>
-        </li>
-        <li>
-          <NavLink to="/users" exact={true} activeClassName="active">
+          <NavLink to="/users" exact={true}  className="nav-link" activeClassName="active">
             Users
           </NavLink>
-        </li>
-        <li>
           <LogoutButton setAuthenticated={setAuthenticated} />
-        </li>
-      </ul>
-    </nav>
+      </div>
+    </div>
   );
 }
 
