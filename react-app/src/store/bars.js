@@ -17,8 +17,6 @@ export const clearSearchInfo = () => ({
 });
 
 export const homeDisplayBussinesses = () => async (dispatch) => {
-    
-
     let res = await fetch("/api/search/popular",{
         headers: {
           'Content-Type': 'application/json'
