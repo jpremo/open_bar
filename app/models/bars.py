@@ -1,7 +1,7 @@
 from .db import db
 from .favorites import favorites
 from sqlalchemy.dialects.postgresql import JSONB
-
+import json
 
 class Bar(db.Model):
     __tablename__ = 'bars'
@@ -38,7 +38,7 @@ class Bar(db.Model):
             "state": self.state,
             "zipcode": self.zipcode,
             "barSeats": self.barSeats,
-            "dayAndTime": self.dayAndTime,
+            "dayAndTime": json.loads(self.dayAndTime),
             "bannerImg": self.bannerImg,
             "ownerId": self.ownerId
         }

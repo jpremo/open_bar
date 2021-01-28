@@ -8,20 +8,22 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
 import Bar from "./components/Bar/Bar"
+import SearchResults from "./components/SearchResults/SearchResults"
+import Home from "./components/Home/Home";
+import { restoreUser } from "./store/session";
+import { useDispatch } from "react-redux";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
-
+  const dispatch = useDispatch();
   useEffect(() => {
     (async() => {
-      const user = await authenticate();
-      if (!user.errors) {
-        setAuthenticated(true);
-      }
+      const user = await dispatch(restoreUser())
+      if(user) setAuthenticated(true);
       setLoaded(true);
     })();
-  }, []);
+  }, [dispatch]);
 
   if (!loaded) {
     return null;
@@ -36,12 +38,17 @@ function App() {
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
+         </Route>
+        <Route path="/" exact={true}>
+          <Home />
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
         <Route path="/bars/:barId">
           <Bar />
+        <Route path="/search" exact={true}>
+          <SearchResults authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
         <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
           <UsersList/>
