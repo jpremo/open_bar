@@ -9,6 +9,7 @@ const [value, onChange] = useState(new Date());
       <DatePicker
         onChange={onChange}
         value={value}
+        showTimeSelect
       />
     </div>
   );

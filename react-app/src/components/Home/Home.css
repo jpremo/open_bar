@@ -1,21 +1,98 @@
-
-#banner-image {
-  width: 1485px;
-  height:100%;
-  object-fit: fill;
-
-
-}
-.info-on-image{
- position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+#home-page-overlay {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-#google-map-container{
-   padding-top: 68px;
+#home-image-container {
+  margin-top: 30px;
+  width: 95%;
+  height: 400px;
   position: relative;
-  width: 50%;
-  height: 50%;
+  display: flex;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+#home-image-container img {
+  height: 100%;
+  width: 100%;
+}
+
+#search-container {
+  background-color: white;
+  vertical-align: center;
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  width: 600px;
+  margin-right: 3%;
+  margin-left: 3%;
+}
+#calender-search {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  vertical-align: center;
+}
+
+#people-search {
+  background-color: red;
+  width: 200px;
+}
+
+#home-page-overlay h1 {
+  color: white;
+  font-size: 38px;
+  text-align: center;
+}
+#bar-list h1 {
+  font-size: 20px;
+}
+
+#bar-list {
+  padding-top: 50px;
+  margin-left: 7%;
+  margin-right: 7%;
+}
+
+.bar-box-home img {
+  width: 250px;
+  height: 125px;
+  border-radius: 5px
+}
+.home-star-container{
+  display: flex;
+  width: auto;
+  align-items: flex-end;
+}
+.home-list-box{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  
+}
+
+#info-bar-box{
+  width: 250px;
+  height: 125px;
+  box-shadow: 2px 2px hsl(0deg 0% 90%);
+  border-radius: 5px
+
+}
+
+#google-map-container {
+  padding-top: 100px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-left: 3%;
 }
