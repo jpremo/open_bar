@@ -5,17 +5,17 @@ import {useSelector} from 'react-redux'
 const MapContainer = () => {
 
   const[selectedApt,setSelectedApt] = useState(null)
-  
 
-  const mapStyles = {        
+
+  let mapStyles = {
     width: '400px',
-  height: '400px'
+    height: '400px'
 };
-  
+
   const defaultCenter = {
     lat: 40.7128, lng: -74.0060
   }
-  
+
   return (
      <LoadScript
        googleMapsApiKey='AIzaSyBB_qz7gdLnQ9rBYBbQafFjWqx7gyIIJVI'>
@@ -25,7 +25,6 @@ const MapContainer = () => {
           center={defaultCenter}>
             )}
             {/* {<Marker position={defaultCenter}/>} */}
-          
        </GoogleMap>
      </LoadScript>
   )

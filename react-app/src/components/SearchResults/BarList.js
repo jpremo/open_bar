@@ -17,7 +17,7 @@ function BarList({ barList, name }) {
             <h1>{name}</h1>
             {barList.map((el, ind) => {
                 return (
-                    <BarBox bar={el} key={ind} />
+                    <BarBox bar={el} key={ind} ind={ind} />
                 )
             })}
         </div>
