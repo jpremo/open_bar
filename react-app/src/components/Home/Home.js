@@ -5,9 +5,9 @@ import HomeBanner from "./HomeBanner.jpg"
 import CalendarContainer from "../Calendar/Calendar"
 import DropDown from "../DropDown/DropDown"
 import {homeDisplayBussinesses} from '../../store/bars'
-
 import "./Home.css"
 import BarList from '../Home/BarList'
+import TimeSlot from '../TimeSlot/TimeSlot'
 function Home() {
 
     const dispatch = useDispatch()
@@ -29,6 +29,9 @@ function Home() {
                     <div id="search-container">
                         <div id="calender-search">
                             <CalendarContainer/>
+                        </div>
+                         <div id="time-search">
+                            <TimeSlot/>
                         </div>
                         <div id="people-search">
                             <DropDown/>

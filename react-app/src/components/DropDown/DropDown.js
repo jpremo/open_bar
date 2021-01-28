@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Select from 'react-select'
-import "./DropDown.css"
+
 
 const options = [
   { value: '1', label: '1 Person' },

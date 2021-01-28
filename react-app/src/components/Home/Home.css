@@ -32,39 +32,36 @@
   display: flex;
   flex-direction: row;
   height: 50px;
-  width: 400px;
+  width: 700px;
   margin-right: 3%;
   margin-left: 3%;
-
-  
-  
 }
+
 #calender-search {
   display: flex;
   flex-direction: row;
-  
   vertical-align: center;
-  width:50%;
-    gap: 20;
-  
+  /* width: 33%; */
 
 }
 
-
-.react-select-container{
-  height:100%;
+.react-select-container {
+  height: 100%;
 }
 
 .react-date-picker__wrapper {
-  width: 180%;
+  width: 100%;
   height: 100%;
-  background-color:white;
-  border-radius: 5px
+  background-color: white;
+  border-radius: 5px;
+}
+
+#time-search {
+  width: 33%;
 }
 
 #people-search {
-  background-color:white;
-  width: 50%;
+  width: 33%;
 }
 
 #home-page-overlay h1 {
@@ -85,26 +82,23 @@
 .bar-box-home img {
   width: 250px;
   height: 125px;
-  border-radius: 5px
+  border-radius: 5px;
 }
-.home-star-container{
+.home-star-container {
   display: flex;
   width: auto;
   align-items: flex-end;
 }
-.home-list-box{
+.home-list-box {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 15px;
-  
 }
 
-#info-bar-box{
+#info-bar-box {
   width: 250px;
   height: 125px;
   box-shadow: 2px 2px hsl(0deg 0% 90%);
-  border-radius: 5px
-
+  border-radius: 5px;
 }
-
