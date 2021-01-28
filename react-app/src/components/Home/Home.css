@@ -50,10 +50,11 @@
 }
 
 .react-date-picker__wrapper {
-  width: 100%;
+  width: 33%;
   height: 100%;
   background-color: white;
   border-radius: 5px;
+  
 }
 
 #time-search {

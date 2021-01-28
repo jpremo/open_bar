@@ -46,6 +46,7 @@ function TimeSlot() {
     ...provided,
     borderBottom: '1px solid black',
     padding: 20,
+   
   }),
   valueContainer: () => ({
     // none of react-select's styles are passed to <Control />
