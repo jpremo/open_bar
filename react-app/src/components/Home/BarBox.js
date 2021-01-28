@@ -22,7 +22,7 @@ function BarBox({bar}) {
         <img id="picture-bar-box" src={bar.bannerImg}/>
         </div>
         <div id="info-bar-box">
-         <Link to={`/bar/${bar.id}`} className='bar-link'>{bar.name}</Link>
+         <Link to={`/bars/${bar.id}`} className='bar-link'>{bar.name}</Link>
             <div className='home-star-container'>
                             {starsArr.map((el, ind) => {
                                 return (
