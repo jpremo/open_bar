@@ -33,12 +33,10 @@ export const homeDisplayBussinesses = () => async (dispatch) => {
 
 
 
-export const searchBusinesses = (url, location, id) => async (dispatch) => {
+export const searchBusinesses = (url, location, id, time, day, date) => async (dispatch) => {
     let coordString = 'NoLocation'
     const tt = window.tt
-    const day = 'tuesday'
-    const time = 11.5
-    const date = '01/30/2021'
+
     if (location) {
           let loc = await tt.services.fuzzySearch({
             key: 'g0ZS3ih3olA15iG2cSglfY1YrEJO8DKR',
@@ -49,7 +47,7 @@ export const searchBusinesses = (url, location, id) => async (dispatch) => {
         // coordString = '-73.93,40.73'
     }
 
-    let res = await fetch(url + `&coord=${coordString}&id=${id}&day=${day}&time=${time}&date=${date}`,{
+    let res = await fetch(url + `&coord=${coordString}&id=${id}`,{
         headers: {
           'Content-Type': 'application/json'
         }

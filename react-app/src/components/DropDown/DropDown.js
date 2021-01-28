@@ -13,7 +13,7 @@ const options = [
   { value: '8', label: '8 People' },
   { value: '9', label: '9 People' },
   { value: '10', label: '10 People' },
-   { value: '11', label: '11 People' },
+  { value: '11', label: '11 People' },
   { value: '12', label: '12 People' },
   { value: '13', label: '13 People' },
   { value: '14', label: '14 People' },
@@ -25,8 +25,8 @@ const options = [
   { value: '20', label: '20 People' }
 ]
 
-function DropDown() {
-    const[people, setPeople] = useState({})
+function DropDown({people, setPeople}) {
+    // const[people, setPeople] = useState({})
 
     const customStyles = {
   option: (provided, state) => ({
@@ -50,9 +50,9 @@ function DropDown() {
 
     return (
         <div id="dropdown">
-            <Select styles={customStyles} id="select-drop" options={options} placeholder=" Number of Guests" onChange={setPeople} />
+            <Select styles={customStyles} id="select-drop" value={people} options={options} placeholder=" Guests" onChange={setPeople} />
         </div>
-         
+
     )
 }
 

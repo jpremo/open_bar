@@ -13,6 +13,7 @@
     "google-map-react": "^2.1.9",
     "google-maps-react": "^2.0.6",
     "http-proxy-middleware": "^1.0.5",
+    "query-string": "^6.13.8",
     "react": "^17.0.1",
     "react-date-picker": "^8.0.6",
     "react-dom": "^16.13.1",

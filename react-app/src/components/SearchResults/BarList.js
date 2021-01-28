@@ -1,21 +1,24 @@
 import BarBox from './BarBox'
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-
+import { useHistory, useLocation } from 'react-router-dom'
+import { parse } from 'query-string'
 function BarList({ barList, name, user }) {
     const [confirmScreen, setConfirmScreen] = useState(false)
     const history = useHistory()
+    const location = useLocation()
     let futureReservations
-    if(user) futureReservations = user.futureReservations
+    if (user) futureReservations = user.futureReservations
     const confirmReservation = (e) => {
-        if(user) {
+        if (user) {
             setConfirmScreen(e.currentTarget.id)
         } else {
             history.push('/login')
         }
     }
+    const vals = parse(location.search)
     const confirmReturn = () => {
         if (confirmScreen) {
+
             const split = confirmScreen.split('-')
             const date = split[1]
             const time = split[2]
@@ -34,16 +37,21 @@ function BarList({ barList, name, user }) {
                         date,
                         time,
                         userId: user.id,
-                        partySize: 2,
+                        partySize: vals.guests,
                     })
                 })
                 setConfirmScreen(false)
-                history.push('/bars/'+idComp)
+                history.push('/bars/' + idComp)
             }
             return (
-                <div>
-                    <div>Confirm Reservation for {rest.name} at {split[2]} on {split[1]}? </div>
-                    <div className='search-page-link' onClick={bookReservation}> Confirm</div>
+                <div id='confirm-box-wrapper'>
+                    <div id='confirm-box'>
+                        <div id='confirm-text'>Confirm Reservation for {rest.name} at {split[2]} on {split[1]} for party of {vals.guests}? </div>
+                        <div id='confirm-button-box'>
+                            <div className='search-page-link confirm-button' onClick={bookReservation}> Confirm</div>
+                            <div className='search-page-link confirm-button' onClick={(e) => { setConfirmScreen(false) }}> Cancel</div>
+                        </div>
+                    </div>
                 </div>
             )
         } else {
@@ -69,12 +77,12 @@ function BarList({ barList, name, user }) {
             {barList.map((el, ind) => {
                 let res = false
                 let match
-                if(futureReservations){
+                if (futureReservations) {
                     match = futureReservations.filter((reserve) => {
                         return reserve.barId === el.id
                     })
                 }
-                if(match.length) res = match[0]
+                if (match.length) res = match[0]
                 return (
                     <BarBox bar={el} reservation={res} key={ind} ind={ind} confirmReservation={confirmReservation} />
                 )

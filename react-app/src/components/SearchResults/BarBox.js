@@ -27,8 +27,9 @@ function BarBox({ bar, ind, confirmReservation, reservation }) {
             const date = new Date(Number(dateArr[0]), Number(dateArr[1])-1, Number(dateArr[2]), Number(arr[0]), Number(arr[1]), 0, 0)
             const formattedDate = format(date, 'MM/dd/yyyy');
             const formattedTime = format(date, 'h:mm a');
+            let sVar = reservation.partySize == 1 ? '':'s'
             return(
-                <div className='previous-reservation'>You have a reservation here on {formattedDate} at {formattedTime}</div>
+                <div className='previous-reservation'>You have a reservation here on {formattedDate} at {formattedTime} for {reservation.partySize} guest{sVar}</div>
             )
         }
         return (
