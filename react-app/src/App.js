@@ -45,8 +45,9 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
-        <Route path="/bars/:barId">
+        <Route path="/bars/:barId" exact={true}>
           <Bar />
+        </Route>
         <Route path="/search" exact={true}>
           <SearchResults authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>

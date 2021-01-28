@@ -4,28 +4,25 @@ import Favorite from "../Favorite/Favorite"
 import MapContainer from "../MapContainer/MapContainer"
 import Photos from "./Photos/Photos"
 import React, { useEffect, useState } from "react"
+import { useDispatch, useSelector } from 'react-redux'
 import Reservation from "../Reservation/Reservation"
 import Reviews from "./Reviews/Reviews"
 import sushi from './sushi-bar.jpeg' // to be deleted
 import { useParams } from 'react-router-dom'
+import { barDataDisplay } from '../../store/bars'
 
 function Bar () { // update all values with redux
+
+  const dispatch = useDispatch()
   const { barId }  = useParams();
 
-  const [barData, setBarData] = useState({});
-
-  let data = {}
+  let bar = useSelector(state => state.bars.bardata)
 
   useEffect( () => {
-    async function getBarData(barId) {
-      const barRawData = await fetch(`http://localhost:5000/api/bars/${barId}`);
-      const barJSONData = await barRawData.json();
-      setBarData(barJSONData);
-      data = barJSONData;
-      console.log(barJSONData, barData, data)
-    }
-    getBarData(barId);
-  }, [])
+    (async () => {
+      await dispatch(barDataDisplay(barId))
+    })();
+  }, [dispatch])
 
   return (
     <div>

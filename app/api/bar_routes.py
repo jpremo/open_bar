@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify
 from app.models import Bar, Review, User, Image
+# from .user_routes import parse_results
 
 bar_routes = Blueprint('bars', __name__)
 
@@ -13,5 +14,6 @@ def bar(barId):
     bar_data = bar.to_dict()
     reviews_data = [review.to_dict() for review in reviews]
     images_data = [image.to_dict() for image in images]
+    # parsed_data = parse_results(reviews)
 
-    return {"bar": bar_data, "reviews": reviews_data, "images": images_data}
+    return jsonify("bardata", {"bar": bar_data, "reviews": reviews_data, "images": images_data})
