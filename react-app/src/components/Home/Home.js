@@ -27,7 +27,7 @@ function Home() {
     return (
         <div>
             <div id="home-image-container">
-                 <img src={HomeBanner} />
+                 {/* <img src={HomeBanner} /> */}
                 <div id="home-page-overlay">
                     <h1>Find Your Table For Any Occasion</h1>
                     <div id="search-container">

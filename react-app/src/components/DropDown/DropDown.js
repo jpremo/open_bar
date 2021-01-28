@@ -28,10 +28,29 @@ const options = [
 function DropDown() {
     const[people, setPeople] = useState({})
 
+    const customStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    borderBottom: '1px solid black',
+    padding: 20,
+  }),
+  valueContainer: () => ({
+    // none of react-select's styles are passed to <Control />
+    width: 110,
+    height: 48,
+    borderRadius: 5,
+  }),
+  singleValue: (provided, state) => {
+    const opacity = state.isDisabled ? 0.5 : 1;
+    const transition = 'opacity 300ms';
+
+    return { ...provided, opacity, transition };
+  }
+}
+
     return (
         <div id="dropdown">
-            <i class="fas fa-user-friends"></i>
-            <Select id="select-drop" options={options} placeholder="Select Number of Guests" onChange={setPeople} />
+            <Select styles={customStyles} id="select-drop" options={options} placeholder=" Number of Guests" onChange={setPeople} />
         </div>
          
     )
