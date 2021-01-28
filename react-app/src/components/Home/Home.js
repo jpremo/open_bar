@@ -14,7 +14,7 @@ function Home() {
     let user = useSelector(state => state.session.user)
     let results = useSelector(state => state.bars.mostPopular)
     let wineresults = useSelector(state => state.bars.winery)
-
+    let breweryresults = useSelector(state => state.bars.brewery)
 
     useEffect(() => {
         (async () => {
@@ -54,6 +54,13 @@ function Home() {
                  <h3> Check Out Some Wine Options</h3>
                 <div id="list">
                 <BarList barList={wineresults} />       
+                </div>
+            
+            </div>
+            <div className="bar-list">
+                 <h3> Get Your Buzz on At These Breweries</h3>
+                <div id="list">
+                <BarList barList={breweryresults} />       
                 </div>
             
             </div>
