@@ -42,7 +42,7 @@ function Home() {
             <div id="bar-list">
                 <h1> Whenever, wherever you’re thirsty — find it on OpenBar</h1>
 
-                 <h3> Most Popular</h3>
+                 <h3> Popular and Highly Reviewed</h3>
                 <div id="list">
                 <BarList barList={results} />       
                 </div>

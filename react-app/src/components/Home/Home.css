@@ -76,8 +76,8 @@
 
 #bar-list {
   padding-top: 50px;
-  margin-left: 7%;
-  margin-right: 7%;
+  margin-left: 3%;
+  margin-right: 10%;
 }
 
 .bar-box-home img {
@@ -99,7 +99,7 @@
 
 #info-bar-box {
   width: 250px;
-  height: 125px;
+  height: 75px;
   box-shadow: 2px 2px hsl(0deg 0% 90%);
   border-radius: 5px;
 }
