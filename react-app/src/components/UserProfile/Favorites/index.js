@@ -5,20 +5,36 @@ import { useParams } from "react-router-dom";
 import { fetchUserFavorites } from "../../../store/favorites"
 import "./index.css"
 
-const Favorites = ({user}) => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const Favorites = () => {
 
     const { userId } = useParams()
     // console.log(user)
-    
 
     const dispatch = useDispatch()
     // const userId = userState.id
-
 
     useEffect(() => {
         dispatch(fetchUserFavorites(userId))
     }, [dispatch])
 
+    const userFavorites = useSelector(state => state.userFavorites)
+    console.log(userFavorites)
 
     // if (userId) {
     //     return null;
