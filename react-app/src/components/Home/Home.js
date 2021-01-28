@@ -51,7 +51,7 @@ function Home() {
             
             </div>
             <div className="bar-list">
-                 <h3> Check Out Some Wine Options</h3>
+                 <h3 > Check Out Some Wine Options</h3>
                 <div id="list">
                 <BarList barList={wineresults} />       
                 </div>

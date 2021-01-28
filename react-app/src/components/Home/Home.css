@@ -73,6 +73,10 @@
 .bar-list h1 {
   font-size: 20px;
 }
+.bar-list h3 {
+  font-size: 20px;
+  text-decoration: none;
+}
 
 .bar-list {
   padding-top: 50px;
@@ -103,3 +107,14 @@
   box-shadow: 2px 2px hsl(0deg 0% 90%);
   border-radius: 5px;
 }
+
+#info-bar-box h1{
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  color: black;
+}
+
+/* .home-review-number{
+
+} */
