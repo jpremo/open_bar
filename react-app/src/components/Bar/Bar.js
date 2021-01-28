@@ -16,8 +16,12 @@ function Bar () { // update all values with redux
   const dispatch = useDispatch()
   const { barId }  = useParams();
 
-  let bar = useSelector(state => state.bars.bardata)
-
+  let bar = useSelector(state => state.bars['1']);
+  console.log(bar)
+  if (typeof bar !== 'undefined') {
+    console.log(bar.bar.name)
+  }
+  
   useEffect( () => {
     (async () => {
       await dispatch(barDataDisplay(barId))
@@ -32,23 +36,23 @@ function Bar () { // update all values with redux
       <div id='columnsDiv'>
         <div id='leftColumn'>
           <div className='BorderBottom BorderTop'>
-            <h1 id='BarName'>Sushi Bar name {barId}</h1>
+            <h1 id='BarName'>{}</h1>
           </div>
           <span id='summary-span'>
-            <span id ='summary-span-1'>Review Average Score Placeholder</span>
-            <span id ='summary-span-2'>Number of Ratings Placeholder</span>
+            <span id ='summary-span-1'>Average Review Score {bar.reviews_summary_data.overall}</span>
+            <span id ='summary-span-2'>Number of Reviews {bar.reviews_summary_data.review_total}</span>
           </span>
           <div>
             <Photos />
           </div>
           <div>
-            <h3 className='BorderBottom'>What placeholder-number of people are saying</h3>
+            <h3 className='BorderBottom'>What {bar.reviews_summary_data.review_total} of people are saying</h3>
             <div className='BorderBottom bottom-padding'>
-              <span className='BorderRight'>Overall</span>
-              <span className='BorderRight'>Food</span>
-              <span className='BorderRight'>Service</span>
-              <span className='BorderRight'>Ambience</span>
-              <span>Value</span>
+              <span className='BorderRight'>Overall {bar.reviews_summary_data.overall}</span>
+              <span className='BorderRight'>Food {bar.reviews_summary_data.food}</span>
+              <span className='BorderRight'>Service {bar.reviews_summary_data.service}</span>
+              <span className='BorderRight'>Ambience {bar.reviews_summary_data.ambience}</span>
+              <span>Value {bar.reviews_summary_data.value}</span>
             </div>
           </div>
           <div>
