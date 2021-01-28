@@ -24,11 +24,11 @@ const FavoriteCards = ({ userFav }) => {
             <div id="card">
                 <NavLink to={`/bars/${id}`}>
                     <img alt="nope" src={img} />
-                    <div id="bar-container">
+                    <div id="bar-info-container">
                         <h4>{name}</h4>
                         <h5>{street}</h5>
                         <h5>{phone}</h5>
-                        <h5>{`Total Number of Seats ${seats}`}</h5>
+                        {/* <h5>{`Total Number of Seats ${seats}`}</h5> */}
                     </div>
                 </NavLink>
             </div>
@@ -56,10 +56,12 @@ const Favorites = () => {
         <>
             <div id="favorite-container">
                 <h4>Users FAVORITES</h4>
-                {!userFavorites && <p>Loading...</p>}
-                {userFavorites && userFavorites.map(userFav => {
-                    return <FavoriteCards userFav={userFav} />
-                })}
+                <div id="cards">
+                    {!userFavorites && <p>Loading...</p>}
+                    {userFavorites && userFavorites.map(userFav => {
+                        return <FavoriteCards userFav={userFav} />
+                    })}
+                </div>
             </div>
         </>
     )

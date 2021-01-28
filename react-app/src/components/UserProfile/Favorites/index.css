@@ -1,6 +1,13 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+ }
+
 #favorite-container {
     background-color: rgb(255, 222, 112);
     margin: 0;
+
    
 }
 
@@ -10,15 +17,26 @@
     background-color: rgb(235, 235, 235);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
+    border-radius: 5px;
+    flex: 0 1 24%;
 
 }
 
 #card img {
     width: 225px;
+    border-radius: 5px 5px 0 0;
 }
+
+#card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+  }
 
 #card a{
     text-decoration: none;
     color: rgb(0, 0, 0);
     
+}
+
+#bar-info-container {
+    padding: 2px 16px;
 }
