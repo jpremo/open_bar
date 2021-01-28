@@ -8,8 +8,8 @@ import "./index.css"
 
 
 
-const FavoriteCards = ({ userFav }) => {
-    
+const FavoriteCards = ({ userFav, hidden }) => {
+
     const id = userFav.id
     const img = userFav.bannerImg
     const name = userFav.name
@@ -22,12 +22,12 @@ const FavoriteCards = ({ userFav }) => {
     return (
         <>
             <div id="card">
+                <button hidden={hidden}>unfavorite</button>
                 <NavLink to={`/bars/${id}`}>
                     <img alt="nope" src={img} />
                     <div id="bar-info-container">
                         <h4>{name}</h4>
                         <h5>{street}</h5>
-                        <h5>{phone}</h5>
                         {/* <h5>{`Total Number of Seats ${seats}`}</h5> */}
                     </div>
                 </NavLink>
@@ -36,27 +36,31 @@ const FavoriteCards = ({ userFav }) => {
     )
 }
 
-const Favorites = ({sessionUser, params}) => {
+const Favorites = ({ sessionUser, params }) => {
 
+    const [deleteHidden, setDeleteHidden] = useState(false)
 
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(fetchUserFavorites(params))
-    }, [dispatch])
-
     const userFavorites = useSelector(state => state.userFavorites)
-
     const intParams = parseInt(params)
     const sessId = sessionUser.id
-    
-    let button
 
-    if (sessId === intParams) {
-        console.log("TRUE") 
-    } else {
-        console.log("FALSE") 
-    }
+
+    useEffect(() => {
+
+        dispatch(fetchUserFavorites(params))
+
+        if (sessId === intParams) {
+            setDeleteHidden(false)
+        } else {
+            setDeleteHidden(true)
+        }
+
+    }, [dispatch])
+
+
+
 
     return (
         <>
@@ -65,7 +69,7 @@ const Favorites = ({sessionUser, params}) => {
                 <div id="cards">
                     {!userFavorites && <p>Loading...</p>}
                     {userFavorites && userFavorites.map(userFav => {
-                        return <FavoriteCards userFav={userFav} params={params} key={userFav.id} />
+                        return <FavoriteCards userFav={userFav} hidden={deleteHidden} key={userFav.id} />
                     })}
                 </div>
             </div>

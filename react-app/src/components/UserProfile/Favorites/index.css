@@ -40,3 +40,7 @@
 #bar-info-container {
     padding: 2px 16px;
 }
+
+#card button {
+    position: absolute;
+}
