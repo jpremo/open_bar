@@ -3,12 +3,11 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import HomeBanner from "./HomeBanner.jpg"
 import CalendarContainer from "../Calendar/Calendar"
-import MapContainer from "../MapContainer/MapContainer"
 import DropDown from "../DropDown/DropDown"
 import {homeDisplayBussinesses} from '../../store/bars'
-
 import "./Home.css"
 import BarList from '../Home/BarList'
+import TimeSlot from '../TimeSlot/TimeSlot'
 function Home() {
 
     const dispatch = useDispatch()
@@ -17,10 +16,7 @@ function Home() {
 
     useEffect(() => {
         (async () => {
-            // await dispatch(clearSearchInfo())
             await dispatch(homeDisplayBussinesses())
-
-
         })();
     }, [dispatch])
 
@@ -34,6 +30,9 @@ function Home() {
                         <div id="calender-search">
                             <CalendarContainer/>
                         </div>
+                         <div id="time-search">
+                            <TimeSlot/>
+                        </div>
                         <div id="people-search">
                             <DropDown/>
                         </div>
@@ -42,10 +41,12 @@ function Home() {
             </div>
             <div id="bar-list">
                 <h1> Whenever, wherever you’re thirsty — find it on OpenBar</h1>
+
+                 <h3> Popular and Highly Reviewed</h3>
                 <div id="list">
                 <BarList barList={results} />       
                 </div>
-                
+            
             </div>
         </div>
     )

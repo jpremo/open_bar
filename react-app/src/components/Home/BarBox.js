@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import {NavLink, Link} from 'react-router-dom'
 import React from 'react'
 import './Home.css'
 
@@ -17,12 +17,13 @@ function BarBox({bar}) {
     }
 
     return(
+        <NavLink to={`/bars/${bar.id}`}>
         <div className='bar-box-home'>
         <div>
         <img id="picture-bar-box" src={bar.bannerImg}/>
         </div>
         <div id="info-bar-box">
-         <Link to={`/bar/${bar.id}`} className='bar-link'>{bar.name}</Link>
+         <h1>{bar.name}</h1>
             <div className='home-star-container'>
                             {starsArr.map((el, ind) => {
                                 return (
@@ -34,6 +35,7 @@ function BarBox({bar}) {
                         </div>
                         </div>
         </div>
+        </NavLink>
     )
 }
 

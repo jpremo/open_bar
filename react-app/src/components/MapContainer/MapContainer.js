@@ -25,7 +25,6 @@ const MapContainer = () => {
           center={defaultCenter}>
             )}
             {/* {<Marker position={defaultCenter}/>} */}
-
        </GoogleMap>
      </LoadScript>
   )
