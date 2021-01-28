@@ -2,12 +2,18 @@ import BarBox from './BarBox'
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
-function BarList({ barList, name, userId }) {
+function BarList({ barList, name, user }) {
     const [confirmScreen, setConfirmScreen] = useState(false)
-    const confirmReservation = (e) => {
-        setConfirmScreen(e.currentTarget.id)
-    }
     const history = useHistory()
+    let futureReservations
+    if(user) futureReservations = user.futureReservations
+    const confirmReservation = (e) => {
+        if(user) {
+            setConfirmScreen(e.currentTarget.id)
+        } else {
+            history.push('/login')
+        }
+    }
     const confirmReturn = () => {
         if (confirmScreen) {
             const split = confirmScreen.split('-')
@@ -27,7 +33,7 @@ function BarList({ barList, name, userId }) {
                         barId: idComp,
                         date,
                         time,
-                        userId,
+                        userId: user.id,
                         partySize: 2,
                     })
                 })
@@ -61,8 +67,16 @@ function BarList({ barList, name, userId }) {
             <h1>{name}</h1>
             {confirmReturn()}
             {barList.map((el, ind) => {
+                let res = false
+                let match
+                if(futureReservations){
+                    match = futureReservations.filter((reserve) => {
+                        return reserve.barId === el.id
+                    })
+                }
+                if(match.length) res = match[0]
                 return (
-                    <BarBox bar={el} key={ind} ind={ind} confirmReservation={confirmReservation} />
+                    <BarBox bar={el} reservation={res} key={ind} ind={ind} confirmReservation={confirmReservation} />
                 )
             })}
         </div>
