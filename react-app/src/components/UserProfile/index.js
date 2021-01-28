@@ -41,7 +41,7 @@ function User() {
                 </div>
             </div>
             <div>
-                <Favorites user={userState}/>
+                <Favorites sessionUser={userState} params={userId}/>
             </div>
 
         </>

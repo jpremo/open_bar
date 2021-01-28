@@ -9,7 +9,7 @@ import "./index.css"
 
 
 const FavoriteCards = ({ userFav }) => {
-    console.log(userFav)
+    
     const id = userFav.id
     const img = userFav.bannerImg
     const name = userFav.name
@@ -36,21 +36,27 @@ const FavoriteCards = ({ userFav }) => {
     )
 }
 
+const Favorites = ({sessionUser, params}) => {
 
-
-const Favorites = () => {
-
-    const { userId } = useParams()
-    // console.log(user)
 
     const dispatch = useDispatch()
-    // const userId = userState.id
 
     useEffect(() => {
-        dispatch(fetchUserFavorites(userId))
+        dispatch(fetchUserFavorites(params))
     }, [dispatch])
 
     const userFavorites = useSelector(state => state.userFavorites)
+
+    const intParams = parseInt(params)
+    const sessId = sessionUser.id
+    
+    let button
+
+    if (sessId === intParams) {
+        console.log("TRUE") 
+    } else {
+        console.log("FALSE") 
+    }
 
     return (
         <>
@@ -59,7 +65,7 @@ const Favorites = () => {
                 <div id="cards">
                     {!userFavorites && <p>Loading...</p>}
                     {userFavorites && userFavorites.map(userFav => {
-                        return <FavoriteCards userFav={userFav} />
+                        return <FavoriteCards userFav={userFav} params={params} key={userFav.id} />
                     })}
                 </div>
             </div>
