@@ -70,11 +70,11 @@
   font-size: 38px;
   text-align: center;
 }
-#bar-list h1 {
+.bar-list h1 {
   font-size: 20px;
 }
 
-#bar-list {
+.bar-list {
   padding-top: 50px;
   margin-left: 3%;
   margin-right: 10%;

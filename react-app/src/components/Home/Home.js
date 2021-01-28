@@ -13,6 +13,8 @@ function Home() {
     const dispatch = useDispatch()
     let user = useSelector(state => state.session.user)
     let results = useSelector(state => state.bars.mostPopular)
+    let wineresults = useSelector(state => state.bars.winery)
+
 
     useEffect(() => {
         (async () => {
@@ -39,12 +41,19 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <div id="bar-list">
+            <div className="bar-list">
                 <h1> Whenever, wherever you’re thirsty — find it on OpenBar</h1>
 
                  <h3> Popular and Highly Reviewed</h3>
                 <div id="list">
                 <BarList barList={results} />       
+                </div>
+            
+            </div>
+            <div className="bar-list">
+                 <h3> Check Out Some Wine Options</h3>
+                <div id="list">
+                <BarList barList={wineresults} />       
                 </div>
             
             </div>

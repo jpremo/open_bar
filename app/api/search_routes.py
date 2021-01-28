@@ -66,7 +66,9 @@ def search():
 @search_routes.route('/popular')
 def popular():
     search_results = Bar.query.join(Review).join(Image).group_by(Bar.id).order_by(db.func.count(Review.id).desc()).limit(5).all()
-    # winery = Bar.query.join(Review).join(Image).filter(Bar.name.ilike("winery")).limit(5).all()
+    winery = Bar.query.join(Review).join(Image).filter(Bar.name.ilike("%wine%")).all()
     search_results = list(map(parse_results,search_results))
-    # winery_results = list(map(parse_results, winery))
-    return jsonify({"mostPopular": search_results})
+    winery = winery[0:5]
+    print(winery)
+    winery_results = list(map(parse_results, winery))
+    return jsonify({"mostPopular": search_results, "winery": winery_results})
