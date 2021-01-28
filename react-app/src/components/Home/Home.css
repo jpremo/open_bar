@@ -1,21 +1,105 @@
-
-#banner-image {
-  width: 1485px;
-  height:100%;
-  object-fit: fill;
-
-
-}
-.info-on-image{
- position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+#home-page-overlay {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-#google-map-container{
-   padding-top: 68px;
+#home-image-container {
+  margin-top: 30px;
+  width: 95%;
+  height: 400px;
   position: relative;
-  width: 50%;
-  height: 50%;
+  display: flex;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+#home-image-container img {
+  height: 100%;
+  width: 100%;
+}
+
+#search-container {
+  background-color: transparent;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  width: 700px;
+  margin-right: 3%;
+  margin-left: 3%;
+}
+
+#calender-search {
+  display: flex;
+  flex-direction: row;
+  vertical-align: center;
+  /* width: 33%; */
+
+}
+
+.react-select-container {
+  height: 100%;
+}
+
+.react-date-picker__wrapper {
+  width: 33%;
+  height: 100%;
+  background-color: white;
+  border-radius: 5px;
+  
+}
+
+#time-search {
+  width: 33%;
+}
+
+#people-search {
+  width: 33%;
+}
+
+#home-page-overlay h1 {
+  color: white;
+  font-size: 38px;
+  text-align: center;
+}
+#bar-list h1 {
+  font-size: 20px;
+}
+
+#bar-list {
+  padding-top: 50px;
+  margin-left: 3%;
+  margin-right: 10%;
+}
+
+.bar-box-home img {
+  width: 250px;
+  height: 125px;
+  border-radius: 5px;
+}
+.home-star-container {
+  display: flex;
+  width: auto;
+  align-items: flex-end;
+}
+.home-list-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+#info-bar-box {
+  width: 250px;
+  height: 75px;
+  box-shadow: 2px 2px hsl(0deg 0% 90%);
+  border-radius: 5px;
 }

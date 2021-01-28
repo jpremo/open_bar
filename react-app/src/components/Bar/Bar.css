@@ -1,0 +1,144 @@
+#backgroundImgProper {
+  display: block;
+  margin: auto;
+}
+
+#columnsDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1em;
+}
+
+#leftColumn {
+  /* flex: 2 1 auto; */
+  margin: 1em;
+}
+
+#rightColumn {
+  /* flex: 1 1 auto; */
+  margin: 1em;
+}
+
+.BorderBottom {
+  border-bottom: solid 1px #d8d9db;
+}
+
+.BorderTop {
+  border-top: solid 1px #d8d9db;
+}
+
+.BorderRight {
+  border-right: solid 1px #d8d9db;
+  margin-right: 0.5em;
+  padding-right: 0.5em;
+}
+
+#barName {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+}
+
+#summary-span {
+  display: flex;
+  margin-top: 0.5em;
+}
+
+#summary-span-1 {
+  margin-right: 1em;
+}
+
+.Review {
+  display: flex;
+}
+
+#review-left {
+  margin-right: 1em;
+}
+
+.bottom-spacing {
+  margin-bottom: 1em;
+}
+
+.bottom-padding {
+  padding-bottom: 2em;
+  margin-bottom: 2em;
+}
+
+.review-spacing {
+  padding-bottom: 0em;
+  padding-top: 1em;
+}
+
+#bar-JSON {
+  list-style: none;
+}
+
+#bar-JSON-element {
+  padding: 0.5em;
+}
+
+#photos {
+  display: flex;
+}
+
+#stacked-photos {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  grid-row-gap: 0px;
+}
+
+#shrink-first-img {
+  height: 12em;
+}
+
+#shrink-other-imgs {
+  height: 6em;
+}
+
+#favorite-div {
+  text-align: center;
+  border: solid 1px #d8d9db;
+  margin: 0.5em;
+  padding: 0.5em;
+  padding-bottom: 1.5em;
+}
+
+#reservation {
+  border: solid 1px #d8d9db;
+  margin: 0.5em;
+  padding: 0.5em;
+  padding-bottom: 1em;
+  padding-top: 0em;
+  margin-top: 0em;
+}
+
+.reservation-title {
+  text-align: center;
+}
+
+#make-reservation-container {
+  display: flex;
+}
+
+#party-size-dropdown {
+  height: 100%;
+}
+
+#opening-button {
+  width: 100%;
+  margin-top: 0.5em;
+  height: 2em;
+  font-size: medium;
+  color: white;
+  background-color: rgb(64, 150, 176);
+  border-color: rgb(64, 150, 176);
+}
+
+#favorite-me-button {
+  color: white;
+  background-color: rgb(64, 150, 176);
+  border-color: rgb(64, 150, 176);
+}
