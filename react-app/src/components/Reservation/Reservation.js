@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory, useLocation } from 'react-router-dom';
 import TimeSlot from '../TimeSlot/TimeSlot'
 import Calendar from '../Calendar/Calendar'
 import DropDown from '../DropDown/DropDown'
 import { format } from 'date-fns'
-import { parse } from 'query-string'
 import '../SearchResults/SearchBar.css'
+import { useSelector } from 'react-redux'
 
-function Reservation({ setLoaded, loaded, bus, loc }) {
-    const [searchBusiness, setSearchBusiness] = useState('')
-    const [searchLocation, setSearchLocation] = useState('')
-    const [value, onChange] = useState(new Date()); //for calendar
+function Reservation() {
+    const [value, onChange] = useState(new Date())
     const [people, setPeople] = useState({})
     const [time, setTime] = useState({ value: format(value, 'H') })
-    const history = useHistory()
-    const location = useLocation()
-    console.log(location)
+
     const options = [
         { value: '1', label: '1 Person' },
         { value: '2', label: '2 People' },
@@ -38,6 +33,7 @@ function Reservation({ setLoaded, loaded, bus, loc }) {
         { value: '19', label: '19 People' },
         { value: '20', label: '20 People' }
     ]
+
     const timeOptions = [
         { value: '11', label: '11:00 AM' },
         { value: '11.5', label: '11:30 AM' },
@@ -72,33 +68,37 @@ function Reservation({ setLoaded, loaded, bus, loc }) {
         { value: '3', label: '2:00 AM' },
         { value: '3.5', label: '2:30 AM' },
       ]
-    useEffect(() => {
-        let vals = parse(location.search)
-        console.log('vals', vals)
-        if (vals.business) setSearchBusiness(vals.business)
-        if (vals.location) setSearchLocation(vals.location)
-        if (vals.date) onChange(new Date(vals.date))
-        if (vals.guests) {
-            const opt = options.filter((el) => el.value === vals.guests)
-            setPeople(opt[0])
+
+    const user = useSelector(state => state.user);
+    const bar = useSelector(state => state.bars['1']);
+
+    const makeReservation = (e) => {
+        e.preventDefault();
+
+        if (value === undefined || people.value === undefined || time.label  === undefined) {
+            alert('Reservation incomplete. Please fill out all fields to make a reservation.')
+        } else if (user !== null) {
+            alert('Please login (or signup!) to complete your reservation.')
         }
-        if (vals.time) {
-            const opt = timeOptions.filter((el) => el.value === vals.time)
-            setTime(opt[0])
+        else {
+            fetch('http://localhost:5000/api/search/reservation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    barId: bar.bar.id,
+                    date: value.toISOString().slice(0, 10),
+                    time: time.value,
+                    user: user.id,
+                    partySize: people.value,
+                })
+            })
+
+            alert('Reservation Made! Thank you very much');
         }
-    }, [])
-    // const search = (event) => {
-    //     if (event.keyCode === 13) {
-    //         const day = format(value, 'EEEE').toLowerCase()
-    //         const formattedDate = format(value, 'MM/dd/yyyy');
-    //         history.push(`/search/?business=${searchBusiness}&time=${time.value}&day=${day}&date=${formattedDate}&guests=${people.value}&location=${searchLocation}`)
-    //         setLoaded(false)
-    //     }
-    // }
-    // const searchClick = (event) => {
-    //     history.push(`/search/?business=${searchBusiness}&location=${searchLocation}`)
-    //     setLoaded(false)
-    // }
+    }
+
     return (
       <>
         <h2 className='reservation-title'>Make a Reservation</h2>
@@ -107,7 +107,7 @@ function Reservation({ setLoaded, loaded, bus, loc }) {
             <DropDown people={people} setPeople={setPeople} />
             <TimeSlot time={time} setTime={setTime} />
         </div>
-        <button id='opening-button'>Find an opening</button>
+        <button id='opening-button' onClick={makeReservation}>Find an opening</button>
       </>
     )
 }
