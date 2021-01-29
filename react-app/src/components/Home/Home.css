@@ -1,3 +1,8 @@
+ body{
+ margin:0px;
+ background-color:#d6e5fa
+ } 
+
 #home-page-overlay {
   height: 100%;
   width: 100%;
@@ -12,7 +17,6 @@
 }
 
 #home-image-container {
-  margin-top: 30px;
   width: 95%;
   height: 400px;
   position: relative;
@@ -42,7 +46,6 @@
   flex-direction: row;
   vertical-align: center;
   /* width: 33%; */
-
 }
 
 .react-select-container {
@@ -54,7 +57,6 @@
   height: 41px;
   background-color: white;
   border-radius: 5px;
-  
 }
 
 #time-search {
@@ -85,10 +87,20 @@
 }
 
 .bar-box-home img {
-  width: 250px;
-  height: 125px;
-  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px 5px;  
+  border-bottom: 1px solid grey;
 }
+
+.bar-box-home  {
+  background:white;
+   box-shadow: 2px 2px grey;
+  border-radius: 5px;
+  
+}
+
+
 .home-star-container {
   display: flex;
   width: auto;
@@ -99,22 +111,23 @@
   flex-direction: row;
   justify-content: space-between;
   gap: 15px;
+  
 }
 
 #info-bar-box {
   width: 250px;
   height: 75px;
-  box-shadow: 2px 2px hsl(0deg 0% 90%);
   border-radius: 5px;
+  margin-left: 10px;
+ 
 }
 
-#info-bar-box h1{
+#info-bar-box h1 {
   font-size: 1.125rem;
   font-weight: 700;
   line-height: 1.5rem;
   color: black;
+  background: white;
+  
 }
 
-/* .home-review-number{
-
-} */

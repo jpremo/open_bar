@@ -4,9 +4,10 @@
   align-items: center;
   position: sticky;
   top: 0;
-  background-color: white;
+  background-color: rgb(220, 217, 217);
   width: 100%;
   z-index: 1;
+  border-bottom: 2px solid black;
 }
 
 #nav-bar-logo-picture {
@@ -25,6 +26,7 @@
 
 
 .nav-link {
+  width: 100px;
   margin-right: 20px;
   padding: 5px;
   color: black;
