@@ -3,12 +3,20 @@ import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
 import { useDispatch } from 'react-redux'
 import { setUser } from '../../store/session'
-import { setLoginModal } from '../../store/modal'
+import { setLoginModal, setSignupModal } from '../../store/modal'
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch()
+  const openSignup = (e) => {
+    dispatch(setSignupModal(true))
+    dispatch(setLoginModal(false))
+  }
+  const cancel = (e) => {
+    dispatch(setLoginModal(false))
+  }
+
   const onLogin = async (e) => {
     e.preventDefault();
     const user = await login(email, password);
@@ -35,12 +43,13 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   return (
     <form onSubmit={onLogin}>
+      <h1 className='modal-title'>Log In</h1>
       <div>
         {errors.map((error) => (
           <div>{error}</div>
         ))}
       </div>
-      <div>
+      <div className='modal-form-div'>
         <label htmlFor="email">Email</label>
         <input
           name="email"
@@ -50,7 +59,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           onChange={updateEmail}
         />
       </div>
-      <div>
+      <div className='modal-form-div'>
         <label htmlFor="password">Password</label>
         <input
           name="password"
@@ -59,7 +68,12 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           value={password}
           onChange={updatePassword}
         />
-        <button type="submit">Login</button>
+        <div className='modal-button-box'>
+          <div className='modal-link modal-button' onClick={onLogin}>Login</div>
+          <div className='modal-link modal-button' onClick={openSignup}> Sign Up</div>
+          <div className='modal-link modal-button' onClick={cancel}> Close</div>
+        </div>
+
       </div>
     </form>
   );

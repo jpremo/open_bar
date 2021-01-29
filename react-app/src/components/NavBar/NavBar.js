@@ -23,11 +23,9 @@ const NavBar = ({ setAuthenticated }) => {
     <div id="top-nav-bar">
       <ModalContainer hidden={!modals.login} cancel={setLoginModal}>
         <LoginForm setAuthenticated={setAuthenticated}></LoginForm>
-        <div className='search-page-link modal-button' onClick={openSignup}> Sign Up</div>
       </ModalContainer>
       <ModalContainer hidden={!modals.signup} cancel={setSignupModal}>
         <SignUpForm setAuthenticated={setAuthenticated}></SignUpForm>
-        <div className='search-page-link modal-button' onClick={openLogin}> Log In</div>
       </ModalContainer>
        <NavLink exact to="/">
         <img id="nav-bar-logo-picture" src={picture}/>
