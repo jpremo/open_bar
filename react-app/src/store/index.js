@@ -3,12 +3,14 @@ import thunk from 'redux-thunk';
 import userFavorites from "./favorites"
 import session from './session'
 import bars from './bars'
+import modal from './modal'
 
 
 const rootReducer = combineReducers({
   session,
   bars,
-  userFavorites
+  userFavorites,
+  modal
 });
 
 let enhancer;

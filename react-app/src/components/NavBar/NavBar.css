@@ -6,7 +6,7 @@
   top: 0;
   background-color: white;
   width: 100%;
-  z-index: 1;
+  z-index: 100;
 }
 
 #nav-bar-logo-picture {
@@ -32,4 +32,51 @@
   border-radius: 10px;
   border: 3px solid gray;
   text-decoration: none;
+  cursor: pointer;
+}
+
+
+.modal-box{
+  /* position: fixed;
+  top: 100px; */
+  background-color:  rgba(8, 59, 102, 1);
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+  z-index: 100;
+}
+
+.modal-box-wrapper{
+  position: fixed;
+  width: 100%;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(128, 128, 128, 0.541);
+  z-index: 100;
+}
+
+.modal-button-box{
+  display: flex;
+  justify-content: center;
+}
+
+.modal-text{
+  color: white;
+  font-size: 22px;
+  margin:5px;
+  width:400px;
+}
+
+.modal-button{
+  color: rgb(192, 192, 192);
+  background-color: rgb(11, 75, 128);
+}
+
+.hidden{
+  display: none;
+  visibility: hidden;
 }
