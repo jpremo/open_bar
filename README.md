@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/jpremo/open_bar>
-    <img src="https://imgur.com/a/VFgwkMX" alt="Logo" width="80" height="80">
+    <img src="https://i.imgur.com/Ue5wMKC.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">OpenBar</h3>
