@@ -59,9 +59,27 @@
   z-index: 100;
 }
 
+.modal-link {
+  margin: 5px;
+  font-size: 18px;
+  background-color: rgba(8, 59, 102, 0.7);
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  padding: 5px;
+  user-select: none;
+}
+
+.modal-link:hover {
+  box-shadow: 2px 2px black;
+  color: white;
+  cursor: pointer;
+}
+
 .modal-button-box{
   display: flex;
   justify-content: center;
+  margin: 10px;
 }
 
 .modal-text{
@@ -79,4 +97,37 @@
 .hidden{
   display: none;
   visibility: hidden;
+}
+
+.modal-form-div label{
+  display: block;
+  text-decoration: underline;
+  font-size: 26px;
+  color: white;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.modal-form-div input{
+  border-radius: 4px;
+  background-color:white;
+  font-size: 20px;
+}
+
+.modal-form-div input:focus{
+  background-color:rgb(194, 212, 228);
+  outline: none;
+}
+
+.modal-form-div input::placeholder{
+  border-radius: 10px;
+  outline: none;
+}
+
+.modal-title{
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  text-decoration: underline;
+  font-weight: 600;
 }
