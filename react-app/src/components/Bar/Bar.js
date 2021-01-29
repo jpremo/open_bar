@@ -48,8 +48,8 @@ function Bar () {
             <Photos props={typeof bar !== 'undefined' ? bar.images : null}/>
           </div>
           <div>
-            <h3 className='BorderBottom'>See Summary of Ratings of {typeof bar !== 'undefined' ? bar.reviews_summary_data.review_total : null} Bar-Goers </h3>
-            <div className='BorderBottom bottom-padding'>
+            <h3 className='BorderBottom' id='see-summary'>See Summary of Ratings of {typeof bar !== 'undefined' ? bar.reviews_summary_data.review_total : null} Bar-Goers </h3>
+            <div>
               <span className='BorderRight'>Overall {typeof bar !== 'undefined' ? bar.reviews_summary_data.overall : null}</span>
               <span className='BorderRight'>Food {typeof bar !== 'undefined' ? bar.reviews_summary_data.food : null}</span>
               <span className='BorderRight'>Service {typeof bar !== 'undefined' ? bar.reviews_summary_data.service : null}</span>

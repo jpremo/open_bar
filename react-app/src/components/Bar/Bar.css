@@ -3,6 +3,7 @@
   margin: auto;
   height: 20em;
   width: 20em;
+  padding-top: 1em;
 }
 
 #columnsDiv {
@@ -23,15 +24,19 @@
 }
 
 .BorderBottom {
-  border-bottom: solid 1px #d8d9db;
+  border-bottom: solid 1px grey;
 }
 
 .BorderTop {
-  border-top: solid 1px #d8d9db;
+  border-top: solid 1px grey;
+}
+
+.BorderTop {
+  border-top: solid 1px grey;
 }
 
 .BorderRight {
-  border-right: solid 1px #d8d9db;
+  border-right: solid 1px grey;
   margin-right: 0.5em;
   padding-right: 0.5em;
 }
@@ -98,23 +103,22 @@
 
 #favorite-div {
   text-align: center;
-  border: solid 1px #d8d9db;
-  margin: 0.5em;
+  border-top: solid 1px grey;
+  border-bottom: solid 1px grey;
+  margin: 2em;
   padding: 0.5em;
   padding-bottom: 1.5em;
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
 }
 
 #reservation {
-  border: solid 1px #d8d9db;
+  border: solid 1px grey;
   margin: 0.5em;
   padding: 0.5em;
   padding-bottom: 1em;
   padding-top: 0em;
   margin-top: 0em;
-}
-
-.reservation-title {
-  text-align: center;
 }
 
 #make-reservation-container {
@@ -144,4 +148,14 @@
 #description-text {
   margin-top: 1em;
   width: 35em;
+}
+
+#see-summary {
+  /* margin-bottom: 1em; */
+  padding-bottom: 0.5em;
+}
+
+#see-saying {
+  margin-top: 1.5em;
+  font-size: x-large;
 }

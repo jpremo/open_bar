@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
-import './Review.css'
+import './review.css'
 import { userData } from '../../../../store/users'
 
 export default function Review({ props }) {
@@ -29,7 +29,7 @@ export default function Review({ props }) {
   }, [dispatch]);
   
   return (
-    <div className='BorderBottom Review review-spacing'>
+    <div className='BorderTop Review review-spacing'>
       <div id='review_left'>
         <div className='review_center'>
           <span id='first-name'>{ props !== null && typeof user !== 'undefined' ? user.firstName : null }</span>
