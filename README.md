@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/jpremo/open_bar>
-    <img src="react-app/src/components/NavBar/open_bar_logo.png" alt="Logo" width="80" height="80">
+    <img src="https://imgur.com/a/VFgwkMX" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">OpenBar</h3>
