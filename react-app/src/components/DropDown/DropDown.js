@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Select from 'react-select'
-
+import "./DropDown.css"
 
 const options = [
   { value: '1', label: '1 Person' },
@@ -37,7 +37,7 @@ function DropDown({people, setPeople}) {
   valueContainer: () => ({
     // none of react-select's styles are passed to <Control />
     width: 110,
-    height: 48,
+    height: 25,
     borderRadius: 5,
   }),
   singleValue: (provided, state) => {
@@ -48,9 +48,13 @@ function DropDown({people, setPeople}) {
   }
 }
 
+if (!people.value){
+  people = ""
+}
+
     return (
         <div id="dropdown">
-            <Select styles={customStyles} id="select-drop" value={people} options={options} placeholder=" Guests" onChange={setPeople} />
+            <Select styles={customStyles} id="select-drop" value={people} options={options} placeholder="Guests" onChange={setPeople}  />
         </div>
 
     )

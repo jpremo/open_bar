@@ -51,7 +51,7 @@ function TimeSlot({time, setTime}) {
   valueContainer: () => ({
     // none of react-select's styles are passed to <Control />
     width: 110,
-    height: 48,
+    height: 25,
     borderRadius: 5,
   }),
   singleValue: (provided, state) => {
@@ -62,9 +62,13 @@ function TimeSlot({time, setTime}) {
   }
 }
 
+if (time.label === "defaulted"){
+  time = ""
+}
+
     return (
-        <div id="dropdown">
-            <Select styles={customStyles} id="select-time-drop" value={time} options={options} placeholder=" Time Slot" onChange={setTime} />
+        <div id="timedropdown">
+            <Select styles={customStyles} id="select-time-drop" value={time} options={options} placeholder="Select Time" onChange={setTime} />
         </div>
 
     )

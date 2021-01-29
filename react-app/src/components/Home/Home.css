@@ -50,8 +50,8 @@
 }
 
 .react-date-picker__wrapper {
-  width: 33%;
-  height: 100%;
+  width: 180px;
+  height: 41px;
   background-color: white;
   border-radius: 5px;
   
@@ -70,11 +70,15 @@
   font-size: 38px;
   text-align: center;
 }
-#bar-list h1 {
+.bar-list h1 {
   font-size: 20px;
 }
+.bar-list h3 {
+  font-size: 20px;
+  text-decoration: none;
+}
 
-#bar-list {
+.bar-list {
   padding-top: 50px;
   margin-left: 3%;
   margin-right: 10%;
@@ -103,3 +107,14 @@
   box-shadow: 2px 2px hsl(0deg 0% 90%);
   border-radius: 5px;
 }
+
+#info-bar-box h1{
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  color: black;
+}
+
+/* .home-review-number{
+
+} */
