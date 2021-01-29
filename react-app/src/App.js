@@ -4,10 +4,14 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+
 import UserProfile from "./components/UserProfile";
 // import { authenticate } from "./services/auth";
 import UserList from "./components/UserList";
 // import User from "./components/User";
+import { authenticate } from "./services/auth";
+import Bar from "./components/Bar/Bar"
+
 import SearchResults from "./components/SearchResults/SearchResults"
 import Home from "./components/Home/Home";
 import { restoreUser } from "./store/session";
@@ -45,6 +49,9 @@ function App() {
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+        </Route>
+        <Route path="/bars/:barId" exact={true}>
+          <Bar />
         </Route>
         <Route path="/search" exact={true}>
           <SearchResults authenticated={authenticated} setAuthenticated={setAuthenticated} />
