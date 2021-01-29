@@ -14,7 +14,6 @@ export const removeUser = () => ({
 
 export const restoreUser = () => async (dispatch) => {
     let res = await authenticate();
-    debugger
     let data = res
     if(data.errors) data = null
     dispatch(setUser(res));
