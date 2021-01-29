@@ -4,9 +4,10 @@
   align-items: center;
   position: sticky;
   top: 0;
-  background-color: white;
+  background-color: rgb(220, 217, 217);
   width: 100%;
-  z-index: 100;
+  z-index: 1;
+  border-bottom: 2px solid black;
 }
 
 #nav-bar-logo-picture {
@@ -18,13 +19,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 200px;
-  margin-right: 150px;
+  /* width: 200px; */
+  margin-right: 50px;
   position: sticky;
 }
 
 
 .nav-link {
+  /* width: 200%; */
   margin-right: 20px;
   padding: 5px;
   color: black;
@@ -32,6 +34,8 @@
   border-radius: 10px;
   border: 3px solid gray;
   text-decoration: none;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
   cursor: pointer;
 }
 
