@@ -18,6 +18,8 @@ function Bar () {
 
   let bar = useSelector(state => state.bars['1']);
 
+  console.log('bar', bar)
+
   const sessId = useSelector(state => state.session.user.id)
 
   useEffect( () => {
@@ -46,7 +48,7 @@ function Bar () {
             <Photos props={typeof bar !== 'undefined' ? bar.images : null}/>
           </div>
           <div>
-            <h3 className='BorderBottom'>What {typeof bar !== 'undefined' ? bar.reviews_summary_data.review_total : null} of people are saying</h3>
+            <h3 className='BorderBottom'>See Summary Ratings of {typeof bar !== 'undefined' ? bar.reviews_summary_data.review_total : null} Bar-Goers </h3>
             <div className='BorderBottom bottom-padding'>
               <span className='BorderRight'>Overall {typeof bar !== 'undefined' ? bar.reviews_summary_data.overall : null}</span>
               <span className='BorderRight'>Food {typeof bar !== 'undefined' ? bar.reviews_summary_data.food : null}</span>

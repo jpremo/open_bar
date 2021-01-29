@@ -8,18 +8,19 @@ const MapContainer = ({ props }) => {
 
 
   let mapStyles = {
-    width: '400px',
-    height: '400px'
+    width: '35vw',
+    height: '35vh',
+    // border-radius: '25px'
   };
 
-  const defaultCenter = {
+  let defaultCenter = {
     lat: 40.7128, lng: -74.0060
   }
 
   if (props !== null) {
-    const mark = {
-      lat: props.latitude, lng: props.longitude
-    };
+    defaultCenter = {
+        lat: props.latitude, lng: props.longitude
+    }
   }
 
   return (
@@ -29,6 +30,7 @@ const MapContainer = ({ props }) => {
           mapContainerStyle={mapStyles}
           zoom={13}
           center={defaultCenter}>
+          { props !== null ? <Marker position={{lat: props.latitude, lng: props.longitude}} /> : null}
        </GoogleMap>
      </LoadScript>
   )

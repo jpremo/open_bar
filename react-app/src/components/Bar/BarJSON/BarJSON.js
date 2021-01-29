@@ -1,15 +1,16 @@
 import React from 'react'
+import './BarJSON.css'
 
 export default function BarJSON({ props }) {
   console.log(props)
   return (
     <div>
-      <h2 className='BorderBottom'>Placeholder for json data component</h2>
+      <h2 className='BorderBottom json-details'>Bar Details</h2>
       <ul id='bar-JSON'>
         <span>Hours</span>
         <ul id='bar-JSON'>
           <li id='bar-JSON-element'>Sunday {props !== null ? props.dayAndTime.sunday : 'closed'}</li>
-          <li id='bar-JSON-element'>Monday{props !== null ? props.dayAndTime.monday : 'closed'}</li>
+          <li id='bar-JSON-element'>Monday {props !== null ? props.dayAndTime.monday : 'closed'}</li>
           <li id='bar-JSON-element'>Tuesday {props !== null ? props.dayAndTime.tuesday : 'closed'}</li>
           <li id='bar-JSON-element'>Wednesday {props !== null ? props.dayAndTime.wednesday : 'closed'}</li>
           <li id='bar-JSON-element'>Thursday {props !== null ? props.dayAndTime.thursday : 'closed'}</li>

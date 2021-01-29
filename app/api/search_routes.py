@@ -3,6 +3,7 @@ from app.models import Bar, Review, Image, favorites, User, Reservation, db
 from flask import request
 import itertools
 import math
+import json
 from datetime import datetime
 from datetime import timedelta
 search_routes = Blueprint('search', __name__)
@@ -18,8 +19,14 @@ search_routes = Blueprint('search', __name__)
 @search_routes.route('/reservation', methods=['POST'])
 def reservation():
     data = request.get_json()
-    if(data["userId"]):
+
+    if data == None:
+        data = json.loads(request.data.decode('utf-8'))
+        print(data)
+
+    if (data["userId"]):
         date_str = data['date'] + ' ' + data['time']
+        print(date_str)
         format_str = '%m/%d/%Y %I:%M %p'  # The format
         datetime_obj = datetime.strptime(date_str, format_str)
         reservation = Reservation(partySize=int(data["partySize"]), userId=int(
@@ -161,14 +168,15 @@ def popular():
         del d['reviews']
         return d
 
-
-    search_results = Bar.query.join(Review).join(Image).group_by(Bar.id).order_by(db.func.count(Review.id).desc()).limit(5).all()
-    winery = Bar.query.join(Review).join(Image).filter(Bar.name.ilike("%wine%")).all()
+    search_results = Bar.query.join(Review).join(Image).group_by(
+        Bar.id).order_by(db.func.count(Review.id).desc()).limit(5).all()
+    winery = Bar.query.join(Review).join(
+        Image).filter(Bar.name.ilike("%wine%")).all()
     winery = winery[0:5]
-    brewery = Bar.query.join(Review).join(Image).filter(Bar.name.ilike("%brew%")).all()
+    brewery = Bar.query.join(Review).join(
+        Image).filter(Bar.name.ilike("%brew%")).all()
     brewery = brewery[0:5]
-    search_results = list(map(parse_results,search_results))
+    search_results = list(map(parse_results, search_results))
     winery_results = list(map(parse_results, winery))
     brewery_results = list(map(parse_results, brewery))
     return jsonify({"mostPopular": search_results, "winery": winery_results, "brewery": brewery_results})
-

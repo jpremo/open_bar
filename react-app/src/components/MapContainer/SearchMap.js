@@ -20,9 +20,6 @@ const SearchMap = ({center, bars}) => {
     }
   }
 
-  const generateMarkers = () => {
-
-  }
   return (
      <LoadScript
        googleMapsApiKey='AIzaSyBB_qz7gdLnQ9rBYBbQafFjWqx7gyIIJVI'>
