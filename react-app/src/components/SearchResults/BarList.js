@@ -82,7 +82,7 @@ function BarList({ barList, name, user }) {
                         return reserve.barId === el.id
                     })
                 }
-                if (match.length) res = match[0]
+                if (match && match.length) res = match[0]
                 return (
                     <BarBox bar={el} reservation={res} key={ind} ind={ind} confirmReservation={confirmReservation} />
                 )

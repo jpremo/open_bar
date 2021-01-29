@@ -62,7 +62,6 @@ function TimeSlot({time, setTime}) {
   }
 }
 
-debugger
 if (time.label === "defaulted"){
   time = ""
 }

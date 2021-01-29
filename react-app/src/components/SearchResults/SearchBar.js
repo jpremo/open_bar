@@ -97,15 +97,19 @@ function SearchBar({ setLoaded, loaded, bus, loc }) {
     }
     }
     const searchClick = (event) => {
-        history.push(`/search/?business=${searchBusiness}&location=${searchLocation}`)
-        setLoaded(false)
+            const day = format(value, 'EEEE').toLowerCase()
+            const formattedDate = format(value, 'MM/dd/yyyy');
+            history.push(`/search/?business=${searchBusiness}&time=${time.value}&day=${day}&date=${formattedDate}&guests=${people.value}&location=${searchLocation}`)
+        if (setLoaded){
+            setLoaded(false)
+            }
     }
     return (
         <>
             <div id='search-bars'>
                 <input className='search-bar' value={searchBusiness} placeholder='Business' onChange={(e) => setSearchBusiness(e.target.value)} onKeyUp={search} />
                 <input className='search-bar' value={searchLocation} placeholder='Location' onChange={(e) => setSearchLocation(e.target.value)} onKeyUp={search} />
-                <i id='search-icon' className="fas fa-search" onClick={searchClick}></i>
+                <i id='search-icon' className="fas fa-search fa-lg"  onClick={searchClick}></i>
             </div>
             <div id='drop-downs'>
                 <Calendar value={value} onChange={onChange} />
