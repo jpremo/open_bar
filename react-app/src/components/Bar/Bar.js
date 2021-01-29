@@ -18,6 +18,8 @@ function Bar () { // update all values with redux
 
   let bar = useSelector(state => state.bars.bardata)
 
+  const sessId = useSelector(state => state.session.user.id)
+
   useEffect( () => {
     (async () => {
       await dispatch(barDataDisplay(barId))
@@ -60,7 +62,7 @@ function Bar () { // update all values with redux
             <Reservation />
           </div>
           <div>
-            <Favorite />
+            <Favorite barId={barId} userId={sessId}/>
           </div>
           <div id="google-map-container">
             <MapContainer/>

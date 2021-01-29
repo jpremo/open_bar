@@ -31,7 +31,7 @@ const deleteUserFavoriteAC = (payload) => ({
 
 export const addFavorite = (barId, userId) => {
   return async (dispatch) => {
-    const response = await fetch(`/api/users/${userId}/favorites/add`, {
+    let response = await fetch(`/api/users/${userId}/favorites/${barId}/add`, {
 
     method: "POST",
     header: {
@@ -39,6 +39,7 @@ export const addFavorite = (barId, userId) => {
     },
     body: JSON.stringify({barId, userId})
   })
+  response = await response.json()
     dispatch(
       addUserFavoritesAC(response.data.favorite))
   }
@@ -69,6 +70,11 @@ function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER_FAVORITES:
       newState = action.userFavorites
+      return newState
+    case ADD_FAVORITE:
+      debugger
+      newState = Object.assign({}, state)
+      newState.userFavorites.push(action.payload.bar) //what is sapposed to be in place of User
       return newState
     case DELETE_FAVORITE:
       newState = state.filter((fav) => {

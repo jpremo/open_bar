@@ -23,7 +23,6 @@ def user(id):
 def userfavorites(id):
     user = User.query.get(int(id))
     bars = user.to_dict()["favoriteBars"]
-    # print(f'YOOOOOOOO!!!!!!  {userFavorites}')
     print(bars)
     return {"favorites": bars}
 
@@ -39,6 +38,18 @@ def delete_favorite(userId, barId):
         return {'msg': 'Bar not found'}, 404
     db.session.commit()
     return {"targetId": barId}
+
+
+@user_routes.route('/<int:userId>/favorites/<int:barId>/add', methods=["POST"])
+def add_favorite(userId, barId):
+    userId = int(userId)
+    barId = int(barId)
+    user = User.query.get(userId)
+    bar = Bar.query.get(barId)
+    user.favoriteBars.append(bar)
+    db.session.commit()
+    return {"favorite": bar}
+
 
     # barId = request.body.barId
     # user = User.query.get(int(id))
