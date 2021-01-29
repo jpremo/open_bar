@@ -1,100 +1,130 @@
-# Flask React Project
+<br />
+<p align="center">
+  <a href="https://github.com/jpremo/open_bar>
+    <img src="https://i.imgur.com/Ue5wMKC.png" alt="Logo" width="80" height="80">
+  </a>
 
-This is the backend for the Flask React project.
+  <h3 align="center">OpenBar</h3>
 
-## Getting started
+  <p align="center">
+   Clone of opentable.com
+    <br />
+    <a href="https://github.com/jpremo/open_bar"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
 
-1. Clone this repository (only this branch)
+  </p>
+</p>
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+<!-- TABLE OF CONTENTS -->
+
+  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+     <li><a href="#LiveLink">Live Link</a></li>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#license">License</a></li>
+   
+  </ol>
+  
+<br>
+<br>
+
+<!-- ABOUT THE PROJECT -->
+
+## About The Project
+
+This project sets out to clone opentable.com
+
+
+## Live Link
+
+https://openbarweb.herokuapp.com/
+
+## Built With
+
+<br>
+
+<p align="left">
+  <a href="https://www.javascript.com/">
+     JavaScript
+  </a>
+<br>
+<br>
+  <a href="https://reactjs.org/">
+    ReactJS
+  </a>
+<br>  
+<br>
+    <a href="https://redux.js.org/">
+    Redux
+  </a>
+<br>  
+<br>
+    <a href="https://www.python.org/">
+    Python
+  </a>
+<br>  
+ <br>
+    <a href="https://flask-sqlalchemy.palletsprojects.com/en/2.x//">
+    FlaskSqlAlchemy
+  </a>
+<br>
+<br>
+    <a href="https://www.postgresql.org/">
+    PostGresSQL
+  </a>
+<br> 
+<br>
+
+<p/>
+
+<!-- GETTING STARTED -->
+
+## Getting Started
+
+To get a local copy up and running follow these simple steps.
+
+### Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+
+- npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/jpremo/open_bar
    ```
-
-2. Install dependencies
-
-   ```bash
-   pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+2. Install NPM packages
+   ```sh
+   npm install
    ```
+   
+ 3. Run Pipenv Shell
+ 
+ 
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+<!-- LICENSE -->
 
-   ```bash
-   pipenv shell
-   ```
+## License
 
-   ```bash
-   flask db upgrade
-   ```
+Distributed under the MIT License. See `LICENSE` for more information.
 
-   ```bash
-   flask seed all
-   ```
 
-   ```bash
-   flask run
-   ```
-
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
----
-
-_IMPORTANT!_
-If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-You can do this by running:
-
-```bash
-pipenv lock -r > requirements.txt
-```
-
-_ALSO IMPORTANT!_
-psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-
----
-
-## Deploy to Heroku
-
-1. Create a new project on Heroku
-2. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-3. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-4. Run
-
-   ```bash
-   heroku login
-   ```
-
-5. Login to the heroku container registry
-
-   ```bash
-   heroku container:login
-   ```
-
-6. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-7. Push your docker container to heroku from the root directory of your project.
-   This will build the dockerfile and push the image to your heroku container registry
-
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
-
-8. Release your docker container to heroku
-
-   ```bash
-   heroku container:release web -a {NAME_OF_HEROKU_APP}
-   ```
-
-9. set up your database:
-
-   ```bash
-   heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-   heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-   ```
-
-10. Under Settings find "Config Vars" and add any additional/secret .env variables.
-
-11. profit
