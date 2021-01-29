@@ -4,10 +4,10 @@
     <img src="react-app/src/components/NavBar/open_bar_logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">AptBnb</h3>
+  <h3 align="center">OpenBar</h3>
 
   <p align="center">
-    A Clone of the popular Air Bnb website
+   Clone of opentable.com
     <br />
     <a href="https://github.com/jpremo/open_bar"><strong>Explore the docs »</strong></a>
     <br />
@@ -117,6 +117,11 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    npm install
    ```
+   
+ 3. Run Pipenv Shell
+ 
+ 
+
 
 <!-- LICENSE -->
 
