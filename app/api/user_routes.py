@@ -23,7 +23,6 @@ def user(id):
 def userfavorites(id):
     user = User.query.get(int(id))
     bars = user.to_dict()["favoriteBars"]
-    print(bars)
     return {"favorites": bars}
 
 
@@ -46,9 +45,10 @@ def add_favorite(userId, barId):
     barId = int(barId)
     user = User.query.get(userId)
     bar = Bar.query.get(barId)
+
     user.favoriteBars.append(bar)
     db.session.commit()
-    return {"favorite": bar}
+    return {"favorite": "string"}
 
 
     # barId = request.body.barId

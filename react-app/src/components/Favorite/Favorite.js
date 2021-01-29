@@ -1,6 +1,6 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
-import addFavorite from "../../store/favorites"
+import { addFavorite } from "../../store/favorites"
 
 function Favorite ({barId, userId}) {
 
@@ -8,7 +8,7 @@ function Favorite ({barId, userId}) {
   
   const handleSubmit = async(e) => {
       e.preventDefault();
-      dispatch(addFavorite(parseInt(barId)))
+      dispatch(addFavorite(parseInt(barId), userId))
   }
 
   return (
