@@ -127,6 +127,13 @@
     bottom:1%;
     right: 1%;
     width: auto;
+    /* z-index: -100; */
+    border: 2px solid black;
+    border-radius: 25px;
+}
+
+.search-results-map > *{
+  border-radius: 25px;
 }
 
 .time-slot-container{

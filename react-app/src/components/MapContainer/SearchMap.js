@@ -9,7 +9,8 @@ const SearchMap = ({center, bars}) => {
 
   let mapStyles = {
     width: '35vw',
-    height: '80vh'
+    height: '70vh',
+    // border-radius: '25px'
   };
   let defaultCenter = {lat: 40.7128, lng: -74.0060}
 
