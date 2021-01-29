@@ -4,6 +4,7 @@ from flask_login import UserMixin
 from .favorites import favorites
 import json
 
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
