@@ -78,6 +78,7 @@
 .bar-list h3 {
   font-size: 20px;
   text-decoration: none;
+  border-bottom: 1px solid grey;
 }
 
 .bar-list {

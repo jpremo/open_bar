@@ -2,6 +2,8 @@ import React from "react";
 import { logout } from "../../services/auth";
 import { removeUser } from '../../store/session'
 import { useDispatch } from 'react-redux'
+import "./LogOutButton.css"
+
 
 const LogoutButton = ({setAuthenticated}) => {
   const dispatch = useDispatch()
@@ -11,7 +13,7 @@ const LogoutButton = ({setAuthenticated}) => {
     setAuthenticated(false);
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return <button id="logout" onClick={onLogout}>Logout</button>;
 };
 
 export default LogoutButton;
