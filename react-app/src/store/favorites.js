@@ -24,25 +24,30 @@ const addUserFavoritesAC = (payload) => ({
 })
 
 
-const deleteUserFavoriteAC = (payload) => ({
-  type: DELETE_FAVORITE,
-  payload
-})
 
 export const addFavorite = (barId, userId) => {
   return async (dispatch) => {
-    const response = await fetch(`/api/users/${userId}/favorites/add`, {
-
-    method: "POST",
-    header: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({barId, userId})
-  })
-    dispatch(
-      addUserFavoritesAC(response.data.favorite))
+  
+    let response = await fetch(`/api/users/${userId}/favorites/${barId}/add`, {
+      
+      method: "POST",
+      header: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({barId, userId})
+    })
+    // response = await response.json()
+    // dispatch(
+    //   addUserFavoritesAC(response.favorite))
+    }
   }
-}
+
+
+
+  const deleteUserFavoriteAC = (payload) => ({
+    type: DELETE_FAVORITE,
+    payload
+  })
 
 export const deleteFavorite = (barId, userId) => {
   return async (dispatch) => {
@@ -70,6 +75,11 @@ function reducer(state = initialState, action) {
     case SET_USER_FAVORITES:
       newState = action.userFavorites
       return newState
+    case ADD_FAVORITE:
+  
+      // newState = Object.assign({}, state)
+      // newState.userFavorites.push(action.payload.favorite) //what is sapposed to be in place of User
+      // return newState
     case DELETE_FAVORITE:
       newState = state.filter((fav) => {
         const ret = fav.id !== Number(action.payload.targetId)
