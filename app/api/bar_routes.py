@@ -1,6 +1,5 @@
 from flask import Blueprint, jsonify
 from app.models import Bar, Review, User, Image
-from .search_routes import parse_results
 
 bar_routes = Blueprint('bars', __name__)
 
