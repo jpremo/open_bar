@@ -7,7 +7,7 @@ import { searchBusinesses, clearSearchInfo } from '../../store/bars'
 import SearchMap from '../MapContainer/SearchMap'
 import SearchBar from './SearchBar'
 import { useHistory } from 'react-router-dom';
-
+import {isFuture} from 'date-fns'
 function SearchResults() {
     const location = useLocation()
     const [loaded, setLoaded] = useState(false)
@@ -16,7 +16,23 @@ function SearchResults() {
     let user = useSelector(state => state.session.user)
     let results = useSelector(state => state.bars.searchResults)
     let center = useSelector(state => state.bars.searchCenter)
-    console.log('state', user)
+    if(user){
+        let futureReservations = user.reservations.filter((res) => {
+            const dateArr = res.date.split('-')
+            // console.log(dateArr)
+            const arr = res.time.split(':')
+            const date = new Date(Number(dateArr[0]), Number(dateArr[1])-1, Number(dateArr[2]), Number(arr[0]), Number(arr[1]), 0, 0)
+            // const currentDate = new Date()
+            // console.log('date', date)
+            // console.log('current date', currentDate)
+            // console.log('time', time)
+            return isFuture(date)
+        })
+        user.futureReservations = futureReservations;
+    }
+    console.log(user)
+    // console.log('future', futureReservations)
+    // console.log('state', user)
     const history = useHistory()
     const locLoc = location.search.indexOf('location=') + 9
     const loc = location.search.slice(locLoc).split('%20').join(' ')
@@ -97,7 +113,7 @@ function SearchResults() {
                         <SearchMap center={center} bars={pageContent}/>
                     </div>
                 <div id='main-content-wrapper'>
-                    <BarList barList={pageContent} />
+                    <BarList barList={pageContent} user={user}/>
                     <div id='page-bar-wrapper'>
                         {pageBar(resultCount, page)}
                     </div>

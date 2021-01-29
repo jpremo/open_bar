@@ -33,9 +33,10 @@ export const homeDisplayBussinesses = () => async (dispatch) => {
 
 
 
-export const searchBusinesses = (url, location, id) => async (dispatch) => {
+export const searchBusinesses = (url, location, id, time, day, date) => async (dispatch) => {
     let coordString = 'NoLocation'
     const tt = window.tt
+
     if (location) {
           let loc = await tt.services.fuzzySearch({
             key: 'g0ZS3ih3olA15iG2cSglfY1YrEJO8DKR',

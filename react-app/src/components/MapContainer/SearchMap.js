@@ -28,10 +28,10 @@ const SearchMap = ({center, bars}) => {
        googleMapsApiKey='AIzaSyBB_qz7gdLnQ9rBYBbQafFjWqx7gyIIJVI'>
         <GoogleMap
           mapContainerStyle={mapStyles}
-          zoom={13}
+          zoom={12}
           center={defaultCenter}>
             )}
-            {<Marker position={defaultCenter}/>}
+            {/* {<Marker position={defaultCenter}/>} */}
             {/* icon={urlBase + 'parking_lot_maps.png'} */}
             {bars.map((bar, ind) => {
                 return (
