@@ -16,7 +16,7 @@ FROM python:3.8
 ENV FLASK_APP=app
 ENV FLASK_ENV=production
 ENV SQLALCHEMY_ECHO=True
-gi
+
 EXPOSE 8000
 
 WORKDIR /var/www
