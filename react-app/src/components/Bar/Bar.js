@@ -6,6 +6,7 @@ import Photos from "./Photos/Photos"
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import Reservation from "../Reservation/Reservation"
+import Reservation2 from "../Reservation/Reservation2"
 import Reviews from "./Reviews/Reviews"
 import { useParams } from 'react-router-dom'
 import { barDataDisplay } from '../../store/bars'
@@ -60,6 +61,9 @@ function Bar () { // update all values with redux
         <div id='rightColumn'>
           <div>
             <Reservation />
+          </div>
+          <div>
+            <Reservation2 />
           </div>
           <div>
             <Favorite />
