@@ -26,7 +26,7 @@
   margin: 0px 3px;
   height: 20px;
   width: 200px;
-  color: white;
+  color: black;
   background-color: white;
   border-radius: 8px;
   border: 2px solid black;
@@ -47,9 +47,9 @@
   position: relative;
   top: 2px;
   margin-right: 3px;
+  color:gray
 }
 
 #search-icon:hover {
   cursor: pointer;
 }
-

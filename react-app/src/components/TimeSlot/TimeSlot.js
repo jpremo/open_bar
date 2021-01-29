@@ -62,7 +62,7 @@ function TimeSlot({time, setTime}) {
   }
 }
 
-if (time.label === "defaulted"){
+if (!time || time.label === "defaulted"){
   time = ""
 }
 
