@@ -4,6 +4,7 @@ from flask_login import UserMixin
 from .favorites import favorites
 import json
 
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -18,7 +19,7 @@ class User(db.Model, UserMixin):
     reviews = db.relationship("Review", back_populates="user")
     reservations = db.relationship("Reservation", back_populates="user")
     favoriteBars = db.relationship(
-        "Bar", secondary=favorites, back_populates="favoriteUsers")
+        "Bar", secondary=favorites, back_populates="favoriteUsers", cascade="all, delete")
 
     @property
     def password(self):
@@ -34,7 +35,7 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         nums = []
         for b in self.favoriteBars:
-            nums.append(b.to_dict()['id'])
+            nums.append(b.to_dict())
         res = []
         for r in self.reservations:
             res.append(r.to_dict())

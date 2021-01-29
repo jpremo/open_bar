@@ -1,11 +1,16 @@
-#search-bars{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+#search-bars {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
-#drop-downs{
+#search-bars,
+#drop-downs {
+  z-index: 50;
+}
+
+#drop-downs {
   display: flex;
   width: 100%;
   justify-content: center;
@@ -16,33 +21,35 @@
   margin: 5px;
 }
 
-.search-bar{
-    margin: 0px 3px;
-    height: 20px;
-    width: 200px;
-    color: black;
-    background-color: white;
-    border-radius: 8px;
-    border: 2px solid black;
-    font-size: 15px;
-  }
 
-  .search-bar::placeholder{
-    color: rgb(182, 181, 181);
-  }
+.search-bar {
+  margin: 0px 3px;
+  height: 20px;
+  width: 200px;
+  color: white;
+  background-color: white;
+  border-radius: 8px;
+  border: 2px solid black;
+  font-size: 15px;
+}
 
-  .search-bar:focus{
-    /* border: 2px solid white; */
-    box-shadow: 2px 2px gray;
-    outline: none;
-  }
+.search-bar::placeholder {
+  color: rgb(182, 181, 181);
+}
 
-  #search-icon{
-    position: relative;
-    top: 2px;
-    margin-right: 3px;
-  }
+.search-bar:focus {
+  /* border: 2px solid white; */
+  box-shadow: 2px 2px gray;
+  outline: none;
+}
 
-  #search-icon:hover{
-    cursor: pointer;
-  }
+#search-icon {
+  position: relative;
+  top: 2px;
+  margin-right: 3px;
+}
+
+#search-icon:hover {
+  cursor: pointer;
+}
+

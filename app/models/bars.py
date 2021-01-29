@@ -3,6 +3,7 @@ from .favorites import favorites
 from sqlalchemy.dialects.postgresql import JSONB
 import json
 
+
 class Bar(db.Model):
     __tablename__ = 'bars'
 

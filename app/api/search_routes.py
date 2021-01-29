@@ -3,9 +3,9 @@ from app.models import Bar, Review, Image, favorites, User, Reservation, db
 from flask import request
 import itertools
 import math
-search_routes = Blueprint('search', __name__)
 from datetime import datetime
 from datetime import timedelta
+search_routes = Blueprint('search', __name__)
 
 
 # body: JSON.stringify({
@@ -19,14 +19,17 @@ from datetime import timedelta
 def reservation():
     data = request.get_json()
     if(data["userId"]):
-        date_str = data['date'] +' ' +data['time']
-        format_str = '%m/%d/%Y %I:%M %p' # The format
+        date_str = data['date'] + ' ' + data['time']
+        format_str = '%m/%d/%Y %I:%M %p'  # The format
         datetime_obj = datetime.strptime(date_str, format_str)
-        reservation = Reservation(partySize=int(data["partySize"]),userId=int(data["userId"]),barId=int(data["barId"]), time=datetime_obj, date=datetime_obj)
+        reservation = Reservation(partySize=int(data["partySize"]), userId=int(
+            data["userId"]), barId=int(data["barId"]),
+            time=datetime_obj, date=datetime_obj)
         db.session.add(reservation)
         db.session.commit()
         return {"message": 'received'}
     return {'message': 'bad data'}
+
 
 @search_routes.route('/')
 def search():
@@ -34,7 +37,7 @@ def search():
     business = request.args.get('business')
     searchId = request.args.get('id')
     day = request.args.get('day')
-    time =  request.args.get('time')
+    time = request.args.get('time')
     date = request.args.get('date')
 
     def parse_results(res):
@@ -48,13 +51,14 @@ def search():
         reservation_strings = []
         final_time = time
         final_day = day
-        date_str = date # The date - 29 Dec 2017
-        format_str = '%m/%d/%Y' # The format
+        date_str = date  # The date - 29 Dec 2017
+        format_str = '%m/%d/%Y'  # The format
         datetime_obj = datetime.strptime(date_str, format_str)
         if time >= open_time or time <= close_time:
             pass
         else:
-            days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+            days = ['monday', 'tuesday', 'wednesday',
+                    'thursday', 'friday', 'saturday', 'sunday']
             day_index = days.index(day)
             day_index = day_index + 1
             datetime_obj = datetime_obj + timedelta(days=1)
@@ -68,10 +72,11 @@ def search():
         time_range = time_range.split('-')
         open_time = time_range[0]
         close_time = float(time_range[1])
-        for i in range(0,5):
+        for i in range(0, 5):
             base_time = float(final_time) + .5*i
             datetime_copy = datetime_obj
-            if (close_time > 6 and base_time <= close_time) or (close_time < 6 and base_time <= close_time+24):
+            if ((close_time > 6 and base_time <= close_time) or
+                    (close_time < 6 and base_time <= close_time+24)):
                 suffix = ' PM'
                 if base_time >= 12:
                     base_time = base_time - 12
@@ -90,7 +95,8 @@ def search():
                 else:
                     str_time = str(math.floor(base_time))+':00'
 
-                reservation_strings.append([f'{datetime_copy.month}/{datetime_copy.day}/{datetime_copy.year}', str_time + suffix])
+                reservation_strings.append(
+                    [f'{datetime_copy.month}/{datetime_copy.day}/{datetime_copy.year}', str_time + suffix])
         # print('\n', reservation_strings,'\n')
         d['time_slots'] = reservation_strings
         d['reviews'] = [rev.to_dict() for rev in res.reviews]
@@ -129,16 +135,14 @@ def search():
     search_results = list(map(parse_results, search_results))
     if(coord == 'NoLocation'):
         if(len(search_results) > 0):
-            lng= search_results[0]['longitude']
-            lat= search_results[0]['latitude']
-
+            lng = search_results[0]['longitude']
+            lat = search_results[0]['latitude']
 
     # print('\n', 'Search Results \n', search_results,
     #       '\n length \n', len(search_results), '\n')
 
     # return {'test': 1.264}
     return jsonify({"searchResults": search_results, "searchCenter": {"longitude": lng, "latitude": lat}})
-
 
 
 @search_routes.route('/popular')
@@ -157,6 +161,7 @@ def popular():
         del d['reviews']
         return d
 
+
     search_results = Bar.query.join(Review).join(Image).group_by(Bar.id).order_by(db.func.count(Review.id).desc()).limit(5).all()
     winery = Bar.query.join(Review).join(Image).filter(Bar.name.ilike("%wine%")).all()
     winery = winery[0:5]
@@ -166,3 +171,4 @@ def popular():
     winery_results = list(map(parse_results, winery))
     brewery_results = list(map(parse_results, brewery))
     return jsonify({"mostPopular": search_results, "winery": winery_results, "brewery": brewery_results})
+

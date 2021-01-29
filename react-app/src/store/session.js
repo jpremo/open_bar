@@ -13,7 +13,9 @@ export const removeUser = () => ({
 });
 
 export const restoreUser = () => async (dispatch) => {
-    const res = await authenticate();
+    let res = await authenticate();
+    let data = res
+    if(data.errors) data = null
     dispatch(setUser(res));
     return res;
   };
