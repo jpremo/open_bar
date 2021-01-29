@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Select from 'react-select'
-
+import "./DropDown.css"
 
 const options = [
   { value: '1', label: '1 Person' },
@@ -54,7 +54,7 @@ if (!people.value){
 
     return (
         <div id="dropdown">
-            <Select styles={customStyles} id="select-drop" value={people} options={options} placeholder="Guests" onChange={setPeople} />
+            <Select styles={customStyles} id="select-drop" value={people} options={options} placeholder="Guests" onChange={setPeople}  />
         </div>
 
     )

@@ -103,9 +103,9 @@ function SearchBar({ setLoaded, loaded, bus, loc }) {
     return (
         <>
             <div id='search-bars'>
-                <i id='search-icon' className="fas fa-search" onClick={searchClick}></i>
                 <input className='search-bar' value={searchBusiness} placeholder='Business' onChange={(e) => setSearchBusiness(e.target.value)} onKeyUp={search} />
                 <input className='search-bar' value={searchLocation} placeholder='Location' onChange={(e) => setSearchLocation(e.target.value)} onKeyUp={search} />
+                <i id='search-icon' className="fas fa-search" onClick={searchClick}></i>
             </div>
             <div id='drop-downs'>
                 <Calendar value={value} onChange={onChange} />
