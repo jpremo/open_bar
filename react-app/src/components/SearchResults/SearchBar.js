@@ -90,7 +90,9 @@ function SearchBar({ setLoaded, loaded, bus, loc }) {
         if (event.keyCode === 13) {
             const day = format(value, 'EEEE').toLowerCase()
             const formattedDate = format(value, 'MM/dd/yyyy');
-            history.push(`/search/?business=${searchBusiness}&time=${time.value}&day=${day}&date=${formattedDate}&guests=${people.value}&location=${searchLocation}`)
+            let peeps = people.value;
+            if (!peeps) peeps = 2;
+            history.push(`/search/?business=${searchBusiness}&time=${time.value}&day=${day}&date=${formattedDate}&guests=${peeps}&location=${searchLocation}`)
             if (setLoaded){
             setLoaded(false)
             }
@@ -99,7 +101,9 @@ function SearchBar({ setLoaded, loaded, bus, loc }) {
     const searchClick = (event) => {
             const day = format(value, 'EEEE').toLowerCase()
             const formattedDate = format(value, 'MM/dd/yyyy');
-            history.push(`/search/?business=${searchBusiness}&time=${time.value}&day=${day}&date=${formattedDate}&guests=${people.value}&location=${searchLocation}`)
+            let peeps = people.value;
+            if (!peeps) peeps = 2;
+            history.push(`/search/?business=${searchBusiness}&time=${time.value}&day=${day}&date=${formattedDate}&guests=${peeps}&location=${searchLocation}`)
         if (setLoaded){
             setLoaded(false)
             }

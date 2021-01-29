@@ -8,8 +8,8 @@ const MapContainer = ({ props }) => {
 
 
   let mapStyles = {
-    width: '35vw',
-    height: '35vh',
+    width: '30vw',
+    height: '30vh',
     // border-radius: '25px'
   };
 

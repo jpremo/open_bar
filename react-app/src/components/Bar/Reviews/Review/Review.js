@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
-import './review.css'
+import './Review.css'
 import { userData } from '../../../../store/users'
 
 export default function Review({ props }) {
@@ -30,17 +30,16 @@ export default function Review({ props }) {
   
   return (
     <div className='BorderBottom Review review-spacing'>
-      <div id='review-left'>
-        <div>
+      <div id='review_left'>
+        <div className='review_center'>
           <span id='first-name'>{ props !== null && typeof user !== 'undefined' ? user.firstName : null }</span>
           <span>{ props !== null && typeof user !== 'undefined' ? user.lastName : null }</span>
         </div>
-        <div>
+        <div className='review_center'>
           <img id='profile-img' src={props !== null && typeof user !== 'undefined' ? user.profileImg : null} />
         </div>
       </div>
-      <div id='review-right'>
-        {/* <div className='bottom-spacing'>Reservation Date Placeholder</div> */}
+      <div id='review_right'>
         <div className='bottom-spacing'>
           <span className='BorderRight'>Overall { props !== null ? props.overall : null }</span>
           <span className='BorderRight'>Food { props !== null ? props.food : null }</span>

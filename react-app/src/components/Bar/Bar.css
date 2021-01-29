@@ -55,10 +55,6 @@
   display: flex;
 }
 
-#review-left {
-  margin-right: 1em;
-}
-
 .bottom-spacing {
   margin-bottom: 1em;
 }
@@ -132,7 +128,6 @@
 #opening-button {
   width: 70%;
   margin-top: 0.5em;
-  margin-left: 4em;
   height: 2em;
   font-size: medium;
   color: white;
@@ -148,5 +143,5 @@
 
 #description-text {
   margin-top: 1em;
-  width: 40em;
+  width: 35em;
 }

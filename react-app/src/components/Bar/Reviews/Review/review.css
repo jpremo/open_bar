@@ -7,11 +7,18 @@
   margin-right: auto;
 }
 
-#user {
-  text-align: center;
-
-}
-
 #first-name {
   margin-right: 0.25em;
+}
+
+.review_center {
+  text-align: center;
+}
+
+#review_left {
+  margin-right: 1em;
+  width: 10em;
+}
+
+#review_right {
 }

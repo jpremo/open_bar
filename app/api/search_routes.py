@@ -20,14 +20,13 @@ search_routes = Blueprint('search', __name__)
 def reservation():
     data = request.get_json()
 
-    if data == None:
+    if data is None:
         data = json.loads(request.data.decode('utf-8'))
-        print(data)
 
     if (data["userId"]):
         date_str = data['date'] + ' ' + data['time']
-        print(date_str)
         format_str = '%m/%d/%Y %I:%M %p'  # The format
+        print(date_str)
         datetime_obj = datetime.strptime(date_str, format_str)
         reservation = Reservation(partySize=int(data["partySize"]), userId=int(
             data["userId"]), barId=int(data["barId"]),

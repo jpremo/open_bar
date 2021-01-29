@@ -5,6 +5,7 @@ import DropDown from '../DropDown/DropDown'
 import { format, isDate } from 'date-fns'
 import '../SearchResults/SearchBar.css'
 import { useSelector } from 'react-redux'
+import './Reservation.css'
 
 function Reservation() {
     const [value, onChange] = useState(new Date())
@@ -95,7 +96,7 @@ function Reservation() {
                 body: JSON.stringify({
                     barId: bar.bar.id,
                     date,
-                    time: time.value,
+                    time: time.label,
                     userId: user.id,
                     partySize: people.value,
                 })
@@ -113,7 +114,9 @@ function Reservation() {
             <DropDown people={people} setPeople={setPeople} />
             <TimeSlot time={time} setTime={setTime} />
         </div>
-        <button id='opening-button' onClick={makeReservation}>Request a Reservation</button>
+        <div id='reservation_button-container'>
+            <button id='opening-button' onClick={makeReservation}>Request a Reservation</button>
+        </div>
       </>
     )
 }
