@@ -4,14 +4,19 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
+
+import UserProfile from "./components/UserProfile";
+// import { authenticate } from "./services/auth";
+import UserList from "./components/UserList";
+// import User from "./components/User";
 import { authenticate } from "./services/auth";
 import Bar from "./components/Bar/Bar"
+
 import SearchResults from "./components/SearchResults/SearchResults"
 import Home from "./components/Home/Home";
 import { restoreUser } from "./store/session";
 import { useDispatch } from "react-redux";
+
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -52,14 +57,15 @@ function App() {
           <SearchResults authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
         <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-          <UsersList/>
+          <UserList/>
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
-          <User />
+          <UserProfile />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <h1>My Home Page</h1>
         </ProtectedRoute>
+
       </Switch>
     </BrowserRouter>
   );
