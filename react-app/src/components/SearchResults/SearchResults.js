@@ -16,7 +16,7 @@ function SearchResults() {
     let user = useSelector(state => state.session.user)
     let results = useSelector(state => state.bars.searchResults)
     let center = useSelector(state => state.bars.searchCenter)
-    if(user) {
+    if(user && user.reservations){
         let futureReservations = user.reservations.filter((res) => {
             const dateArr = res.date.split('-')
             // console.log(dateArr)

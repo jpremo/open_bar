@@ -29,8 +29,6 @@ const MapContainer = ({ props }) => {
           mapContainerStyle={mapStyles}
           zoom={13}
           center={defaultCenter}>
-            )}
-            {/* {<Marker position={defaultCenter}/>} */}
        </GoogleMap>
      </LoadScript>
   )
