@@ -19,6 +19,12 @@ def user(id):
     return user.to_dict()
 
 
+@user_routes.route('/no-auth/<int:id>')
+def userNoAuth(id):
+    user = User.query.get(id)
+    return user.to_dict_essentials()
+
+
 @user_routes.route('/<int:id>/favorites')
 def userfavorites(id):
     user = User.query.get(int(id))

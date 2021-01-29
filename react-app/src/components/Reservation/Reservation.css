@@ -1,0 +1,10 @@
+#reservation_button-container {
+  text-align: center;
+}
+
+.reservation-title {
+  text-align: center;
+  border-top: solid 1px grey;
+  margin-top: 0em;
+  padding-top: 1em;
+}

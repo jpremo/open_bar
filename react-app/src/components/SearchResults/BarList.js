@@ -22,6 +22,7 @@ function BarList({ barList, name, user }) {
             const split = confirmScreen.split('-')
             const date = split[1]
             const time = split[2]
+            console.log(split, date, time)
             const idComp = split[0]
             const rest = barList.filter(bar => {
                 return bar.id === Number(idComp)
