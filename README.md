@@ -22,6 +22,7 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
+     <li><a href="#LiveLink">Live Linkt</a></li>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -34,7 +35,7 @@
       </ul>
     </li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
+   
   </ol>
   
 <br>
@@ -47,6 +48,11 @@
 This project sets out to clone opentable.com
 
 <br><br/>
+
+
+## Live Link
+
+https://openbarweb.herokuapp.com/
 
 ## Built With
 
@@ -72,12 +78,14 @@ This project sets out to clone opentable.com
     Python
   </a>
 <br>  
+ <br>
     <a href="https://flask-sqlalchemy.palletsprojects.com/en/2.x//">
     FlaskSqlAlchemy
   </a>
 <br>
+<br>
     <a href="https://www.postgresql.org/">
-    <img src="images/postgresql.svg" alt="Logo" width="80" height="80">
+    PostGresSQL
   </a>
 <br> 
 <br>
@@ -103,7 +111,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/nikhilmenon2/airbnbclone.git
+   git clone https://github.com/jpremo/open_bar
    ```
 2. Install NPM packages
    ```sh
@@ -118,8 +126,3 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
 
-## Contact
-
-Email - nikhilmenon@comcast.net
-
-Project Link: [https://github.com/nikhilmenon2/airbnbclone](https://github.com/nikhilmenon2/airbnbclone)
