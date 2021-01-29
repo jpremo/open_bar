@@ -2,7 +2,7 @@ import React from "react";
 import { logout } from "../../services/auth";
 import { removeUser } from '../../store/session'
 import { useDispatch } from 'react-redux'
-import "./LogOutButton.css"
+
 
 
 const LogoutButton = ({setAuthenticated}) => {
@@ -13,7 +13,7 @@ const LogoutButton = ({setAuthenticated}) => {
     setAuthenticated(false);
   };
 
-  return <button id="logout" onClick={onLogout}>Logout</button>;
+  return <button id="logout" className="nav-link" onClick={onLogout}>Log-Out</button>;
 };
 
 export default LogoutButton;

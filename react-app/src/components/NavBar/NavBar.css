@@ -19,14 +19,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 200px;
-  margin-right: 150px;
+  /* width: 200px; */
+  margin-right: 50px;
   position: sticky;
 }
 
 
 .nav-link {
-  width: 100%;
+  /* width: 200%; */
   margin-right: 20px;
   padding: 5px;
   color: black;
@@ -34,4 +34,6 @@
   border-radius: 10px;
   border: 3px solid gray;
   text-decoration: none;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
 }

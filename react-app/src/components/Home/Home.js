@@ -54,6 +54,7 @@ function Home() {
                 </div>
             
             </div>
+            <div id="footer"></div>
         </div>
     )
 }
