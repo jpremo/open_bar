@@ -1,7 +1,7 @@
 <br />
 <p align="center">
-  <a href="https://github.com/nikhilmenon2/airbnbclone">
-    <img src="images/logo2.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/jpremo/open_bar>
+    <img src="react-app/src/components/NavBar/open_bar_logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">AptBnb</h3>
@@ -9,7 +9,7 @@
   <p align="center">
     A Clone of the popular Air Bnb website
     <br />
-    <a href="https://github.com/nikhilmenon2/airbnbclone"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/jpremo/open_bar"><strong>Explore the docs »</strong></a>
     <br />
     <br />
 
@@ -44,7 +44,7 @@
 
 ## About The Project
 
-This project sets out to clone airbnb.com.
+This project sets out to clone opentable.com
 
 <br><br/>
 
@@ -59,19 +59,22 @@ This project sets out to clone airbnb.com.
 <br>
 <br>
   <a href="https://reactjs.org/">
-    <img src="images/react.svg" alt="React" width="80" height="80">
+    ReactJS
   </a>
 <br>  
 <br>
     <a href="https://redux.js.org/">
-    <img src="images/redux.svg" alt="Redux" width="80" height="80">
+    Redux
   </a>
 <br>  
 <br>
-    <a href="https://sequelize.org/">
-    <img src="images/sequelize.svg" alt="Sequelize" width="80" height="80">
+    <a href="https://www.python.org/">
+    Python
   </a>
 <br>  
+    <a href="https://flask-sqlalchemy.palletsprojects.com/en/2.x//">
+    FlaskSqlAlchemy
+  </a>
 <br>
     <a href="https://www.postgresql.org/">
     <img src="images/postgresql.svg" alt="Logo" width="80" height="80">
