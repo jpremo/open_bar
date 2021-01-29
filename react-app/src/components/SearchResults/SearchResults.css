@@ -128,3 +128,58 @@
     right: 1%;
     width: auto;
 }
+
+.time-slot-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-text{
+  font-size: 16px;
+  text-align: center;
+}
+
+.previous-reservation{
+  padding: 10px 0 0 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+#confirm-box{
+  /* position: fixed;
+  top: 100px; */
+  background-color:  rgba(8, 59, 102, 1);
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+#confirm-box-wrapper{
+  position: fixed;
+  width: 100%;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(128, 128, 128, 0.541);
+  z-index: 40000;
+}
+
+#confirm-button-box{
+  display: flex;
+  justify-content: center;
+}
+
+#confirm-text{
+  color: white;
+  font-size: 22px;
+  margin:5px;
+  width:400px;
+}
+
+.confirm-button{
+  color: rgb(192, 192, 192);
+  background-color: rgb(11, 75, 128);
+}
