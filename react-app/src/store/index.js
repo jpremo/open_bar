@@ -4,12 +4,15 @@ import userFavorites from "./favorites"
 import session from './session'
 import bars from './bars'
 import users from './users'
+import modal from './modal'
+
 
 const rootReducer = combineReducers({
   session,
   bars,
   users,
-  userFavorites
+  userFavorites,
+  modal
 });
 
 let enhancer;
