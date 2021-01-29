@@ -3,12 +3,6 @@ import React, { useState } from 'react'
 import TimePicker from 'react-time-picker'
 
 export default function Reservation() {
-  const [value, onChange] = useState()
-
-  // const today = new Date();
-  // const currentHour = today.getHours();
-  // const currentMinute = today.getMinutes();
-  // const currentSecond = today.getSeconds();
 
   const dropdownOptionsForNumberOfPeople = []
   for (let i = 3; i < 20; i++) {
@@ -24,8 +18,6 @@ export default function Reservation() {
         </div>
         <div>
           <TimePicker
-            onChange={onChange}
-            value={value}
           />
         </div>
         <div>

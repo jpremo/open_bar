@@ -1,6 +1,8 @@
 #backgroundImgProper {
   display: block;
   margin: auto;
+  height: 20em;
+  width: 20em;
 }
 
 #columnsDiv {
@@ -141,4 +143,9 @@
   color: white;
   background-color: rgb(64, 150, 176);
   border-color: rgb(64, 150, 176);
+}
+
+#description-text {
+  margin-top: 1em;
+  width: 40em;
 }

@@ -4,6 +4,7 @@ from flask_login import UserMixin
 from .favorites import favorites
 import json
 
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -49,4 +50,12 @@ class User(db.Model, UserMixin):
             "email": self.email,
             "favoriteBars": nums,
             "reservations": res
+        }
+
+    def to_dict_essentials(self):
+        return {
+            "id": self.id,
+            "firstName": self.firstName,
+            "lastName": self.lastName,
+            "profileImg": self.profileImg,
         }

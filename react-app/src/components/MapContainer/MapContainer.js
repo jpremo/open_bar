@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { GoogleMap, LoadScript, Marker} from '@react-google-maps/api';
 import {useSelector} from 'react-redux'
 
-const MapContainer = () => {
+const MapContainer = ({ props }) => {
 
   const[selectedApt,setSelectedApt] = useState(null)
 
@@ -10,10 +10,16 @@ const MapContainer = () => {
   let mapStyles = {
     width: '400px',
     height: '400px'
-};
+  };
 
   const defaultCenter = {
     lat: 40.7128, lng: -74.0060
+  }
+
+  if (props !== null) {
+    const mark = {
+      lat: props.latitude, lng: props.longitude
+    };
   }
 
   return (

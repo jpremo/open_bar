@@ -1,0 +1,17 @@
+#profile-img {
+  width: 5em;
+  height: 5em;
+  padding: 1em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#user {
+  text-align: center;
+
+}
+
+#first-name {
+  margin-right: 0.25em;
+}
