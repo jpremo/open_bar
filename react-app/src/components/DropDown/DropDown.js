@@ -48,7 +48,7 @@ function DropDown({people, setPeople}) {
   }
 }
 
-if (!people.value){
+if (!people || !people.value){
   people = ""
 }
 
