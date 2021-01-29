@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     reviews = db.relationship("Review", back_populates="user")
     reservations = db.relationship("Reservation", back_populates="user")
     favoriteBars = db.relationship(
-        "Bar", secondary=favorites, back_populates="favoriteUsers")
+        "Bar", secondary=favorites, back_populates="favoriteUsers", cascade="all, delete")
 
     @property
     def password(self):

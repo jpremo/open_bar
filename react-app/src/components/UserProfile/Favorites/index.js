@@ -2,28 +2,35 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, NavLink } from "react-router-dom";
 // import { useParams } from "react-router-dom";
-import { fetchUserFavorites } from "../../../store/favorites"
+import { fetchUserFavorites, deleteFavorite } from "../../../store/favorites"
 import "./index.css"
 
 
+const FavoriteCards = ({ userFav, hidden, params }) => {
 
-
-const FavoriteCards = ({ userFav, hidden }) => {
-
-    const id = userFav.id
+    const barId = userFav.id
     const img = userFav.bannerImg
     const name = userFav.name
     const seats = userFav.barSeats
     const street = userFav.street
     const state = userFav.state
     const phone = userFav.phoneNumber
+    
+
+    const dispatch = useDispatch()
+
+
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        dispatch(deleteFavorite(barId, params))
+    }
 
 
     return (
         <>
             <div id="card">
-                <button hidden={hidden}>unfavorite</button>
-                <NavLink to={`/bars/${id}`}>
+                <button hidden={hidden} onClick={handleSubmit}>unfavorite</button>
+                <NavLink to={`/bars/${barId}`}>
                     <img alt="nope" src={img} />
                     <div id="bar-info-container">
                         <h4>{name}</h4>
@@ -60,8 +67,6 @@ const Favorites = ({ sessionUser, params }) => {
     }, [dispatch])
 
 
-
-
     return (
         <>
             <div id="favorite-container">
@@ -69,7 +74,7 @@ const Favorites = ({ sessionUser, params }) => {
                 <div id="cards">
                     {!userFavorites && <p>Loading...</p>}
                     {userFavorites && userFavorites.map(userFav => {
-                        return <FavoriteCards userFav={userFav} hidden={deleteHidden} key={userFav.id} />
+                        return <FavoriteCards userFav={userFav} params={params} hidden={deleteHidden} key={userFav.id} />
                     })}
                 </div>
             </div>

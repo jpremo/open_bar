@@ -1,15 +1,15 @@
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
- }
-
 #favorite-container {
     background-color: rgb(255, 222, 112);
     margin: 0;
 
    
 }
+#cards {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+ }
+
 
 #card {
     width: 225px;
@@ -19,6 +19,8 @@
     transition: 0.3s;
     border-radius: 5px;
     flex: 0 1 24%;
+    /* padding: 10px; */
+    margin: 10px
 
 }
 
