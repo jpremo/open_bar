@@ -7,6 +7,18 @@ export default function Review({ props }) {
 
   const dispatch = useDispatch()
   const users = useSelector(state => state.users.users);
+  let user;
+
+  if (typeof users !== 'undefined' && props !== null && typeof props !== 'undefined') {
+    let i = 0;
+    while (i < users.length) {
+      if (users[i]['id'] === props.userId) {
+        user = users[i];
+        break;
+      }
+      i++;
+    }
+  }
 
   useEffect(() => {
     if (props !== null && typeof props !== 'undefined') {
@@ -15,21 +27,16 @@ export default function Review({ props }) {
       })();
     }
   }, [dispatch]);
-
-  console.log(users)
-  console.log(props.userId)
-
-  
   
   return (
     <div className='BorderBottom Review review-spacing'>
       <div id='review-left'>
         <div>
-          <span id='first-name'>{ props !== null ? users.firstName : null }</span>
-          <span>{ props !== null ? users.lastName : null }</span>
+          <span id='first-name'>{ props !== null && typeof user !== 'undefined' ? user.firstName : null }</span>
+          <span>{ props !== null && typeof user !== 'undefined' ? user.lastName : null }</span>
         </div>
         <div>
-          <img id='profile-img' src={props !== null ? users.profileImg : null} />
+          <img id='profile-img' src={props !== null && typeof user !== 'undefined' ? user.profileImg : null} />
         </div>
       </div>
       <div id='review-right'>
