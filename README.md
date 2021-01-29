@@ -22,7 +22,7 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-     <li><a href="#LiveLink">Live Linkt</a></li>
+     <li><a href="#LiveLink">Live Link</a></li>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -46,8 +46,6 @@
 ## About The Project
 
 This project sets out to clone opentable.com
-
-<br><br/>
 
 
 ## Live Link
@@ -129,5 +127,4 @@ This is an example of how to list things you need to use the software and how to
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-<!-- CONTACT -->
 
