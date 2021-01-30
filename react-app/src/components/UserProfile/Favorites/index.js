@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, NavLink } from "react-router-dom";
-// import { useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { fetchUserFavorites, deleteFavorite } from "../../../store/favorites"
 import "./index.css"
 

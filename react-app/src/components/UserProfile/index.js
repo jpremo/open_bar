@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import Favorites from "./Favorites"
 import "./index.css"
@@ -39,6 +39,9 @@ function User() {
                         <h5>{`Username: ${user.username}`}</h5>
                     </div>
                 </div>
+            </div>
+            <div>
+                <NavLink to={`/bars/create`}>Own a Bar?</NavLink>
             </div>
             <div>
                 <Favorites sessionUser={userState} params={userId}/>
