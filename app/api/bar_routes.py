@@ -27,4 +27,9 @@ def bar(barId):
         [review['value'] for review in reviews_data]) / len(reviews_data), 1)
     reviews_summary_data['review_total'] = len(reviews_data)
 
-    return jsonify("bardata", {"bar": bar_data, "reviews": reviews_data, "reviews_summary_data": reviews_summary_data, "images": images_data})
+    return jsonify("bardata", {
+        "bar": bar_data,
+        "reviews": reviews_data,
+        "reviews_summary_data": reviews_summary_data,
+        "images": images_data,
+    })

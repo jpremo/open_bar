@@ -20,7 +20,7 @@ function Bar () {
 
   console.log('bar', bar)
 
-  const sessId = useSelector(state => state.session.user.id)
+  const user = useSelector(state => state.session.user);
 
   useEffect( () => {
     (async () => {
@@ -66,7 +66,7 @@ function Bar () {
             <Reservation />
           </div>
           <div>
-            <Favorite barId={barId} userId={sessId}/>
+            <Favorite barId={barId} user={user}/>
           </div>
           <div id="google-map-container">
             <MapContainer props={typeof bar !== 'undefined' ? bar.bar : null}/>
