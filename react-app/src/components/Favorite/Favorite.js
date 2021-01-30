@@ -2,13 +2,14 @@ import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { addFavorite } from "../../store/favorites"
 
-function Favorite ({barId, userId}) {
+function Favorite ({barId, user}) {
 
   const dispatch = useDispatch()
   
   const handleSubmit = async(e) => {
       e.preventDefault();
-      dispatch(addFavorite(parseInt(barId), userId))
+      dispatch(addFavorite(parseInt(barId), parseInt(user.id)))
+      alert('Thank you for favoriting!')
   }
 
   return (

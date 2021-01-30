@@ -78,7 +78,7 @@ function Reservation() {
 
         if (value === undefined || people.value === undefined || time.label  === undefined) {
             alert('Reservation incomplete. Please fill out all fields to make a reservation.')
-        } else if (typeof user === 'undefined') {
+        } else if (typeof user === 'undefined' || user === null) {
             alert('Please login (or signup!) to complete your reservation.')
         }
         else {
@@ -112,7 +112,7 @@ function Reservation() {
         <div id='drop-downs'>
             <Calendar value={value} onChange={onChange} />
             <DropDown people={people} setPeople={setPeople} />
-            <TimeSlot time={time} setTime={setTime} />
+            <TimeSlot time={time} setTime={setTime}/>
         </div>
         <div id='reservation_button-container'>
             <button id='opening-button' onClick={makeReservation}>Request a Reservation</button>
