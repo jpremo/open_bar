@@ -1,8 +1,12 @@
 from flask import Blueprint, jsonify
+<<<<<<< HEAD
 from flask import request
 from app.models import db, Bar, Review, User, Image
 import json
 # from .user_routes import parse_results
+=======
+from app.models import Bar, Review, User, Image
+>>>>>>> master
 
 bar_routes = Blueprint('bars', __name__)
 
@@ -16,8 +20,8 @@ def bar(barId):
     bar_data = bar.to_dict()
     reviews_data = [review.to_dict() for review in reviews]
     images_data = [image.to_dict() for image in images]
-    # parsed_data = parse_results(reviews)
 
+<<<<<<< HEAD
     return jsonify("bardata", {"bar": bar_data, "reviews": reviews_data, "images": images_data})
 
 @bar_routes.route('/create', methods=['POST'])
@@ -30,3 +34,24 @@ def create():
     db.session.commit()
     barDictionary = newBar.to_dict()
     return {"id": barDictionary["id"]}
+=======
+    reviews_summary_data = {}
+    reviews_summary_data['overall'] = round(sum(
+        [review['overall'] for review in reviews_data]) / len(reviews_data), 1)
+    reviews_summary_data['food'] = round(sum(
+        [review['food'] for review in reviews_data]) / len(reviews_data), 1)
+    reviews_summary_data['service'] = round(sum(
+        [review['service'] for review in reviews_data]) / len(reviews_data), 1)
+    reviews_summary_data['ambience'] = round(sum(
+        [review['ambience'] for review in reviews_data]) / len(reviews_data), 1)
+    reviews_summary_data['value'] = round(sum(
+        [review['value'] for review in reviews_data]) / len(reviews_data), 1)
+    reviews_summary_data['review_total'] = len(reviews_data)
+
+    return jsonify("bardata", {
+        "bar": bar_data,
+        "reviews": reviews_data,
+        "reviews_summary_data": reviews_summary_data,
+        "images": images_data,
+    })
+>>>>>>> master

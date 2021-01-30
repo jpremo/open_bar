@@ -11,7 +11,7 @@ function SearchBar({ setLoaded, loaded, bus, loc }) {
     const [searchLocation, setSearchLocation] = useState('')
     const [value, onChange] = useState(new Date()); //for calendar
     const [people, setPeople] = useState({})
-    const [time, setTime] = useState({ value: format(value, 'H') })
+    const [time, setTime] = useState({ value: format(value, 'H'), label:"defaulted" })
     const history = useHistory()
     const location = useLocation()
     console.log(location)
@@ -90,25 +90,35 @@ function SearchBar({ setLoaded, loaded, bus, loc }) {
         if (event.keyCode === 13) {
             const day = format(value, 'EEEE').toLowerCase()
             const formattedDate = format(value, 'MM/dd/yyyy');
-            history.push(`/search/?business=${searchBusiness}&time=${time.value}&day=${day}&date=${formattedDate}&guests=${people.value}&location=${searchLocation}`)
+            let peeps = people.value;
+            if (!peeps) peeps = 2;
+            history.push(`/search/?business=${searchBusiness}&time=${time.value}&day=${day}&date=${formattedDate}&guests=${peeps}&location=${searchLocation}`)
+            if (setLoaded){
             setLoaded(false)
-        }
+            }
+    }
     }
     const searchClick = (event) => {
-        history.push(`/search/?business=${searchBusiness}&location=${searchLocation}`)
-        setLoaded(false)
+            const day = format(value, 'EEEE').toLowerCase()
+            const formattedDate = format(value, 'MM/dd/yyyy');
+            let peeps = people.value;
+            if (!peeps) peeps = 2;
+            history.push(`/search/?business=${searchBusiness}&time=${time.value}&day=${day}&date=${formattedDate}&guests=${peeps}&location=${searchLocation}`)
+        if (setLoaded){
+            setLoaded(false)
+            }
     }
     return (
         <>
             <div id='search-bars'>
-                <i id='search-icon' className="fas fa-search" onClick={searchClick}></i>
                 <input className='search-bar' value={searchBusiness} placeholder='Business' onChange={(e) => setSearchBusiness(e.target.value)} onKeyUp={search} />
                 <input className='search-bar' value={searchLocation} placeholder='Location' onChange={(e) => setSearchLocation(e.target.value)} onKeyUp={search} />
+                <i id='search-icon' className="fas fa-search fa-lg"  onClick={searchClick}></i>
             </div>
             <div id='drop-downs'>
                 <Calendar value={value} onChange={onChange} />
-                <DropDown people={people} setPeople={setPeople} />
-                <TimeSlot time={time} setTime={setTime} />
+                <DropDown people={people} placeholder='Guests' setPeople={setPeople} />
+                <TimeSlot time={time} placeholder='Select Time' setTime={setTime} />
             </div>
         </>
     )

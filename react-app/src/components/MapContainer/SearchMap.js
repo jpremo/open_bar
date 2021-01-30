@@ -9,7 +9,8 @@ const SearchMap = ({center, bars}) => {
 
   let mapStyles = {
     width: '35vw',
-    height: '80vh'
+    height: '70vh',
+    // border-radius: '25px'
   };
   let defaultCenter = {lat: 40.7128, lng: -74.0060}
 
@@ -19,10 +20,6 @@ const SearchMap = ({center, bars}) => {
     }
   }
 
-  const generateMarkers = () => {
-
-  }
-  const urlBase='https://maps.google.com/mapfiles/kml/shapes/'
   return (
      <LoadScript
        googleMapsApiKey='AIzaSyBB_qz7gdLnQ9rBYBbQafFjWqx7gyIIJVI'>
@@ -30,9 +27,6 @@ const SearchMap = ({center, bars}) => {
           mapContainerStyle={mapStyles}
           zoom={12}
           center={defaultCenter}>
-            )}
-            {/* {<Marker position={defaultCenter}/>} */}
-            {/* icon={urlBase + 'parking_lot_maps.png'} */}
             {bars.map((bar, ind) => {
                 return (
                     <Marker position={{lat: bar.latitude, lng: bar.longitude}} key={ind} label={`${ind+1}`} />

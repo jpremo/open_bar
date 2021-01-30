@@ -17,7 +17,7 @@ function BarBox({bar}) {
     }
 
     return(
-        <NavLink to={`/bars/${bar.id}`}>
+        <NavLink to={`/bars/${bar.id}`} style={{ textDecoration: 'none' }}>
         <div className='bar-box-home'>
         <div>
         <img id="picture-bar-box" src={bar.bannerImg}/>
@@ -31,7 +31,7 @@ function BarBox({bar}) {
                                         <i className="fas fa-star fa-xs" id='innerstar-1' style={{ color: 'white', paddingBottom: '1px', paddingRight: '1px', opacity: '1' }}></i>
                                     </div>)
                             })}
-                            <div className='review-number'>{(bar.review_total === 1) ? `1 Review` : `${bar.review_total} Reviews`}</div>
+                            <div className='home-review-number'>{(bar.review_total === 1) ? `1 Review` : `${bar.review_total} Reviews`}</div>
                         </div>
                         </div>
         </div>

@@ -7,19 +7,24 @@ import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import Reservation from "../Reservation/Reservation"
 import Reviews from "./Reviews/Reviews"
-import sushi from './sushi-bar.jpeg' // to be deleted
 import { useParams } from 'react-router-dom'
 import { barDataDisplay } from '../../store/bars'
+import { clear } from '../../store/users'
 
-function Bar () { // update all values with redux
+function Bar () {
 
   const dispatch = useDispatch()
   const { barId }  = useParams();
 
-  let bar = useSelector(state => state.bars.bardata)
+  let bar = useSelector(state => state.bars['1']);
+
+  console.log('bar', bar)
+
+  const user = useSelector(state => state.session.user);
 
   useEffect( () => {
     (async () => {
+      await dispatch(clear())
       await dispatch(barDataDisplay(barId))
     })();
   }, [dispatch])
@@ -27,32 +32,33 @@ function Bar () { // update all values with redux
   return (
     <div>
       <div id='backgroundImg'>
-        <img id='backgroundImgProper' src={sushi} alt=''/>
+        <img id='backgroundImgProper' src={typeof bar !== 'undefined' ? bar.bar.bannerImg : null} alt=''/>
       </div>
       <div id='columnsDiv'>
         <div id='leftColumn'>
           <div className='BorderBottom BorderTop'>
-            <h1 id='BarName'>Sushi Bar name {barId}</h1>
+            <h1 id='BarName'>{ typeof bar !== 'undefined' ? bar.bar.name : null }</h1>
           </div>
           <span id='summary-span'>
-            <span id ='summary-span-1'>Review Average Score Placeholder</span>
-            <span id ='summary-span-2'>Number of Ratings Placeholder</span>
+            <span id ='summary-span-1'>Average Review Score { typeof bar !== 'undefined' ? bar.reviews_summary_data.overall : null}</span>
+            <span id ='summary-span-2'>Number of Reviews {typeof bar !== 'undefined' ? bar.reviews_summary_data.review_total : null}</span>
           </span>
+          <div id='description-text'>{ typeof bar !== 'undefined' ? bar.bar.description : null}</div>
           <div>
-            <Photos />
+            <Photos props={typeof bar !== 'undefined' ? bar.images : null}/>
           </div>
           <div>
-            <h3 className='BorderBottom'>What placeholder-number of people are saying</h3>
-            <div className='BorderBottom bottom-padding'>
-              <span className='BorderRight'>Overall</span>
-              <span className='BorderRight'>Food</span>
-              <span className='BorderRight'>Service</span>
-              <span className='BorderRight'>Ambience</span>
-              <span>Value</span>
+            <h3 className='BorderBottom' id='see-summary'>See Summary of Ratings of {typeof bar !== 'undefined' ? bar.reviews_summary_data.review_total : null} Bar-Goers </h3>
+            <div>
+              <span className='BorderRight'>Overall {typeof bar !== 'undefined' ? bar.reviews_summary_data.overall : null}</span>
+              <span className='BorderRight'>Food {typeof bar !== 'undefined' ? bar.reviews_summary_data.food : null}</span>
+              <span className='BorderRight'>Service {typeof bar !== 'undefined' ? bar.reviews_summary_data.service : null}</span>
+              <span className='BorderRight'>Ambience {typeof bar !== 'undefined' ? bar.reviews_summary_data.ambience : null}</span>
+              <span>Value {typeof bar !== 'undefined' ? bar.reviews_summary_data.value : null}</span>
             </div>
           </div>
           <div>
-            <Reviews />
+            <Reviews props={typeof bar !== 'undefined' ? bar.reviews : null}/>
           </div>
         </div>
         <div id='rightColumn'>
@@ -60,12 +66,12 @@ function Bar () { // update all values with redux
             <Reservation />
           </div>
           <div>
-            <Favorite />
+            <Favorite barId={barId} user={user}/>
           </div>
           <div id="google-map-container">
-            <MapContainer/>
+            <MapContainer props={typeof bar !== 'undefined' ? bar.bar : null}/>
           </div>
-          <BarJSON />
+          <BarJSON props={typeof bar !== 'undefined' ? bar.bar : null}/>
         </div>
       </div>
     </div>
