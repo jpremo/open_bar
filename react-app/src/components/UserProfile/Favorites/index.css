@@ -40,6 +40,20 @@
     
 }
 
+#card button {
+    background-color: rgb(255, 255, 255);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+    color: rgb(0, 0, 0);
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+#card button:hover {
+    background-color: rgb(0, 52, 149);
+    color: white;
+    border: 1px solid rgb(0, 52, 149); 
+}
+
 #bar-info-container {
     padding: 2px 16px;
 }

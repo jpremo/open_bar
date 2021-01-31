@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import Favorites from "./Favorites"
+import CreateBarButton from "./CreateBar/CreateBarButton"
 import "./index.css"
+
+
+
 
 function User() {
     const [user, setUser] = useState({});
@@ -23,6 +27,17 @@ function User() {
 
     const userState = useSelector(state => state.session.user)
 
+    const sessId = userState.id
+    console.log(userId)
+
+    console.log(sessId)
+
+    let isUserProfile
+
+    if (userId === sessId) {
+        isUserProfile = "a thing"
+    } 
+
     if (!user) {
         return null;
     }
@@ -39,12 +54,11 @@ function User() {
                         <h5>{`Username: ${user.username}`}</h5>
                     </div>
                 </div>
+                {!isUserProfile && <p>.</p>}
+                {isUserProfile && <CreateBarButton />}
             </div>
             <div>
-                <NavLink to={`/bars/create`}>Own a Bar?</NavLink>
-            </div>
-            <div>
-                <Favorites sessionUser={userState} params={userId}/>
+                <Favorites sessionUser={userState} params={userId} />
             </div>
 
         </>

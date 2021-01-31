@@ -56,26 +56,3 @@ def add_favorite(userId, barId):
     db.session.commit()
     return {"favorite": "string"}
 
-
-    # barId = request.body.barId
-    # user = User.query.get(int(id))
-    # bar = Bar.query.get(int())
-    # print(request.json())
-    # user.favoriteBars.remove()
-    # userId = data["userId"]
-    # barId = data["barId"]
-    # db.session.delete()
-
-
-# @work_routes.route('/<work_id>/saved', methods=['DELETE'])
-# @login_required
-# def unsave_work(work_id):
-#     work_id = int(work_id)
-#     user_id = current_user.id
-#     work = Work.query.get(work_id)
-#     if not work:
-#         return {'msg': 'Work not found'}, 404
-#     user = User.query.get(user_id)
-#     work.users_saved.remove(user)
-#     db.session.commit()
-#     return {"id": work_id}, 200
