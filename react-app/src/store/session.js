@@ -15,8 +15,8 @@ export const removeUser = () => ({
 export const restoreUser = () => async (dispatch) => {
     let res = await authenticate();
     let data = res
-    if(data.errors) data = null
-    dispatch(setUser(res));
+    if(data.errors) data = {id: null}
+    dispatch(setUser(data));
     return res;
   };
 
@@ -30,7 +30,7 @@ function reducer(state = initialState, action) {
       newState = Object.assign({}, state, { user: action.payload });
       return newState;
     case REMOVE_USER:
-      newState = Object.assign({}, state, { user: null });
+      newState = Object.assign({}, state, { user: {id:null} });
       return newState;
     default:
       return state;

@@ -2,17 +2,20 @@ import BarBox from './BarBox'
 import React, { useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import { parse } from 'query-string'
+import { setLoginModal } from '../../store/modal'
+import { useDispatch } from 'react-redux'
 function BarList({ barList, name, user }) {
     const [confirmScreen, setConfirmScreen] = useState(false)
     const history = useHistory()
     const location = useLocation()
+    const dispatch = useDispatch()
     let futureReservations
-    if (user) futureReservations = user.futureReservations
+    if (user.id) futureReservations = user.futureReservations
     const confirmReservation = (e) => {
-        if (user) {
+        if (user.id) {
             setConfirmScreen(e.currentTarget.id)
         } else {
-            history.push('/login')
+            dispatch(setLoginModal(true))
         }
     }
     const vals = parse(location.search)

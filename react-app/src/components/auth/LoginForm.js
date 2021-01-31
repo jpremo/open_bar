@@ -29,6 +29,18 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     }
   };
 
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    const user = await login('demo@aa.io', 'password');
+    if (!user.errors) {
+      setAuthenticated(true);
+      dispatch(setLoginModal(false))
+      dispatch(setUser(user))
+    } else {
+      setErrors(user.errors);
+    }
+  }
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -72,6 +84,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           <div className='modal-link modal-button' onClick={onLogin}>Login</div>
           <div className='modal-link modal-button' onClick={openSignup}> Sign Up</div>
           <div className='modal-link modal-button' onClick={cancel}> Close</div>
+        </div>
+        <div className='modal-button-box'>
+          <div className='modal-link modal-button' onClick={demoLogin}>Demo Login</div>
         </div>
 
       </div>
