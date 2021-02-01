@@ -18,8 +18,6 @@ function Bar () {
 
   let bar = useSelector(state => state.bars['1']);
 
-  console.log('bar', bar)
-
   const user = useSelector(state => state.session.user);
 
   useEffect( () => {

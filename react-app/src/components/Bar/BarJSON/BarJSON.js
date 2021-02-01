@@ -2,7 +2,7 @@ import React from 'react'
 import './BarJSON.css'
 
 export default function BarJSON({ props }) {
-  console.log(props)
+
   return (
     <div>
       <h2 className='BorderBottom json-details'>Bar Details</h2>

@@ -7,6 +7,10 @@ const setUserFavorites = (userFavorites) => ({
   userFavorites
 })
 
+const addUserFavoritesAC = (payload) => ({
+  type: ADD_FAVORITE,
+  payload
+})
 
 export const fetchUserFavorites = (userId) => {
   return async(dispatch) => {
@@ -17,13 +21,6 @@ export const fetchUserFavorites = (userId) => {
     )
   }
 }
-
-// const addUserFavoritesAC = (payload) => ({
-//   type: ADD_FAVORITE,
-//   payload
-// })
-
-
 
 export const addFavorite = (barId, userId) => {
   return async (dispatch) => {
@@ -36,18 +33,18 @@ export const addFavorite = (barId, userId) => {
       },
       body: JSON.stringify({barId, userId})
     })
-    // response = await response.json()
-    // dispatch(
-    //   addUserFavoritesAC(response.favorite))
+
+    response = await response.json()
+
+    dispatch(
+      addUserFavoritesAC(response))
     }
   }
 
-
-
-  const deleteUserFavoriteAC = (payload) => ({
-    type: DELETE_FAVORITE,
-    payload
-  })
+const deleteUserFavoriteAC = (payload) => ({
+  type: DELETE_FAVORITE,
+  payload
+})
 
 export const deleteFavorite = (barId, userId) => {
   return async (dispatch) => {
@@ -66,7 +63,6 @@ export const deleteFavorite = (barId, userId) => {
   }
 }
 
-
 const initialState = [];
 
 function reducer(state = initialState, action) {
@@ -76,10 +72,12 @@ function reducer(state = initialState, action) {
       newState = action.userFavorites
       return newState
     case ADD_FAVORITE:
-  
-      // newState = Object.assign({}, state)
-      // newState.userFavorites.push(action.payload.favorite) //what is sapposed to be in place of User
-      // return newState
+      // newState = Object.assign()
+      // return newState;
+      // newState = Object.assign({action.payload.favorite}, state)
+      // console.log('zzzz', action.payload.bar)
+      newState = state.push(action.payload.bar) //what is sapposed to be in place of User
+      return newState;
     case DELETE_FAVORITE:
       newState = state.filter((fav) => {
         const ret = fav.id !== Number(action.payload.targetId)
