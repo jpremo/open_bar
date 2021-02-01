@@ -105,8 +105,8 @@
   text-align: center;
   border-top: solid 1px grey;
   border-bottom: solid 1px grey;
-  margin: 2em;
-  padding: 0.5em;
+  margin-bottom: 1.5em;
+  padding-top: 0.5em;
   padding-bottom: 1.5em;
   margin-bottom: 1.5em;
   margin-top: 1.5em;
@@ -143,6 +143,7 @@
   color: white;
   background-color: rgb(64, 150, 176);
   border-color: rgb(64, 150, 176);
+  padding: 0.5em;
 }
 
 #description-text {
@@ -158,4 +159,10 @@
 #see-saying {
   margin-top: 1.5em;
   font-size: x-large;
+}
+
+.bars-map-container {
+  border-top: solid 1px grey;
+  margin-top: 1.5em;
+  padding-top: 1em;
 }

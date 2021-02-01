@@ -3,13 +3,14 @@ import BarJSON from "./BarJSON/BarJSON"
 import Favorite from "../Favorite/Favorite"
 import MapContainer from "../MapContainer/MapContainer"
 import Photos from "./Photos/Photos"
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import Reservation from "../Reservation/Reservation"
 import Reviews from "./Reviews/Reviews"
 import { useParams } from 'react-router-dom'
 import { barDataDisplay } from '../../store/bars'
 import { clear } from '../../store/users'
+import WriteReview from "./WriteReview/WriteReview"
 
 function Bar () {
 
@@ -18,8 +19,6 @@ function Bar () {
 
   let bar = useSelector(state => state.bars['1']);
 
-  console.log('bar', bar)
-
   const user = useSelector(state => state.session.user);
 
   useEffect( () => {
@@ -27,7 +26,7 @@ function Bar () {
       await dispatch(clear())
       await dispatch(barDataDisplay(barId))
     })();
-  }, [dispatch])
+  }, [dispatch, barId])
 
   return (
     <div>
@@ -58,6 +57,9 @@ function Bar () {
             </div>
           </div>
           <div>
+            <WriteReview barId={barId} user={user}/>
+          </div>
+          <div>
             <Reviews props={typeof bar !== 'undefined' ? bar.reviews : null}/>
           </div>
         </div>
@@ -65,11 +67,11 @@ function Bar () {
           <div>
             <Reservation />
           </div>
+          <div id="google-map-container" className='bars-map-container'>
+            <MapContainer props={typeof bar !== 'undefined' ? bar.bar : null}/>
+          </div>
           <div>
             <Favorite barId={barId} user={user}/>
-          </div>
-          <div id="google-map-container">
-            <MapContainer props={typeof bar !== 'undefined' ? bar.bar : null}/>
           </div>
           <BarJSON props={typeof bar !== 'undefined' ? bar.bar : null}/>
         </div>

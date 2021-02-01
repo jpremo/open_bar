@@ -1,22 +1,69 @@
-import React from "react"
-import { useSelector, useDispatch } from "react-redux"
-import { addFavorite } from "../../store/favorites"
+import React, { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { addFavorite, deleteFavorite, fetchUserFavorites } from "../../store/favorites"
+import { setLoginModal, setTextModal } from '../../store/modal'
 
 function Favorite ({barId, user}) {
 
-  const dispatch = useDispatch()
+  let [favoriteBar, setFavoriteBar] = useState(false);
+  const dispatch = useDispatch();
   
-  const handleSubmit = async(e) => {
+  const handleFavoriteSubmit = async(e) => {
       e.preventDefault();
-      dispatch(addFavorite(parseInt(barId), parseInt(user.id)))
-      alert('Thank you for favoriting!')
+
+      if (user.id === null) {
+        dispatch(setLoginModal(true))
+      } else {
+        dispatch(addFavorite(parseInt(barId), parseInt(user.id)))
+        dispatch(setTextModal(true))
+        // alert('Thank you for favoriting!')
+      }
   }
 
+
+  //   useEffect( () => {
+  //   (async () => {
+  //     await dispatch(clear())
+  //     await dispatch(barDataDisplay(barId))
+  //   })();
+  // }, [dispatch, barId])
+
+
+  const handleUnfavoriteSubmit = async(e) => {
+      e.preventDefault();
+
+      dispatch(deleteFavorite(parseInt(barId), parseInt(user.id)))
+      dispatch(setTextModal(true))
+      // alert('You have unfavorited this bar.')
+  }
+
+  let session = useSelector(state => state.session)
+
+  useEffect( () => {
+    if (user.id !== null) {
+      if (session.user !== null) {
+        const bars = session.user.favoriteBars;
+        const numOfBars = bars.length;
+        let i = 0;
+        while (i < numOfBars) {
+          if (bars[i].id === parseInt(barId)) {
+            setFavoriteBar(true);
+            break;
+          }
+          i++;
+        }
+      }
+
+    }
+  }, [dispatch, favoriteBar, setFavoriteBar, addFavorite, deleteFavorite])
+
   return (
-    <div id='favorite-div'>
-      <h3>Add To Your Favorites</h3>
-      <button id='favorite-me-button' onClick={handleSubmit}>Favorite Me!</button>
-    </div>
+    <>
+      <div id='favorite-div'>
+        { (favoriteBar === true) ? <h3>This Bar Is One of Your Favorites!</h3> : <h3>Add To Your Favorites</h3> }
+        { (favoriteBar === true) ? <button id='favorite-me-button' onClick={handleUnfavoriteSubmit}>Unfavorite Me!</button> : <button id='favorite-me-button' onClick={handleFavoriteSubmit}>Favorite Me!</button>}
+      </div>
+    </>
   );
 }
 

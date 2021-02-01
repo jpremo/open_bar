@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import './review.css'
 import { userData } from '../../../../store/users'
@@ -26,7 +26,7 @@ export default function Review({ props }) {
         await dispatch(userData(props.userId))
       })();
     }
-  }, [dispatch]);
+  }, [dispatch, props]);
   
   return (
     <div className='BorderTop Review review-spacing'>
@@ -36,7 +36,7 @@ export default function Review({ props }) {
           <span>{ props !== null && typeof user !== 'undefined' ? user.lastName : null }</span>
         </div>
         <div className='review_center'>
-          <img id='profile-img' src={props !== null && typeof user !== 'undefined' ? user.profileImg : null} />
+          <img id='profile-img' src={props !== null && typeof user !== 'undefined' ? user.profileImg : null} alt=''/>
         </div>
       </div>
       <div id='review_right'>

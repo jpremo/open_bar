@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import db, Bar, Review, User, Image
+from app.models import db, Bar, Review, User, Image, Reservation
 import json
 
 from flask import Blueprint, jsonify
@@ -40,6 +40,7 @@ def bar(barId):
         "images": images_data,
     })
 
+
 @bar_routes.route('/create', methods=['POST'])
 def create():
     data = request.get_json(force=True)
@@ -50,3 +51,11 @@ def create():
     db.session.commit()
     barDictionary = newBar.to_dict()
     return {"id": barDictionary["id"]}
+
+
+@bar_routes.route('<int:barId>/reservations/user/<int:userId>', methods=['GET'])
+def reservation(barId, userId):
+    reservations = Reservation.query.filter(
+        Reservation.barId == barId).filter(Reservation.userId == userId).all()
+
+    return jsonify([reservation.to_dict() for reservation in reservations])

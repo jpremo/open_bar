@@ -10,10 +10,10 @@ const FavoriteCards = ({ userFav, hidden, params }) => {
     const barId = userFav.id
     const img = userFav.bannerImg
     const name = userFav.name
-    const seats = userFav.barSeats
+    // const seats = userFav.barSeats
     const street = userFav.street
-    const state = userFav.state
-    const phone = userFav.phoneNumber
+    // const state = userFav.state
+    // const phone = userFav.phoneNumber
     
 
     const dispatch = useDispatch()
