@@ -6,10 +6,7 @@ import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 import UserProfile from "./components/UserProfile";
-// import { authenticate } from "./services/auth";
 import UserList from "./components/UserList";
-// import User from "./components/User";
-import { authenticate } from "./services/auth";
 import Bar from "./components/Bar/Bar"
 
 import SearchResults from "./components/SearchResults/SearchResults"

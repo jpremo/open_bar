@@ -49,7 +49,7 @@ function BarBox({ bar, ind, confirmReservation, reservation }) {
 
     return (
         <div className='bar-box'>
-            <Link to={`/bar/${bar.id}`} className='bar-link'>{ind + 1}. {bar.name}</Link>
+            <Link to={`/bars/${bar.id}`} className='bar-link'>{ind + 1}. {bar.name}</Link>
             <div className='bar-address'>{bar.street} {bar.state} {bar.zipcode}</div>
             <div className='star-container'>
                 {starsArr.map((el, ind) => {

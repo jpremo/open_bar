@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import { GoogleMap, LoadScript, Marker} from '@react-google-maps/api';
-import {useSelector} from 'react-redux'
 
 const MapContainer = ({ props }) => {
 
-  const[selectedApt,setSelectedApt] = useState(null)
+  const[selectedApt, setSelectedApt] = useState(null)
 
 
   let mapStyles = {

@@ -12,6 +12,7 @@ const popular = (businesses) => ({
     type: POPULAR,
     payload: businesses
 });
+
 const bardata = (business) => ({
     type: BARDATA,
     payload: business
@@ -30,8 +31,6 @@ export const homeDisplayBussinesses = () => async (dispatch) => {
     res = await res.json()
     dispatch(popular(res))
 };
-
-
 
 export const searchBusinesses = (url, location, id, time, day, date) => async (dispatch) => {
     let coordString = 'NoLocation'

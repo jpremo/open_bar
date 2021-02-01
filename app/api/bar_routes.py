@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from app.models import Bar, Review, User, Image
+from app.models import Bar, Review, User, Image, Reservation
 
 bar_routes = Blueprint('bars', __name__)
 
@@ -33,3 +33,11 @@ def bar(barId):
         "reviews_summary_data": reviews_summary_data,
         "images": images_data,
     })
+
+
+@bar_routes.route('<int:barId>/reservations/user/<int:userId>', methods=['GET'])
+def reservation(barId, userId):
+    reservations = Reservation.query.filter(
+        Reservation.barId == barId).filter(Reservation.userId == userId).all()
+
+    return jsonify([reservation.to_dict() for reservation in reservations])
