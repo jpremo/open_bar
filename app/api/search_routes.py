@@ -119,7 +119,7 @@ def search():
 
     if business == '' and coord == 'NoLocation':
         return {"searchResults": []}
-    if searchId and searchId != 'undefined':
+    if searchId and searchId != 'undefined' and searchId != 'null':
         searchId = int(searchId)
     lng = 0
     lat = 0
