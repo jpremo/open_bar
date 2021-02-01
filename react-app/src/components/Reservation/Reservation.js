@@ -29,7 +29,7 @@ function Reservation() {
             const year = value.getFullYear();
             const date = `${month}/${day}/${year}`;
 
-            fetch('http://localhost:5000/api/search/reservation', {
+            fetch('/api/search/reservation', {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: {
