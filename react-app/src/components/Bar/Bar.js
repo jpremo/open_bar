@@ -46,9 +46,6 @@ function Bar () {
           <div>
             <Photos props={typeof bar !== 'undefined' ? bar.images : null}/>
           </div>
-                      <div>
-              <WriteReview barId={barId} user={user}/>
-            </div>
           <div>
             <h3 className='BorderBottom' id='see-summary'>See Summary of Ratings of {typeof bar !== 'undefined' ? bar.reviews_summary_data.review_total : null} Bar-Goers </h3>
             <div>
@@ -58,6 +55,9 @@ function Bar () {
               <span className='BorderRight'>Ambience {typeof bar !== 'undefined' ? bar.reviews_summary_data.ambience : null}</span>
               <span>Value {typeof bar !== 'undefined' ? bar.reviews_summary_data.value : null}</span>
             </div>
+          </div>
+          <div>
+            <WriteReview barId={barId} user={user}/>
           </div>
           <div>
             <Reviews props={typeof bar !== 'undefined' ? bar.reviews : null}/>
