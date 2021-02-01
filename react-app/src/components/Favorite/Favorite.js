@@ -8,15 +8,22 @@ function Favorite ({barId, user}) {
   
   const handleSubmit = async(e) => {
       e.preventDefault();
-      dispatch(addFavorite(parseInt(barId), parseInt(user.id)))
-      alert('Thank you for favoriting!')
+      console.log(user);
+      if (user.id === null) {
+        alert('Please Login or Signup to favorite a bar.')
+      } else {
+        dispatch(addFavorite(parseInt(barId), parseInt(user.id)))
+        alert('Thank you for favoriting!')
+      }
   }
 
   return (
-    <div id='favorite-div'>
-      <h3>Add To Your Favorites</h3>
-      <button id='favorite-me-button' onClick={handleSubmit}>Favorite Me!</button>
-    </div>
+    <>
+      <div id='favorite-div'>
+        <h3>Add To Your Favorites</h3>
+        <button id='favorite-me-button' onClick={handleSubmit}>Favorite Me!</button>
+      </div>
+    </>
   );
 }
 
