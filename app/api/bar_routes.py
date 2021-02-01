@@ -4,6 +4,8 @@ from app.models import Bar, Review, User, Image
 bar_routes = Blueprint('bars', __name__)
 
 
+
+
 @bar_routes.route('/<int:barId>')
 def bar(barId):
     bar = Bar.query.filter(Bar.id == barId).one()
