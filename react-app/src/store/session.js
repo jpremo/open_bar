@@ -20,7 +20,7 @@ export const restoreUser = () => async (dispatch) => {
     return res;
   };
 
-const initialState = { user: null };
+const initialState = { user: {id:null} };
 
 function reducer(state = initialState, action) {
   let newState;
