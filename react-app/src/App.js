@@ -11,6 +11,7 @@ import Bar from "./components/Bar/Bar"
 
 import SearchResults from "./components/SearchResults/SearchResults"
 import Home from "./components/Home/Home";
+import CreateBar from "./components/UserProfile/CreateBar"
 import { restoreUser } from "./store/session";
 import { useDispatch } from "react-redux";
 
@@ -47,7 +48,10 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
-        <Route path="/bars/:barId" exact={true}>
+        <Route path="/bars/create" exact={true}>
+          <CreateBar />
+        </Route>
+        <Route path="/bars/:barId" exact={true}> 
           <Bar />
         </Route>
         <Route path="/search" exact={true}>

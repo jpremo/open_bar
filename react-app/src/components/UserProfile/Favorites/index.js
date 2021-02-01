@@ -28,7 +28,8 @@ const FavoriteCards = ({ userFav, hidden, params }) => {
     return (
         <>
             <div id="card">
-                <button hidden={hidden} onClick={handleSubmit}>unfavorite</button>
+                <button id="unfavorite-button" hidden={hidden} 
+                    onClick={handleSubmit}>unfavorite</button>
                 <NavLink to={`/bars/${barId}`}>
                     <img alt="nope" src={img} />
                     <div id="bar-info-container">

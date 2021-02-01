@@ -1,5 +1,11 @@
+from flask import Blueprint, jsonify, request
+from app.models import db, Bar, Review, User, Image, Reservation
+import json
+
 from flask import Blueprint, jsonify
-from app.models import Bar, Review, User, Image, Reservation
+
+
+
 
 bar_routes = Blueprint('bars', __name__)
 
@@ -33,6 +39,18 @@ def bar(barId):
         "reviews_summary_data": reviews_summary_data,
         "images": images_data,
     })
+
+
+@bar_routes.route('/create', methods=['POST'])
+def create():
+    data = request.get_json(force=True)
+    print(data)
+    data["dayAndTime"] = json.dumps(data["dayAndTime"])
+    newBar = Bar(**data)
+    db.session.add(newBar)
+    db.session.commit()
+    barDictionary = newBar.to_dict()
+    return {"id": barDictionary["id"]}
 
 
 @bar_routes.route('<int:barId>/reservations/user/<int:userId>', methods=['GET'])

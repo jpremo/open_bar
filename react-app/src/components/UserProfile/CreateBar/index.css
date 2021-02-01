@@ -1,0 +1,53 @@
+
+#create-bar-container {
+    width: 415px;
+    background-color: rgb(146, 224, 255);
+    display: flex;
+    justify-content: center;
+}
+
+/* #new-bar-form {
+
+} */
+
+#create-bar-container form {
+    border-radius: 5px;
+    background-color:  rgb(146, 224, 255);
+    padding: 20px;
+  }
+
+#create-bar-container input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+
+#create-bar-container input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+#create-bar-container textarea {
+    width: 400px;
+    height: 200px;
+    resize: none;
+}
+
+#create-bar-container button {
+    width: 400px;
+    background-color: rgb(127, 165, 255);
+}
+
+#create-bar-container form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+#errors {
+    color: red
+}
