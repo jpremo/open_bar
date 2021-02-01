@@ -16,6 +16,8 @@ search_routes = Blueprint('search', __name__)
 #                         userId,
 #                         partySize: 2,
 #                     }
+
+
 @search_routes.route('/reservation', methods=['POST'])
 def reservation():
     data = request.get_json()
@@ -35,7 +37,6 @@ def reservation():
         db.session.commit()
         return {"message": 'received'}
     return {'message': 'bad data'}
-
 
 @search_routes.route('/')
 def search():

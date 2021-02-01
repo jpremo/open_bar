@@ -37,7 +37,6 @@ function Favorite ({barId, user}) {
   let session = useSelector(state => state.session)
 
   useEffect( () => {
-    console.log('herehi')
     if (user.id !== null) {
       if (session.user !== null) {
         const bars = session.user.favoriteBars;
