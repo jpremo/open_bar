@@ -3,7 +3,7 @@ import BarJSON from "./BarJSON/BarJSON"
 import Favorite from "../Favorite/Favorite"
 import MapContainer from "../MapContainer/MapContainer"
 import Photos from "./Photos/Photos"
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import Reservation from "../Reservation/Reservation"
 import Reviews from "./Reviews/Reviews"
@@ -27,7 +27,7 @@ function Bar () {
       await dispatch(clear())
       await dispatch(barDataDisplay(barId))
     })();
-  }, [dispatch])
+  }, [dispatch, barId])
 
   return (
     <div>

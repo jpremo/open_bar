@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, NavLink } from "react-router-dom";
-// import { useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { fetchUserFavorites, deleteFavorite } from "../../../store/favorites"
 import "./index.css"
 
@@ -11,10 +10,10 @@ const FavoriteCards = ({ userFav, hidden, params }) => {
     const barId = userFav.id
     const img = userFav.bannerImg
     const name = userFav.name
-    const seats = userFav.barSeats
+    // const seats = userFav.barSeats
     const street = userFav.street
-    const state = userFav.state
-    const phone = userFav.phoneNumber
+    // const state = userFav.state
+    // const phone = userFav.phoneNumber
     
 
     const dispatch = useDispatch()

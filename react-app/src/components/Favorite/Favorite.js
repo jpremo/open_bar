@@ -1,5 +1,5 @@
 import React from "react"
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import { addFavorite } from "../../store/favorites"
 
 function Favorite ({barId, user}) {

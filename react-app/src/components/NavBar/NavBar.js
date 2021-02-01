@@ -29,7 +29,7 @@ const NavBar = ({ setAuthenticated }) => {
         <SignUpForm setAuthenticated={setAuthenticated}></SignUpForm>
       </ModalContainer>
       <NavLink exact to="/">
-        <img id="nav-bar-logo-picture" src={picture} />
+        <img id="nav-bar-logo-picture" src={picture} alt=''/>
       </NavLink>
       <div id="nav-bar-menu">
         <NavLink to="/" exact={true} className="nav-link" activeClassName="active">

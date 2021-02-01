@@ -18,10 +18,10 @@ export const fetchUserFavorites = (userId) => {
   }
 }
 
-const addUserFavoritesAC = (payload) => ({
-  type: ADD_FAVORITE,
-  payload
-})
+// const addUserFavoritesAC = (payload) => ({
+//   type: ADD_FAVORITE,
+//   payload
+// })
 
 
 

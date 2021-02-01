@@ -1,4 +1,4 @@
-import {NavLink, Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import React from 'react'
 import './Home.css'
 
@@ -20,7 +20,7 @@ function BarBox({bar}) {
         <NavLink to={`/bars/${bar.id}`} style={{ textDecoration: 'none' }}>
         <div className='bar-box-home'>
         <div>
-        <img id="picture-bar-box" src={bar.bannerImg}/>
+        <img id="picture-bar-box" src={bar.bannerImg} alt=''/>
         </div>
         <div id="info-bar-box">
          <h1>{bar.name}</h1>
