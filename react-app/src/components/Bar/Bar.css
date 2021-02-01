@@ -160,3 +160,9 @@
   margin-top: 1.5em;
   font-size: x-large;
 }
+
+.bars-map-container {
+  border-top: solid 1px grey;
+  margin-top: 1.5em;
+  padding-top: 1em;
+}

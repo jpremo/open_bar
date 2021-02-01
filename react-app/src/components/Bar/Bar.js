@@ -67,11 +67,11 @@ function Bar () {
           <div>
             <Reservation />
           </div>
+          <div id="google-map-container" className='bars-map-container'>
+            <MapContainer props={typeof bar !== 'undefined' ? bar.bar : null}/>
+          </div>
           <div>
             <Favorite barId={barId} user={user}/>
-          </div>
-          <div id="google-map-container">
-            <MapContainer props={typeof bar !== 'undefined' ? bar.bar : null}/>
           </div>
           <BarJSON props={typeof bar !== 'undefined' ? bar.bar : null}/>
         </div>
