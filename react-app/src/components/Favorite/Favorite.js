@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { addFavorite, deleteFavorite, fetchUserFavorites } from "../../store/favorites"
-import { setLoginModal } from '../../store/modal'
+import { setLoginModal, setTextModal } from '../../store/modal'
 
 function Favorite ({barId, user}) {
 
@@ -15,7 +15,8 @@ function Favorite ({barId, user}) {
         dispatch(setLoginModal(true))
       } else {
         dispatch(addFavorite(parseInt(barId), parseInt(user.id)))
-        alert('Thank you for favoriting!')
+        dispatch(setTextModal(true))
+        // alert('Thank you for favoriting!')
       }
   }
 
@@ -32,7 +33,8 @@ function Favorite ({barId, user}) {
       e.preventDefault();
 
       dispatch(deleteFavorite(parseInt(barId), parseInt(user.id)))
-      alert('You have unfavorited this bar.')
+      dispatch(setTextModal(true))
+      // alert('You have unfavorited this bar.')
   }
 
   let session = useSelector(state => state.session)

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './writereview.css'
 import Select from 'react-select'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLoginModal } from '../../../store/modal'
+import { setLoginModal, setIncompleteModal, setTextModal } from '../../../store/modal'
 
 export default function WriteReview({ barId, user }) {
   const dispatch = useDispatch();
@@ -55,7 +55,8 @@ export default function WriteReview({ barId, user }) {
     if (typeof user === 'undefined' || user.id === null) {
       dispatch(setLoginModal(true))
     } else if (overall['value'] < 1 || food['value'] < 1 || service < 1 || ambience < 1 || value < 1 || review.length < 1) {
-      alert('Please fill out all sections of the review to complete your posting.')
+      // alert('Please fill out all sections of the review to complete your posting.')
+      dispatch(setIncompleteModal(true));
     } else {
       const postReviewHere = async () => {
         await fetch(`/api/users/${user.id}/reviews/bar/${barId}`, {
@@ -75,7 +76,8 @@ export default function WriteReview({ barId, user }) {
       }
       postReviewHere()
   
-      alert('Thank you for your review!')
+      dispatch(setTextModal(true))
+      // alert('Thank you for your review!')
     }
   }
 
@@ -83,7 +85,8 @@ export default function WriteReview({ barId, user }) {
     e.preventDefault()
     // delete the old one
     if (overall['value'] < 1 || food['value'] < 1 || service < 1 || ambience < 1 || value < 1 || review.length < 1) {
-        alert('Please fill out all sections of the review to complete your posting.')
+      dispatch(setIncompleteModal(true));  
+      // alert('Please fill out all sections of the review to complete your posting.')
       } else {
         const editReviewHere = async () => {
           await fetch(`/api/users/${user.id}/reviews/${reviewId}`, {
@@ -103,7 +106,8 @@ export default function WriteReview({ barId, user }) {
           })
         }
         editReviewHere();
-        alert('Thank you for your review!');
+        dispatch(setTextModal(true))
+        // alert('Thank you for your review!');
       }
   }
 
@@ -116,6 +120,8 @@ export default function WriteReview({ barId, user }) {
         'Content-Type': 'application/json'
       }
     });
+
+    dispatch(setTextModal(true))
 
     // clear the stars and review box
     // reset the buttons

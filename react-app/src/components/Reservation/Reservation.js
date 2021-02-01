@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import './Reservation.css'
 import { getReservations } from '../../store/reservations'
 import Select from 'react-select'
-import { setLoginModal } from '../../store/modal'
+import { setLoginModal, setIncompleteModal, setTextModal } from '../../store/modal'
 
 function Reservation() {
     const dispatch = useDispatch();
@@ -51,7 +51,8 @@ function Reservation() {
         if (typeof user === 'undefined' || user === null || user.id === null) {
             dispatch(setLoginModal(true));
         } else if (value === undefined || people.value === undefined || time.label  === undefined) {
-            alert('Reservation incomplete. Please fill out all fields to make a reservation.')
+            // alert('Reservation incomplete. Please fill out all fields to make a reservation.')
+            dispatch(setIncompleteModal(true));
         } else {
             const month = value.getMonth() + 1;
             const day = value.getDate();
@@ -77,7 +78,8 @@ function Reservation() {
             setPeople({});
             setTime({ value: format(value, 'H') });
 
-            alert('Reservation Made! Thank you very much');
+            dispatch(setTextModal(true))
+            // alert('Reservation Made! Thank you very much');
 
             // dispatch(getReservations(bar.bar.id, user.id));
         }
