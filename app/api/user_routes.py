@@ -80,8 +80,18 @@ def add_favorite(userId, barId):
 #     db.session.commit()
 #     return {"id": work_id}, 200
 
+@user_routes.route('/<int:userId>/reviews/bar/<int:barId>', methods=['GET'])
+def getReview(userId, barId):
+    review = Review.query.filter(Review.userId == int(
+        userId)).filter(Review.barId == int(barId)).first()
+    if review == None:
+        return {"review": False}
+    else:
+        return {"review": review.to_dict()}
+
+
 @user_routes.route('/<int:userId>/reviews/bar/<int:barId>', methods=['POST'])
-def postReservation(userId, barId):
+def postReview(userId, barId):
     if request:
         data = request.get_json()
 
@@ -110,3 +120,46 @@ def postReservation(userId, barId):
             return {"message": "received, committed"}
         else:
             return {"message": "received, rejected"}
+
+
+@user_routes.route('/<int:userId>/reviews/<int:id>', methods=['DELETE'])
+def deleteReview(userId, id):
+    if request:
+        review = Review.query.filter_by(id=id).first()
+        if review:
+            db.session.delete(review)
+            db.session.commit()
+            return {"message": "deleted"}
+        else:
+            return {"message": "no such review?"}
+
+    return {"message": "request is false?"}
+
+
+@user_routes.route('/<int:userId>/reviews/<int:reviewId>', methods=["PATCH"])
+def updateReview(userId, reviewId):
+    if request:
+        review = Review.query.filter_by(id=reviewId).first()
+        if review:
+            data = request.get_json()
+
+            overall = int(data['overall']['value'])
+            food = int(data['food']['value'])
+            service = int(data['service']['value'])
+            ambience = int(data['ambience']['value'])
+            value = int(data['value']['value'])
+            reviewStr = str(data['review'])
+
+            review.overall = overall
+            review.food = food
+            review.service = service
+            review.ambience = ambience
+            review.value = value
+            review.review = reviewStr
+
+            db.session.commit()
+            return {"message": "updated"}
+        else:
+            return {"message": "no such review?"}
+
+    return {"message": "request is false?"}
