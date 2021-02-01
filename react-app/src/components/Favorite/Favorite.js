@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { addFavorite, deleteFavorite, fetchUserFavorites } from "../../store/favorites"
+import { setLoginModal } from '../../store/modal'
 
 function Favorite ({barId, user}) {
 
@@ -11,7 +12,7 @@ function Favorite ({barId, user}) {
       e.preventDefault();
 
       if (user.id === null) {
-        alert('Please Login or Signup to favorite a bar.')
+        dispatch(setLoginModal(true))
       } else {
         dispatch(addFavorite(parseInt(barId), parseInt(user.id)))
         alert('Thank you for favoriting!')

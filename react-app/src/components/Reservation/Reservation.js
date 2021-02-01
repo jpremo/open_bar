@@ -8,8 +8,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import './Reservation.css'
 import { getReservations } from '../../store/reservations'
 import Select from 'react-select'
+import { setLoginModal } from '../../store/modal'
 
 function Reservation() {
+    const dispatch = useDispatch();
+    
     const [value, onChange] = useState(new Date())
     const [people, setPeople] = useState({})
     const [time, setTime] = useState({ value: format(value, 'H') })
@@ -46,7 +49,7 @@ function Reservation() {
         e.preventDefault();
 
         if (typeof user === 'undefined' || user === null || user.id === null) {
-            alert('Please login (or signup!) to complete your reservation.')
+            dispatch(setLoginModal(true));
         } else if (value === undefined || people.value === undefined || time.label  === undefined) {
             alert('Reservation incomplete. Please fill out all fields to make a reservation.')
         } else {

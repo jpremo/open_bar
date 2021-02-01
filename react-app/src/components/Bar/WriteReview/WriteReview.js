@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import './writereview.css'
 import Select from 'react-select'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setLoginModal } from '../../../store/modal'
 
 export default function WriteReview({ barId, user }) {
+  const dispatch = useDispatch();
 
   const options = (category) => {
     return [
@@ -51,7 +53,7 @@ export default function WriteReview({ barId, user }) {
     e.preventDefault();
 
     if (typeof user === 'undefined' || user.id === null) {
-      alert('Please login or signup to leave a review!')
+      dispatch(setLoginModal(true))
     } else if (overall['value'] < 1 || food['value'] < 1 || service < 1 || ambience < 1 || value < 1 || review.length < 1) {
       alert('Please fill out all sections of the review to complete your posting.')
     } else {
