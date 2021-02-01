@@ -41,23 +41,3 @@ def reservation(barId, userId):
         Reservation.barId == barId).filter(Reservation.userId == userId).all()
 
     return jsonify([reservation.to_dict() for reservation in reservations])
-
-    # return request
-
-    # data = request.get_json()
-
-    # if data is None:
-    #     data = json.loads(request.data.decode('utf-8'))
-
-    # # if (data["userId"]):
-    # #     date_str = data['date'] + ' ' + data['time']
-    # #     format_str = '%m/%d/%Y %I:%M %p'  # The format
-    # #     print(date_str)
-    # #     datetime_obj = datetime.strptime(date_str, format_str)
-    # #     reservation = Reservation(partySize=int(data["partySize"]), userId=int(
-    # #         data["userId"]), barId=int(data["barId"]),
-    # #         time=datetime_obj, date=datetime_obj)
-    # #     db.session.add(reservation)
-    # #     db.session.commit()
-    #     return {"message": 'received'}
-    # return {'message': 'bad data'}

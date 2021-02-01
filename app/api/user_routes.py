@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify, session
+from flask import Blueprint, jsonify, session, request
 from flask_login import login_required
-from app.models import db, User, Bar
+from app.models import db, User, Bar, Review
 
 user_routes = Blueprint('users', __name__)
 
@@ -79,3 +79,34 @@ def add_favorite(userId, barId):
 #     work.users_saved.remove(user)
 #     db.session.commit()
 #     return {"id": work_id}, 200
+
+@user_routes.route('/<int:userId>/reviews/bar/<int:barId>', methods=['POST'])
+def postReservation(userId, barId):
+    if request:
+        data = request.get_json()
+
+        overall = int(data['overall']['value'])
+        food = int(data['food']['value'])
+        service = int(data['service']['value'])
+        ambience = int(data['ambience']['value'])
+        value = int(data['value']['value'])
+        review = str(data['review'])
+        barId = int(barId)
+        userId = int(userId)
+
+        if overall > 0 and food > 0 and service > 0 and ambience > 0 and value > 0 and len(review) > 0 and barId > 0 and userId > 0:
+            review = Review(
+                overall=overall,
+                food=food,
+                service=service,
+                ambience=ambience,
+                value=value,
+                review=review,
+                barId=barId,
+                userId=userId
+            )
+            db.session.add(review)
+            db.session.commit()
+            return {"message": "received, committed"}
+        else:
+            return {"message": "received, rejected"}

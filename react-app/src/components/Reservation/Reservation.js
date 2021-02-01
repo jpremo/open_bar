@@ -7,6 +7,7 @@ import '../SearchResults/SearchBar.css'
 import { useDispatch, useSelector } from 'react-redux'
 import './Reservation.css'
 import { getReservations } from '../../store/reservations'
+import Select from 'react-select'
 
 function Reservation() {
     const [value, onChange] = useState(new Date())

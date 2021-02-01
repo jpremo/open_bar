@@ -1,0 +1,37 @@
+#writereview_title {
+  /* margin-top: 1em; */
+}
+
+#writereview_container {
+  border-bottom: solid 1px grey;
+  border-top: solid 1px grey;
+  margin-top: 1em;
+  padding-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+#writereview_dropdown-container {
+  display: flex;
+}
+
+.writereview_dropdown-container-element {
+  width: 7.5em;
+}
+
+#writereview_textarea {
+  margin-top: 1em;
+  height: 10em;
+  width: 44.5em;
+}
+
+#writereview_post {
+  width: 30em;
+  color: white;
+  background-color: rgb(64, 150, 176);
+  border-color: rgb(64, 150, 176);
+  margin-top: 1em;
+  align-self: center;
+  padding: 0.5em;
+  margin-bottom: 0em;
+}

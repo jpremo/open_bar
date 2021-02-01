@@ -10,6 +10,7 @@ import Reviews from "./Reviews/Reviews"
 import { useParams } from 'react-router-dom'
 import { barDataDisplay } from '../../store/bars'
 import { clear } from '../../store/users'
+import WriteReview from "./WriteReview/WriteReview"
 
 function Bar () {
 
@@ -45,6 +46,9 @@ function Bar () {
           <div>
             <Photos props={typeof bar !== 'undefined' ? bar.images : null}/>
           </div>
+                      <div>
+              <WriteReview barId={barId} user={user}/>
+            </div>
           <div>
             <h3 className='BorderBottom' id='see-summary'>See Summary of Ratings of {typeof bar !== 'undefined' ? bar.reviews_summary_data.review_total : null} Bar-Goers </h3>
             <div>
