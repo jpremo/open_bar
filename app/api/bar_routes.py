@@ -1,9 +1,13 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from app.models import db, Bar, Review, User, Image
+import json
+
+from flask import Blueprint, jsonify
+
+
+
 
 bar_routes = Blueprint('bars', __name__)
-
-
 
 
 @bar_routes.route('/<int:barId>')
