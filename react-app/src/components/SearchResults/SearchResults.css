@@ -15,23 +15,15 @@
   top: 0;
 }
 
-#results-map-wrapper{
-  width: 50%;
-  height: 100vh;
-  position: relative;
-  min-width: 530px;
-}
 
 #main-content-wrapper{
     display: flex;
     width: 50%;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
     min-width: 530px;
     padding: 20px;
     box-sizing: border-box;
-    /* overflow: auto; */
 }
 
 .bar-box {

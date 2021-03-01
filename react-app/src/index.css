@@ -52,3 +52,8 @@ body{
 button{
     font-family: 'Times New Roman', Times, serif;
 }
+
+h1{
+    font-size: 24px;
+    font-weight: bold;
+}

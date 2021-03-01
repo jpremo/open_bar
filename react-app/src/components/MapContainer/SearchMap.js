@@ -21,8 +21,8 @@ const SearchMap = ({center, bars}) => {
 
 
   function logit() {
-    const list = document.querySelector('.list-box')
-    let x = -window.pageXOffset + list.clientWidth+55;
+    const list = document.querySelector('#main-content-wrapper')
+    let x = -window.pageXOffset + list.clientWidth+18;
     outerDiv.current.style.top = '90px'
     outerDiv.current.style.left = x + "px";
     outerDiv.current.style.position = 'fixed'
