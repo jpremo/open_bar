@@ -31,13 +31,12 @@ const PhotoUpload = ({ setter, value, defaultValue }) => {
         setCurrentImage(defaultValue)
     }
     return (
-        <div className='modal-form-div'>
-            <label>Profile Image</label>
+        <div className='photo-upload-wrapper'>
             <img className='profile-img-preview' src={currentImage} onError={imageErrorCheck} />
             <div className='photo-upload-buttons'>
-                <button onClick={openLink}>Link</button>
-                <button>Upload</button>
-                <button onClick={cancelChanges}>Cancel</button>
+                <button className={linkOpen ? 'photo-upload-button selected' : 'photo-upload-button'} onClick={openLink}><i class="fas fa-paperclip"></i></button>
+                <button className='photo-upload-button'><i class="fas fa-arrow-up"></i></button>
+                <button className={currentImage !== defaultValue ? 'photo-upload-button' : 'photo-upload-button disabled'} onClick={cancelChanges}><i class="fas fa-ban"></i></button>
             </div>
             {linkOpen &&
                 <>
@@ -48,7 +47,7 @@ const PhotoUpload = ({ setter, value, defaultValue }) => {
                         value={linkText}
                         placeholder='URL'
                     ></input>
-                    <button onClick={updateImage}>Link Image</button>
+                <button className='photo-upload-button' onClick={updateImage}>Change</button>
                 </>
             }
         </div>
