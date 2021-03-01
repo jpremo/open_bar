@@ -51,15 +51,12 @@ function App() {
         <Route path="/bars/create" exact={true}>
           <CreateBar />
         </Route>
-        <Route path="/bars/:barId" exact={true}> 
+        <Route path="/bars/:barId" exact={true}>
           <Bar />
         </Route>
         <Route path="/search" exact={true}>
           <SearchResults authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
-        <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-          <UserList/>
-        </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
           <UserProfile />
         </ProtectedRoute>

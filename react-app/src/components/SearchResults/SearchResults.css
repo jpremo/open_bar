@@ -96,6 +96,7 @@
   color: black;
   padding: 5px;
   user-select: none;
+  text-decoration: none;
 }
 
 .search-page-link:hover {
