@@ -33,7 +33,6 @@ const SearchMap = ({center, bars}) => {
     const hh = window.innerHeight - 99
     outerDiv.current.style.width = ww + 'px'
     outerDiv.current.style.height = hh + 'px';
-    debugger
     setMapStyles({
       width: ww + 'px',
       height: hh + 'px',
