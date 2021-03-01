@@ -41,22 +41,22 @@ const NavBar = ({ setAuthenticated }) => {
         <img id="nav-bar-logo-picture" src={picture} alt=''/>
       </NavLink>
       <div id="nav-bar-menu">
-        <NavLink to="/" exact={true} className="search-page-link" activeClassName="active">
+        <NavLink to="/" exact={true} className="search-page-link nav-link" activeClassName="active">
           Home
           </NavLink>
         {!user.id &&
         <>
-          <div to="/login" exact={true} onClick={openLogin} className="search-page-link" activeClassName="active">
+          <div to="/login" exact={true} onClick={openLogin} className="search-page-link nav-link" activeClassName="active">
           Login
           </div>
-          <div to="/sign-up" exact={true} onClick={openSignup} className="search-page-link" activeClassName="active">
+          <div to="/sign-up" exact={true} onClick={openSignup} className="search-page-link nav-link" activeClassName="active">
             Sign Up
           </div>
           </>
           }
 
         {user.id && <>
-          <NavLink to={`/users/${user.id}`} exact={true} className="search-page-link" activeClassName="active">
+          <NavLink to={`/users/${user.id}`} exact={true} className="search-page-link nav-link" activeClassName="active">
         Profile
         </NavLink>
         <LogoutButton setAuthenticated={setAuthenticated} />

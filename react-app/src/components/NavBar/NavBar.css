@@ -29,14 +29,7 @@
   /* width: 200%; */
   margin-right: 20px;
   padding: 5px;
-  color: black;
-  background-color: white;
-  border-radius: 10px;
-  border: 3px solid gray;
-  text-decoration: none;
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 16px;
-  cursor: pointer;
+  height: 20px;
 }
 
 
