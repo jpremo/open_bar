@@ -6,11 +6,11 @@ const SearchMap = ({center, bars}) => {
 
   const[selectedApt,setSelectedApt] = useState(null)
   const outerDiv = useRef();
+  const [mapStyles, setMapStyles] = useState({
+    width: String(Math.max(window.innerWidth * .5, 530) - 40) + 'px',
+    height: String(window.innerHeight - 102) + 'px',
+  })
 
-  let mapStyles = {
-    width: String(Math.max(window.innerWidth*.5, 530)-40)+'px',
-    height: String(window.innerHeight - 102)+'px',
-  };
   let defaultCenter = {lat: 40.7128, lng: -74.0060}
 
   if(center) {
@@ -19,24 +19,28 @@ const SearchMap = ({center, bars}) => {
     }
   }
 
-  const [scrollX, setScrollX] = useState(0);
 
   function logit() {
-    const ww = Math.max(window.innerWidth * .5, 530) - 40;
-    let x = -window.pageXOffset+ww;
+    const list = document.querySelector('.list-box')
+    let x = -window.pageXOffset + list.clientWidth+55;
+    outerDiv.current.style.top = '90px'
     outerDiv.current.style.left = x + "px";
     outerDiv.current.style.position = 'fixed'
   }
 
   const resizeWindow = () => {
-    const ww = Math.max(window.innerWidth * .5, 530) - 40;
-    const hh = window.innerHeight - 102
+    const ww = Math.max(window.innerWidth * .5, 530) - 60;
+    const hh = window.innerHeight - 99
     outerDiv.current.style.width = ww + 'px'
     outerDiv.current.style.height = hh + 'px';
-    mapStyles = {
+    debugger
+    setMapStyles({
       width: ww + 'px',
       height: hh + 'px',
-    };
+      border: '2px solid black',
+      borderRadius: '10px',
+      boxSizing: 'border-box'
+    })
     logit()
   }
 
