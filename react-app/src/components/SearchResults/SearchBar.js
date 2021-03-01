@@ -7,11 +7,18 @@ import { format } from 'date-fns'
 import { parse } from 'query-string'
 import './SearchBar.css'
 function SearchBar({ setLoaded, loaded, bus, loc }) {
+    const testDate = (value) => {
+        try{
+            return format(value, 'H')
+        } catch(e) {
+            return null
+        }
+    }
     const [searchBusiness, setSearchBusiness] = useState('')
     const [searchLocation, setSearchLocation] = useState('')
     const [value, onChange] = useState(new Date()); //for calendar
     const [people, setPeople] = useState({})
-    const [time, setTime] = useState({ value: format(value, 'H'), label:"defaulted" })
+    const [time, setTime] = useState({ value: testDate(value), label:"defaulted" })
     const history = useHistory()
     const location = useLocation()
     console.log(location)
