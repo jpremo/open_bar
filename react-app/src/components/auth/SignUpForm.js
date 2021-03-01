@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
 import { setLoginModal, setSignupModal } from '../../store/modal'
 import { useDispatch } from 'react-redux'
-
+import PhotoUpload from  '../PhotoUpload/PhotoUpload'
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
@@ -113,15 +113,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           value={email}
         ></input>
       </div>
-      <div className='modal-form-div'>
-        <label>Profile Image</label>
-        <input
-          type="text"
-          name="profileImg"
-          onChange={updateProfileImg}
-          value={profileImg}
-        ></input>
-      </div>
+      <PhotoUpload setter={setProfileImg} value={profileImg} defaultValue={''}/>
       <div className='modal-form-div'>
         <label>Password</label>
         <input

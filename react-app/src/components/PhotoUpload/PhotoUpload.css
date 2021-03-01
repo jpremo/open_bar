@@ -1,0 +1,17 @@
+.photo-upload-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.profile-img-preview{
+    width: 96px;
+    height: 96px;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+.photo-upload-buttons{
+    display: flex;
+}
