@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
 import { setLoginModal, setSignupModal } from '../../store/modal'
 import { useDispatch } from 'react-redux'
+import { setUser } from '../../store/session'
 import PhotoUpload from  '../PhotoUpload/PhotoUpload'
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [errors, setErrors] = useState([]);
@@ -30,6 +31,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
       if (!user.errors) {
         dispatch(setSignupModal(false))
         setAuthenticated(true);
+        dispatch(setUser(user))
       } else {
         setErrors(user.errors);
       }
