@@ -20,18 +20,9 @@ const PhotoUpload = ({ setter, value, defaultValue }) => {
         setCurrentImage(response.link)
     }
 
-    useEffect(() => {
-        if(file) {
-            //send to AWS
-
-            // upload()
-        }
-    }, [file])
-
     const attachFile = (e) => {
         let formData = new FormData();
         formData.append("photo", e.target.files[0], e.target.files[0].name);
-        debugger
         setFile(formData)
         upload(formData)
     }
@@ -51,6 +42,7 @@ const PhotoUpload = ({ setter, value, defaultValue }) => {
         e.preventDefault()
         setLinkOpen(!linkOpen)
     }
+
     const imageErrorCheck = (e) => {
         e.target.src = 'http://simpleicon.com/wp-content/uploads/user1.png'
     }
@@ -67,6 +59,7 @@ const PhotoUpload = ({ setter, value, defaultValue }) => {
         setter(defaultValue)
         setCurrentImage(defaultValue)
     }
+    
     return (
         <div className='photo-upload-wrapper'>
             <img className='profile-img-preview' src={currentImage} onError={imageErrorCheck} />
@@ -75,7 +68,6 @@ const PhotoUpload = ({ setter, value, defaultValue }) => {
                 <button className='photo-upload-button' onClick={openUpload}>
                     <i class="fas fa-arrow-up"></i>
                 </button>
-                <input type="file" onChange={attachFile} />
                 <button className={currentImage !== defaultValue ? 'photo-upload-button' : 'photo-upload-button disabled'} onClick={cancelChanges}><i class="fas fa-ban"></i></button>
             </div>
             {linkOpen &&

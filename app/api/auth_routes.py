@@ -64,7 +64,6 @@ def sign_up():
     form['csrf_token'].data = request.cookies['csrf_token']
     err = ''
     data = request.get_json()
-    print(data)
     if data['password'] != data['confirm_password']:
         err='password and confirm password must match'
     if form.validate_on_submit():

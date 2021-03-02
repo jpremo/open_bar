@@ -113,7 +113,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           value={email}
         ></input>
       </div>
-      <PhotoUpload setter={setProfileImg} value={profileImg} defaultValue={''}/>
+      <PhotoUpload setter={setProfileImg} value={profileImg} defaultValue={'http://simpleicon.com/wp-content/uploads/user1.png'}/>
       <div className='modal-form-div'>
         <label>Password</label>
         <input
