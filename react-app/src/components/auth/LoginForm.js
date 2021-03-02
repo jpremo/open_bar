@@ -62,7 +62,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         ))}
       </div>
       <div className='modal-form-div'>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Email/Username</label>
         <input
           name="email"
           type="text"
