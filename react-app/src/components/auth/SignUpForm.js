@@ -70,7 +70,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
 
     <form onSubmit={onSignUp}>
       <h1 className='modal-title'>Sign Up</h1>
-      <div>
+      <div className='modal-error-container'>
         {errors.map((error) => (
           <div>{error}</div>
         ))}
