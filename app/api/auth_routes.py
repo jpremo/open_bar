@@ -69,7 +69,7 @@ def sign_up():
     err = ''
     data = request.get_json()
     if data['password'] != data['confirm_password']:
-        err='password and confirm password must match'
+        err='Password and confirm password must match.'
     if form.validate_on_submit():
         if err == '':
             user = User(
@@ -85,9 +85,11 @@ def sign_up():
             login_user(user)
             return user.to_dict()
     errors = validation_errors_to_error_messages(form.errors)
+    error_msgs = [txt.split(': ')[1]
+                  for txt in validation_errors_to_error_messages(form.errors)]
     if err:
-        errors.append(err)
-    return {'errors': errors}
+        error_msgs.append(err)
+    return {'errors': error_msgs}, 401
 
 
 @auth_routes.route('/unauthorized')
