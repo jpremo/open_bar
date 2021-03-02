@@ -1,24 +1,35 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import login_required
 from app.models import db, User, Bar, Review
-
-# AWS Initialization
-BUCKET_NAME = os.environ.get('BUCKET_NAME')
-KEY_ID = os.environ.get('AWS_KEY_ID')
-SECRET_KEY_ID = os.environ.get('AWS_SECRET_KEY')
-s3 = boto3.client('s3',
-                  aws_access_key_id=KEY_ID,
-                  aws_secret_access_key=SECRET_KEY_ID
-                  )
+import boto3
+import os
+import uuid
 
 user_routes = Blueprint('users', __name__)
 
 
-@user_routes.route('/')
-@login_required
-def users():
-    users = User.query.all()
-    return {"users": [user.to_dict() for user in users]}
+# @user_routes.route('/')
+# @login_required
+# def users():
+#     users = User.query.all()
+#     return {"users": [user.to_dict() for user in users]}
+
+
+@user_routes.route('/photos', methods=['POST'])
+def photo_upload():
+    # AWS Initialization
+    BUCKET_NAME = os.environ.get('BUCKET_NAME')
+    KEY_ID = os.environ.get('AWS_KEY_ID')
+    SECRET_KEY_ID = os.environ.get('AWS_SECRET_KEY')
+    s3 = boto3.client('s3',
+                      aws_access_key_id=KEY_ID,
+                      aws_secret_access_key=SECRET_KEY_ID
+                      )
+    data = request.get_json(force=True)
+    fileData = data['file']
+    uni = str(uuid.uuid4())
+    print(data)
+    return {"link": "https://images.dog.ceo/breeds/hound-walker/n02089867_454.jpg"}
 
 
 @user_routes.route('/<int:id>')
