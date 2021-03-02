@@ -2,6 +2,15 @@ from flask import Blueprint, jsonify, session, request
 from flask_login import login_required
 from app.models import db, User, Bar, Review
 
+# AWS Initialization
+BUCKET_NAME = os.environ.get('BUCKET_NAME')
+KEY_ID = os.environ.get('AWS_KEY_ID')
+SECRET_KEY_ID = os.environ.get('AWS_SECRET_KEY')
+s3 = boto3.client('s3',
+                  aws_access_key_id=KEY_ID,
+                  aws_secret_access_key=SECRET_KEY_ID
+                  )
+
 user_routes = Blueprint('users', __name__)
 
 
@@ -141,4 +150,3 @@ def updateReview(userId, reviewId):
             return {"message": "no such review?"}
 
     return {"message": "request is false?"}
-
