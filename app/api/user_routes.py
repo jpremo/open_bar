@@ -21,15 +21,23 @@ def photo_upload():
     BUCKET_NAME = os.environ.get('BUCKET_NAME')
     KEY_ID = os.environ.get('AWS_KEY_ID')
     SECRET_KEY_ID = os.environ.get('AWS_SECRET_KEY')
-    s3 = boto3.client('s3',
-                      aws_access_key_id=KEY_ID,
-                      aws_secret_access_key=SECRET_KEY_ID
-                      )
-    data = request.get_json(force=True)
-    fileData = data['file']
+    # s3 = boto3.client('s3',
+    #                   aws_access_key_id=KEY_ID,
+    #                   aws_secret_access_key=SECRET_KEY_ID
+    #                   )
+    s3_resource = boto3.resource(
+        's3',
+        aws_access_key_id=KEY_ID,
+        aws_secret_access_key=SECRET_KEY_ID)
+
+    bucket = s3_resource.Bucket(BUCKET_NAME)
+    data = request.files
+    data = data.to_dict()
+    photo = data['photo']
     uni = str(uuid.uuid4())
-    print(data)
-    return {"link": "https://images.dog.ceo/breeds/hound-walker/n02089867_454.jpg"}
+    unique_filename = 'app-data/' + uni + '.' + photo.filename.split('.')[1]
+    bucket.Object(unique_filename).put(Body=photo.read())
+    return {"link": f"https://{BUCKET_NAME}.s3.amazonaws.com/{unique_filename}"}
 
 
 @user_routes.route('/<int:id>')

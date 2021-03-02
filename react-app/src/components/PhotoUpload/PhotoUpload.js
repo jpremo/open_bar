@@ -9,28 +9,31 @@ const PhotoUpload = ({ setter, value, defaultValue }) => {
     const [linkText, setLinkText] = useState('')
     const [file, setFile] = useState('')
 
+    const upload = async (file) => {
+        let response = await fetch(`/api/users/photos`, {
+            method: "POST",
+            body: file
+        })
+
+        response = await response.json()
+        setter(response.link)
+        setCurrentImage(response.link)
+    }
+
     useEffect(() => {
         if(file) {
             //send to AWS
-            const upload = async () => {
-                let response = await fetch(`/api/users/photos`, {
-                    method: "POST",
-                    header: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ file })
-                })
 
-                response = await response.json()
-                setter(response.link)
-                setCurrentImage(response.link)
-            }
-            upload()
+            // upload()
         }
     }, [file])
 
     const attachFile = (e) => {
-        setFile(e.target.files[0])
+        let formData = new FormData();
+        formData.append("photo", e.target.files[0], e.target.files[0].name);
+        debugger
+        setFile(formData)
+        upload(formData)
     }
 
     const openUpload = (e) => {
