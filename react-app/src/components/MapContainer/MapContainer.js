@@ -23,15 +23,12 @@ const MapContainer = ({ props }) => {
   }
 
   return (
-     <LoadScript
-       googleMapsApiKey='AIzaSyBB_qz7gdLnQ9rBYBbQafFjWqx7gyIIJVI'>
         <GoogleMap
           mapContainerStyle={mapStyles}
           zoom={13}
           center={defaultCenter}>
           { props !== null ? <Marker position={{lat: props.latitude, lng: props.longitude}} /> : null}
        </GoogleMap>
-     </LoadScript>
   )
 }
 

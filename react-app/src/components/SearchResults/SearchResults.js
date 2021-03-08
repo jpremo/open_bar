@@ -36,6 +36,7 @@ function SearchResults() {
         })
         user.futureReservations = futureReservations;
     }
+  console.log(process.env.REACT_APP_GOOGLE_API_KEY);
 
     const history = useHistory()
     const locLoc = location.search.indexOf('location=') + 9
