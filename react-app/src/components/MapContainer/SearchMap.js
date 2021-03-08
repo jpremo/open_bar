@@ -1,17 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import { GoogleMap, LoadScript, Marker} from '@react-google-maps/api';
 import {useSelector} from 'react-redux'
 
 const SearchMap = ({center, bars}) => {
 
   const[selectedApt,setSelectedApt] = useState(null)
+  const outerDiv = useRef();
+  const [mapStyles, setMapStyles] = useState({
+    width: String(Math.max(window.innerWidth * .5, 530) - 40) + 'px',
+    height: String(window.innerHeight - 102) + 'px',
+  })
 
-
-  let mapStyles = {
-    width: '35vw',
-    height: '70vh',
-    // border-radius: '25px'
-  };
   let defaultCenter = {lat: 40.7128, lng: -74.0060}
 
   if(center) {
@@ -20,7 +19,49 @@ const SearchMap = ({center, bars}) => {
     }
   }
 
+
+  function logit() {
+    const list = document.querySelector('#main-content-wrapper')
+    let x = -window.pageXOffset + list.clientWidth+18;
+    outerDiv.current.style.top = '90px'
+    outerDiv.current.style.left = x + "px";
+    outerDiv.current.style.position = 'fixed'
+  }
+
+  const resizeWindow = () => {
+    const ww = Math.max(window.innerWidth * .5, 530) - 60;
+    const hh = window.innerHeight - 99
+    outerDiv.current.style.width = ww + 'px'
+    outerDiv.current.style.height = hh + 'px';
+    setMapStyles({
+      width: ww + 'px',
+      height: hh + 'px',
+      border: '2px solid black',
+      borderRadius: '10px',
+      boxSizing: 'border-box'
+    })
+    logit()
+  }
+
+  useEffect(() => {
+    function watchScroll() {
+      window.addEventListener("scroll", logit);
+      window.addEventListener("resize", resizeWindow);
+    }
+    watchScroll();
+    return () => {
+      window.removeEventListener("scroll", logit);
+      window.removeEventListener("resize", resizeWindow);
+    };
+  });
+
+  useEffect(() => {
+    resizeWindow()
+    logit()
+  }, [])
+
   return (
+    <div className='map-outer-div' ref={outerDiv}>
      <LoadScript
        googleMapsApiKey='AIzaSyBB_qz7gdLnQ9rBYBbQafFjWqx7gyIIJVI'>
         <GoogleMap
@@ -34,6 +75,7 @@ const SearchMap = ({center, bars}) => {
             })}
        </GoogleMap>
      </LoadScript>
+    </div>
   )
 }
 

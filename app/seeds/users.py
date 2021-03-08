@@ -11,7 +11,7 @@ def seed_all():
         data = json.load(f)
 
     demo = User(username='Demo', email='demo@aa.io',
-                password='password', firstName='Demo', lastName='User')
+                password='password', firstName='Demo', lastName='User', profileImg='https://www.thecocktaildb.com/images/media/drink/4n1ipk1614009624.jpg')
 
     owner = User(username='businessOwner', email='test@loc.com',
                 password='fdoasnfsadfmkfa', firstName='Business', lastName='Owner')

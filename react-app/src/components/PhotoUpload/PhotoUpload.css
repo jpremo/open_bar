@@ -1,0 +1,59 @@
+.photo-upload-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin: 5px;
+}
+
+.profile-img-preview {
+  width: 96px;
+  height: 96px;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+.photo-upload-buttons {
+  display: flex;
+  margin: 3px;
+}
+
+.photo-upload-button {
+  margin: 5px;
+  font-size: 18px;
+  color: rgb(192, 192, 192);
+  background-color: rgb(11, 75, 128);
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  user-select: none;
+  min-width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-upload-button:focus{
+    outline:none;
+}
+
+.photo-upload-button:hover:not(.disabled) {
+  box-shadow: 2px 2px black;
+  color: white;
+  cursor: pointer;
+}
+
+.disabled{
+    background-color: rgb(97, 97, 97);
+}
+
+.selected{
+    background-color: rgb(16, 86, 144);
+    border: 1px solid white;
+    color: white;
+}
+
+input[type="file"] {
+    font-family: FontAwesome;
+    background-image: '\f002';
+}

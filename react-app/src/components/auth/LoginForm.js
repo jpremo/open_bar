@@ -56,13 +56,13 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   return (
     <form onSubmit={onLogin}>
       <h1 className='modal-title'>Log In</h1>
-      <div>
+      <div className='modal-error-container'>
         {errors.map((error) => (
           <div>{error}</div>
         ))}
       </div>
       <div className='modal-form-div'>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Email/Username</label>
         <input
           name="email"
           type="text"

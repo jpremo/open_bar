@@ -2,8 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
+  position: fixed;
   top: 0;
+  height: 81px;
   background-color: rgb(220, 217, 217);
   width: 100%;
   z-index: 100;
@@ -29,14 +30,7 @@
   /* width: 200%; */
   margin-right: 20px;
   padding: 5px;
-  color: black;
-  background-color: white;
-  border-radius: 10px;
-  border: 3px solid gray;
-  text-decoration: none;
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 16px;
-  cursor: pointer;
+  height: 20px;
 }
 
 
@@ -48,6 +42,9 @@
   border: 2px solid black;
   border-radius: 10px;
   z-index: 100;
+  max-height: 90%;
+  max-width: 90%;
+  overflow: auto;
 }
 
 .modal-box-wrapper{
@@ -80,6 +77,15 @@
   cursor: pointer;
 }
 
+.modal-error-container{
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
 .modal-button-box{
   display: flex;
   justify-content: center;
@@ -96,6 +102,17 @@
 .modal-button{
   color: rgb(192, 192, 192);
   background-color: rgb(11, 75, 128);
+}
+
+.side-align {
+  display: flex;
+}
+
+.side-align div:nth-child(1) {
+  padding-right:20px;
+}
+.modal-photo-container{
+  margin: 20px;
 }
 
 .hidden{

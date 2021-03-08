@@ -1,15 +1,43 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import login_required
 from app.models import db, User, Bar, Review
+import boto3
+import os
+import uuid
 
 user_routes = Blueprint('users', __name__)
 
 
-@user_routes.route('/')
-@login_required
-def users():
-    users = User.query.all()
-    return {"users": [user.to_dict() for user in users]}
+# @user_routes.route('/')
+# @login_required
+# def users():
+#     users = User.query.all()
+#     return {"users": [user.to_dict() for user in users]}
+
+
+@user_routes.route('/photos', methods=['POST'])
+def photo_upload():
+    # AWS Initialization
+    BUCKET_NAME = os.environ.get('BUCKET_NAME')
+    KEY_ID = os.environ.get('AWS_KEY_ID')
+    SECRET_KEY_ID = os.environ.get('AWS_SECRET_KEY')
+    # s3 = boto3.client('s3',
+    #                   aws_access_key_id=KEY_ID,
+    #                   aws_secret_access_key=SECRET_KEY_ID
+    #                   )
+    s3_resource = boto3.resource(
+        's3',
+        aws_access_key_id=KEY_ID,
+        aws_secret_access_key=SECRET_KEY_ID)
+
+    bucket = s3_resource.Bucket(BUCKET_NAME)
+    data = request.files
+    data = data.to_dict()
+    photo = data['photo']
+    uni = str(uuid.uuid4())
+    unique_filename = 'app-data/' + uni + '.' + photo.filename.split('.')[1]
+    bucket.Object(unique_filename).put(Body=photo.read())
+    return {"link": f"https://{BUCKET_NAME}.s3.amazonaws.com/{unique_filename}"}
 
 
 @user_routes.route('/<int:id>')
@@ -141,4 +169,3 @@ def updateReview(userId, reviewId):
             return {"message": "no such review?"}
 
     return {"message": "request is false?"}
-

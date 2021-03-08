@@ -3,6 +3,7 @@ from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
+from sqlalchemy import or_
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -40,10 +41,13 @@ def login():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
-        user = User.query.filter(User.email == form.data['email']).first()
+        user = User.query.filter(or_(
+            User.email == form.data['email'], User.username == form.data['email'])).first()
         login_user(user)
         return user.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    error_msgs = [txt.split(': ')[1]
+                  for txt in validation_errors_to_error_messages(form.errors)]
+    return {'errors': error_msgs}, 401
 
 
 @auth_routes.route('/logout')
@@ -64,9 +68,8 @@ def sign_up():
     form['csrf_token'].data = request.cookies['csrf_token']
     err = ''
     data = request.get_json()
-    print(data)
     if data['password'] != data['confirm_password']:
-        err='password and confirm password must match'
+        err='Password and confirm password must match.'
     if form.validate_on_submit():
         if err == '':
             user = User(
@@ -82,9 +85,11 @@ def sign_up():
             login_user(user)
             return user.to_dict()
     errors = validation_errors_to_error_messages(form.errors)
+    error_msgs = [txt.split(': ')[1]
+                  for txt in validation_errors_to_error_messages(form.errors)]
     if err:
-        errors.append(err)
-    return {'errors': errors}
+        error_msgs.append(err)
+    return {'errors': error_msgs}, 401
 
 
 @auth_routes.route('/unauthorized')

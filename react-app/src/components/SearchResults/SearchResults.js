@@ -7,37 +7,41 @@ import { searchBusinesses, clearSearchInfo } from '../../store/bars'
 import SearchMap from '../MapContainer/SearchMap'
 import SearchBar from './SearchBar'
 import { useHistory } from 'react-router-dom';
-import {isFuture} from 'date-fns'
+import { isFuture } from 'date-fns'
 function SearchResults() {
     const location = useLocation()
     const [loaded, setLoaded] = useState(false)
     const [page, setPage] = useState(1)
     const dispatch = useDispatch()
+    useEffect(() => {
+        (async () => {
+            if (!location.search.includes('location=') || !location.search.includes('business=')) {
+                history.push(`/search/?business=&location=`)
+            } else {
+                await dispatch(clearSearchInfo())
+                await dispatch(searchBusinesses(url, loc, user.id))
+            }
+            setLoaded(true)
+        })();
+    }, [dispatch, loaded])
     let user = useSelector(state => state.session.user)
     let results = useSelector(state => state.bars.searchResults)
     let center = useSelector(state => state.bars.searchCenter)
-    if(user && user.reservations){
+    if (user && user.reservations) {
         let futureReservations = user.reservations.filter((res) => {
             const dateArr = res.date.split('-')
-            // console.log(dateArr)
             const arr = res.time.split(':')
-            const date = new Date(Number(dateArr[0]), Number(dateArr[1])-1, Number(dateArr[2]), Number(arr[0]), Number(arr[1]), 0, 0)
-            // const currentDate = new Date()
-            // console.log('date', date)
-            // console.log('current date', currentDate)
-            // console.log('time', time)
+            const date = new Date(Number(dateArr[0]), Number(dateArr[1]) - 1, Number(dateArr[2]), Number(arr[0]), Number(arr[1]), 0, 0)
             return isFuture(date)
         })
         user.futureReservations = futureReservations;
     }
-    console.log(user)
-    // console.log('future', futureReservations)
-    // console.log('state', user)
+
     const history = useHistory()
     const locLoc = location.search.indexOf('location=') + 9
     const loc = location.search.slice(locLoc).split('%20').join(' ')
     const busLoc = location.search.indexOf('business=') + 9
-    const bus = location.search.slice(busLoc, locLoc-10).split('%20').join(' ')
+    const bus = location.search.slice(busLoc, locLoc - 10).split('%20').join(' ')
     const url = `/api/search/${location.search}`
 
     const pageBar = (resultNumber, currentPage) => {
@@ -87,36 +91,27 @@ function SearchResults() {
         if (totalPages === 0) return (<h1>There are no results for this search!</h1>)
     }
 
-    useEffect(() => {
-        (async () => {
-            if (!location.search.includes('location=') || !location.search.includes('business=')) {
-                history.push(`/search/?business=&location=`)
-            } else {
-                await dispatch(clearSearchInfo())
-                await dispatch(searchBusinesses(url, loc, user.id))
-            }
-            setLoaded(true)
-
-        })();
-    }, [dispatch, loaded])
     if (loaded) {
         let pageContent = []
         let resultCount = 0
         if (results) {
             pageContent = results.slice((page - 1) * 10, page * 10);
             resultCount = results.length;
+        } else {
+            pageContent = []
+            resultCount = 1
         }
         return (
-            <div id="results-wrapper">
-                <SearchBar setLoaded={setLoaded} loaded={loaded} bus={bus} loc={loc}/>
-                    <div id="google-map-container" className='search-results-map'>
-                        <SearchMap center={center} bars={pageContent}/>
+            <div id='results-outer-wrapper'>
+                <div id="results-wrapper">
+                    <div id='main-content-wrapper'>
+                        <SearchBar setLoaded={setLoaded} loaded={loaded} bus={bus} loc={loc} />
+                        <BarList barList={pageContent} user={user} />
+                        <div id='page-bar-wrapper'>
+                            {pageBar(resultCount, page)}
+                        </div>
                     </div>
-                <div id='main-content-wrapper'>
-                    <BarList barList={pageContent} user={user}/>
-                    <div id='page-bar-wrapper'>
-                        {pageBar(resultCount, page)}
-                    </div>
+                    <SearchMap center={center} bars={pageContent} />
                 </div>
             </div>
         )
