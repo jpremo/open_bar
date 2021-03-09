@@ -33,7 +33,6 @@ const FavoriteCards = ({ userFav, hidden, params }) => {
                     onClick={handleSubmit}>unfavorite</button>
                 {!userFav && <p>user does not have favorites yet</p>}
                 {userFav && <BarBox bar={userFav} /> }
-                
             </div>
         </>
     )

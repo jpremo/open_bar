@@ -67,9 +67,9 @@ function User() {
                         </div>
                     </NavLink>
                 </div>
-            </div>
-            <div>
+            <div id="below-intro">
                 <Favorites sessionUser={userState} params={userId} />
+            </div>
             </div>
 
         </>

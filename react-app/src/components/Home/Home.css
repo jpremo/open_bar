@@ -128,22 +128,20 @@
   width: auto;
   align-items: flex-end;
 }
+
 .home-list-box {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 15px;
   margin-right: 50px;
-  
-  
 }
 
 #info-bar-box {
-  width: 250px;
+
   height: 75px;
   border-radius: 5px;
   margin-left: 10px;
- 
 }
 
 #info-bar-box h1 {
@@ -153,6 +151,5 @@
   width: 200px;
   color: black;
   background: white;
-  
 }
 
