@@ -66,7 +66,7 @@ const Favorites = ({ sessionUser, params }) => {
     return (
         <>
             <div id="favorite-container">
-                <h4>Users FAVORITES</h4>
+                <h1>Users FAVORITES</h1>
                 <div id="cards">
                     {!userFavorites && <p>Loading...</p>}
                     {userFavorites && userFavorites.map(userFav => {

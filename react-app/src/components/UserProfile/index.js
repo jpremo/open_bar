@@ -10,6 +10,7 @@ import "./index.css"
 
 function User() {
     const [user, setUser] = useState({});
+    const [reviews, setReviews] = useState({})
     // Notice we use useParams here instead of getting the params
     // From props.
     const { userId } = useParams();
@@ -18,19 +19,24 @@ function User() {
         if (!userId) {
             return
         }
+
         (async () => {
             const response = await fetch(`/api/users/${userId}`);
             const user = await response.json();
             setUser(user);
+        })();
+
+        (async () => {
+            const response = await fetch(`/api/users/${userId}/reviews/get`);
+            const reviews = await response.json();
+            setReviews(reviews)
         })();
     }, [userId]);
 
     const userState = useSelector(state => state.session.user)
 
     const sessId = userState.id
-    console.log(userId)
-
-    console.log(sessId)
+    console.log(reviews)
 
     let isUserProfile
 

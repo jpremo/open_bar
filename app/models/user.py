@@ -49,7 +49,8 @@ class User(db.Model, UserMixin):
             "profileImg": self.profileImg,
             "email": self.email,
             "favoriteBars": nums,
-            "reservations": res
+            "reservations": res,
+            "reviews": self.reviews
         }
 
     def to_dict_essentials(self):
