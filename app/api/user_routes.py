@@ -96,12 +96,11 @@ def getReview(userId, barId):
         return {"review": review.to_dict()}
 
 
-#User Reviews
-# @user_routes.route('/<int:userId>/reviews/get', methods=['GET'])
-# def getUserReviews(userId):
-#     user = User.query.get(int(userId))
-#     reviews = user.to_dict()["reviews"]
-#     return {"reviews": reviews}
+@user_routes.route('/<int:userId>/userReviews', methods=['GET'])
+def getUserReviews(userId):
+    user = User.query.get(int(userId))
+    reviews = user.to_dict()["reviews"]
+    return {"reviews": reviews}
 
 
 

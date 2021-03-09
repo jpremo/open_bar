@@ -27,7 +27,7 @@ function User() {
         })();
 
         (async () => {
-            const response = await fetch(`/api/users/${userId}/reviews/get`);
+            const response = await fetch(`/api/users/${userId}/userReviews`);
             const reviews = await response.json();
             setReviews(reviews)
         })();
