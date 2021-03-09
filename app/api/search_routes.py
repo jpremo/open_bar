@@ -170,12 +170,15 @@ def popular():
 
     search_results = Bar.query.join(Review).join(Image).group_by(
         Bar.id).order_by(db.func.count(Review.id).desc()).limit(5).all()
+
     winery = Bar.query.join(Review).join(
         Image).filter(Bar.name.ilike("%wine%")).all()
     winery = winery[0:5]
+
     brewery = Bar.query.join(Review).join(
         Image).filter(Bar.name.ilike("%brew%")).all()
     brewery = brewery[0:5]
+    
     search_results = list(map(parse_results, search_results))
     winery_results = list(map(parse_results, winery))
     brewery_results = list(map(parse_results, brewery))
