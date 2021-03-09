@@ -6,6 +6,7 @@ import SearchBar from "../SearchResults/SearchBar"
 import {homeDisplayBussinesses} from '../../store/bars'
 import "./Home.css"
 import BarList from '../Home/BarList'
+import Footer from '../Footer'
 
 function Home() {
 
@@ -52,7 +53,7 @@ function Home() {
                 </div>
             
             </div>
-            <div id="footer"></div>
+           <Footer/>
         </div>
     )
 }
