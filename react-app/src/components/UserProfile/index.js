@@ -54,11 +54,11 @@ function User() {
                         <h5>{`Username: ${user.username}`}</h5>
                     </div>
                 </div>
-                <div id="create-bar-button">
-                    <NavLink to={`/bars/create`}>
+                <NavLink to={`/bars/create`}>
+                    <div id="create-bar-button">
                         <h4>Own a Bar?</h4>
-                    </NavLink>
-                </div>
+                    </div>
+                </NavLink>
             </div>
             <div>
                 <Favorites sessionUser={userState} params={userId} />

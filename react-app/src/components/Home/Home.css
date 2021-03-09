@@ -112,9 +112,12 @@
 
 .bar-box-home  {
   background:white;
-   box-shadow: 2px 2px grey;
+   /* box-shadow: 2px 2px grey; */
   border-radius: 5px;
-  
+}
+
+.bar-box-home:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
 }
 
 

@@ -11,6 +11,9 @@
     padding: 10px;
 }
 
+#user-profile-container a{
+text-decoration: none;
+}
 
 #user-info-text {
     padding-left: 25px;
@@ -24,24 +27,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(255, 189, 35);
+    background-color: rgba(8, 59, 102, 0.7);
     border-radius: 10px;
-    color:white;
-    
 }
 
-
-#create-bar-button a {
+#create-bar-button h4 {
     text-decoration: none;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: large;
-    color: black;
+    color: white;
 }
 
-#create-bar-button a:hover {
-    
+#create-bar-button h4:hover {
     color: rgb(255, 255, 255)
 }
+
 #create-bar-button:hover {
     color: rgb(200, 140, 0);
 }
