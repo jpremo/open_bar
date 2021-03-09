@@ -51,20 +51,22 @@ function User() {
     return (
         <>
             <div id="user-profile-container">
-                <div id="img-box">
-                    <img alt="nope" src={user.profileImg} />
-                </div>
-                <div id="user-info-box">
-                    <div id="user-info-text">
-                        <h3>{`${user.firstName} ${user.lastName}`}</h3>
-                        <h5>{`Username: ${user.username}`}</h5>
+                <div id="user-intro">
+                    <div id="img-box">
+                        <img alt="nope" src={user.profileImg} />
                     </div>
-                </div>
-                <NavLink to={`/bars/create`}>
-                    <div id="create-bar-button">
-                        <h4>Own a Bar?</h4>
+                    <div id="user-info-box">
+                        <div id="user-info-text">
+                            <h3>{`${user.firstName} ${user.lastName}`}</h3>
+                            <h5>{`Username: ${user.username}`}</h5>
+                        </div>
                     </div>
-                </NavLink>
+                    <NavLink to={`/bars/create`}>
+                        <div id="create-bar-button">
+                            <h4>Own a Bar?</h4>
+                        </div>
+                    </NavLink>
+                </div>
             </div>
             <div>
                 <Favorites sessionUser={userState} params={userId} />

@@ -6,6 +6,15 @@
     margin: 0;
 }
 
+#user-profile-container #user-intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    width: 100%;
+    min-height: 175px;
+}
+
 #user-profile-container img{
     height: 200px;
     padding: 10px;
