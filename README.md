@@ -1,4 +1,4 @@
-# Learn2Cook
+# OpenBar
 
 Open Bar is a collaboratively developed clone of Open Table focused on the niche of reserving bar seats. Users are able to create a bar, write reviews, search for bars, and make reservations for a party size of their choosing. Open Bar was built using a Flask / Postgres / SQLAlchemy backend along with a React/Redux frontend. Mapping functionality was incorporated using the Google Maps API.
 
@@ -8,10 +8,10 @@ More information can be found on this project at it's [Wiki](https://github.com/
 <br />
 <p align="center">
   <a href="https://github.com/jpremo/open_bar">
-    <img src="images/logo2.png" alt="Logo" width="195" height="75">
+    <img src="images/logo2.png" alt="Logo" width="195" height="195">
   </a>
 
-  <h3 align="center">Learn2Cook</h3>
+  <h3 align="center">OpenBar</h3>
 
   <p align="center">
     Reserve Seats At Your Favorite Bar
@@ -57,9 +57,7 @@ More information can be found on this project at it's [Wiki](https://github.com/
 
 ## About The Project
 
-A full stack application that draws inspiration from New York Times Cooking and Netflix.
-
-As more and more people are learning to be more experimental in their culinary prowess, there should be a website that is dedicated to those who are just starting out to learn. Users can look at recipes, read and leave reviews, as well as favoriting what they love to make, for easier access to them!
+A full stack application that draws inspiration from OpenTable.com
 
 <br><br/>
 
@@ -183,7 +181,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
    ```bash
-   git clone https://github.com/nikhilmenon2/Learn2Cook
+   git clone https://github.com/jpremo/open_bar
    ```
 2. Install NPM packages in /reactapp folder
    ```bash
@@ -244,6 +242,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Email - nikhilmenon@comcast.net
+Authors: Nick Menon, Jacob Premo, Chris Read, Erick Bravo
 
-Project Link: [GitHub Project Link](https://github.com/nikhilmenon2/Learn2Cook)
+Project Link: [GitHub Project Link](https://github.com/jpremo/open_bar)
