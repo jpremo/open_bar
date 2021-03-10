@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCreateBarModal } from "../../../store/modal"
 import "./index.css"
 
 
@@ -9,7 +10,8 @@ import "./index.css"
 
 const CreateBar = () => {
     // const { userId } = useParams()
-    const history = useHistory()
+    const history = useHistory();
+    const dispatch = useDispatch();
 
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
@@ -65,18 +67,18 @@ const CreateBar = () => {
         }
         const tt = window.tt
 
-       
-            let loc = await tt.services.fuzzySearch({
-                key: 'g0ZS3ih3olA15iG2cSglfY1YrEJO8DKR',
-                query: `${formInfo.street} ${formInfo.state} ${formInfo.zipcode}`
-            }).go()
 
-            formInfo.longitude = loc.results[0].position.lng
-            formInfo.latitude = loc.results[0].position.lat
-           
-            //defaulting to new york
-            // coordString = '-73.93,40.73'
-    
+        let loc = await tt.services.fuzzySearch({
+            key: 'g0ZS3ih3olA15iG2cSglfY1YrEJO8DKR',
+            query: `${formInfo.street} ${formInfo.state} ${formInfo.zipcode}`
+        }).go()
+
+        formInfo.longitude = loc.results[0].position.lng
+        formInfo.latitude = loc.results[0].position.lat
+
+        //defaulting to new york
+        // coordString = '-73.93,40.73'
+
         let newBar = await fetch("/api/bars/create", {
             method: "POST",
             header: {
@@ -97,6 +99,9 @@ const CreateBar = () => {
         setZipcode(0)
     }
 
+    const cancel = (e) => {
+        dispatch(setCreateBarModal(false))
+    }
 
 
 
@@ -128,6 +133,7 @@ const CreateBar = () => {
                 <input type="text" name="bannerImg" placeholder="Input banner image url"
                     onChange={(e) => setBannerImg(e.target.value)} value={bannerImg} />
                 <button type="submit">Create bar</button>
+                <div className='modal-link modal-button' onClick={cancel}> Close</div>
             </form>
         </div>
 

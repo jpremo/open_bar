@@ -40,7 +40,7 @@ function User() {
     const userState = useSelector(state => state.session.user)
 
     const sessId = userState.id
-
+  
     let isUserProfile
 
     if (userId === sessId) {
@@ -62,6 +62,8 @@ function User() {
           // alert('Thank you for favoriting!')
         }
     }
+
+
 
     return (
         <>
