@@ -37,7 +37,8 @@ function User() {
     const userState = useSelector(state => state.session.user)
 
     const sessId = userState.id
-    console.log(reviews)
+    console.log(reviews.reviews)
+    console.log(user)
 
     let isUserProfile
 
@@ -69,7 +70,7 @@ function User() {
                     </NavLink>
                 </div>
                     <Favorites sessionUser={userState} params={userId} />
-                    <UserReviews />
+                    {reviews && <UserReviews reviews={reviews.reviews} user={user} />}
             </div>
 
         </>
