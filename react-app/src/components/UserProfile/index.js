@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import Favorites from "./Favorites"
+import UserReviews from "./UserReviews"
 
 import "./index.css"
 
@@ -67,9 +68,8 @@ function User() {
                         </div>
                     </NavLink>
                 </div>
-            <div id="below-intro">
-                <Favorites sessionUser={userState} params={userId} />
-            </div>
+                    <Favorites sessionUser={userState} params={userId} />
+                    <UserReviews />
             </div>
 
         </>
