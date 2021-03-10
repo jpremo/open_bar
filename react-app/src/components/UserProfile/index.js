@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLoginModal, setCreateBarModal } from "../../store/modal"
 import Favorites from "./Favorites"
 import UserReviews from "./UserReviews"
 
@@ -10,6 +11,8 @@ import "./index.css"
 
 
 function User() {
+
+    const dispatch = useDispatch();
     const [user, setUser] = useState({});
     const [reviews, setReviews] = useState({})
     // Notice we use useParams here instead of getting the params
@@ -48,6 +51,18 @@ function User() {
         return null;
     }
 
+
+    const handleCreateBarModal = async(e) => {
+        e.preventDefault();
+  
+        if (user.id === null) {
+          dispatch(setLoginModal(true))
+        } else {
+          dispatch(setCreateBarModal(true))
+          // alert('Thank you for favoriting!')
+        }
+    }
+
     return (
         <>
             <div id="user-profile-container">
@@ -61,14 +76,14 @@ function User() {
                             <h5>{`Username: ${user.username}`}</h5>
                         </div>
                     </div>
-                    <NavLink to={`/bars/create`}>
-                        <div id="create-bar-button">
-                            <h4>Own a Bar?</h4>
-                        </div>
-                    </NavLink>
+
+                    <button id="create-bar-button" onClick={handleCreateBarModal}>
+                        <h4>Own a Bar?</h4>
+                    </button>
+
                 </div>
-                    <Favorites sessionUser={userState} params={userId} />
-                    {reviews && <UserReviews reviews={reviews.reviews} user={user} />}
+                <Favorites sessionUser={userState} params={userId} />
+                {reviews && <UserReviews reviews={reviews.reviews} user={user} />}
             </div>
 
         </>

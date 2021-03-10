@@ -2,6 +2,7 @@ const LOGIN = '/modal/login'
 const SIGNUP = '/modal/login'
 const INCOMPLETE = 'modal/incomplete'
 const TEXT = 'modal/text'
+const CREATEBAR = "modal/createbar"
 
 export const setLoginModal = (bool) => ({
     type: LOGIN,
@@ -23,6 +24,11 @@ export const setTextModal = (bool) => ({
     payload: { text: bool }
 })
 
+export const setCreateBarModal = (bool) => ({
+    type: CREATEBAR,
+    payload: { createbar: bool }
+})
+
 
 
 const initialState = { login: false, signup: false, incomplete: false, text: false };
@@ -40,6 +46,9 @@ function reducer(state = initialState, action) {
             newState = Object.assign({}, state, { ...action.payload });
             return newState;
         case TEXT:
+            newState = Object.assign({}, state, { ...action.payload });
+            return newState;
+        case CREATEBAR:
             newState = Object.assign({}, state, { ...action.payload });
             return newState;
         default:

@@ -3,13 +3,14 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css';
 import picture from "./open_bar_logo.png"
-import { setLoginModal, setSignupModal, setIncompleteModal, setTextModal } from '../../store/modal'
+import { setLoginModal, setSignupModal, setIncompleteModal, setTextModal, setCreateBarModal } from '../../store/modal'
 import { useDispatch, useSelector } from 'react-redux';
 import ModalContainer from './ModalContainer'
 import LoginForm from '../auth/LoginForm'
 import SignUpForm from '../auth/SignUpForm'
 import IncompleteForm from '../auth/IncompleteForm'
 import TextForm from '../auth/TextForm'
+import CreateBarForm from "../UserProfile/CreateBar"
 import Modal from './ModalContainer';
 const NavBar = ({ setAuthenticated }) => {
   const modals = useSelector(state => state.modal)
@@ -38,6 +39,9 @@ const NavBar = ({ setAuthenticated }) => {
         </ModalContainer>
         <ModalContainer hidden={!modals.text} cancel={setTextModal}>
           <TextForm></TextForm>
+        </ModalContainer>
+        <ModalContainer hidden={!modals.createbar} cancel={setCreateBarModal}>
+          <CreateBarForm />
         </ModalContainer>
         <NavLink exact to="/">
           <img id="nav-bar-logo-picture" src={picture} alt='' />
