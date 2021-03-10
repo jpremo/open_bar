@@ -7,7 +7,6 @@ const UserReviews = ({reviews, user}) => {
 
 
 
-    // {userReviews !== null ? userReviews.map(review => { return <Review key={review.id} props={review} /> }) : null }
     return (
         <div id="user-reviews-container">
             {reviews && <p>{user.firstName} has {reviews.length} reviews</p>}

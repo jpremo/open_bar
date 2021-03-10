@@ -37,8 +37,6 @@ function User() {
     const userState = useSelector(state => state.session.user)
 
     const sessId = userState.id
-    console.log(reviews.reviews)
-    console.log(user)
 
     let isUserProfile
 

@@ -1,4 +1,5 @@
 #user-reviews-container {
     border: 2px solid black;
     min-width: 1260px;
+    margin-bottom: 50px;
 }
