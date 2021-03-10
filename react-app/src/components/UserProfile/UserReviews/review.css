@@ -1,0 +1,21 @@
+#profile-img {
+    width: 5em;
+    height: 5em;
+    padding: 1em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  #first-name {
+    margin-right: 0.25em;
+  }
+  
+  .review_center {
+    text-align: center;
+  }
+  
+  #review_left {
+    margin-right: 1em;
+    width: 10em;
+  }

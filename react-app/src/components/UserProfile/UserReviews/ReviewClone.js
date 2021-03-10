@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import './review.css'
-import { userData } from '../../../../store/users'
+import { userData } from '../../../store/users'
 
 const ReviewClone = ({ props }) => {
 
