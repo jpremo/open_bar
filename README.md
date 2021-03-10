@@ -1,13 +1,20 @@
+# Learn2Cook
+
+Open Bar is a collaboratively developed clone of Open Table focused on the niche of reserving bar seats. Users are able to create a bar, write reviews, search for bars, and make reservations for a party size of their choosing. Open Bar was built using a Flask / Postgres / SQLAlchemy backend along with a React/Redux frontend. Mapping functionality was incorporated using the Google Maps API.
+
+More information can be found on this project at it's [Wiki](https://github.com/jpremo/open_bar/wiki)
+
+<!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/jpremo/open_bar>
-    <img src="https://i.imgur.com/Ue5wMKC.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/jpremo/open_bar">
+    <img src="images/logo2.png" alt="Logo" width="195" height="75">
   </a>
 
-  <h3 align="center">OpenBar</h3>
+  <h3 align="center">Learn2Cook</h3>
 
   <p align="center">
-   Clone of opentable.com
+    Reserve Seats At Your Favorite Bar
     <br />
     <a href="https://github.com/jpremo/open_bar"><strong>Explore the docs »</strong></a>
     <br />
@@ -22,10 +29,15 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-     <li><a href="#LiveLink">Live Link</a></li>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
+    </li>
+    <li>
+     <a href="#live-link">Live Link To Project</a>
+    </li>
+    <li>
+     <a href="#demonstration">Demonstration of Project</a>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -35,7 +47,7 @@
       </ul>
     </li>
     <li><a href="#license">License</a></li>
-   
+    <li><a href="#contact">Contact</a></li>
   </ol>
   
 <br>
@@ -45,47 +57,109 @@
 
 ## About The Project
 
-This project sets out to clone opentable.com
+A full stack application that draws inspiration from New York Times Cooking and Netflix.
 
+As more and more people are learning to be more experimental in their culinary prowess, there should be a website that is dedicated to those who are just starting out to learn. Users can look at recipes, read and leave reviews, as well as favoriting what they love to make, for easier access to them!
+
+<br><br/>
 
 ## Live Link
 
-https://openbarweb.herokuapp.com/
+Live Link For This Project Can Be Found [Here](http://openbarweb.herokuapp.com/)
+
+<br><br/>
+
+## Demonstration
+
+![Demonstration](images/example.gif)
+
+<br><br/>
 
 ## Built With
 
 <br>
+<br>
+
+**Python**
+<br>
+<br>
 
 <p align="left">
+  <a href="https://www.python.org/">
+    <img src="images/python.svg" alt="Python" width="200" height="100">
+  </a>
+<br>
+<br>
+
+**AWS (Amazon Web Services)**
+<br>
+<br>
+
+<p align="left">
+  <a href="https://aws.amazon.com/">
+    <img src="images/AWSLogo.png" alt="Python" width="80" height="80">
+  </a>
+<br>
+<br>
+  
+  
+**SQLAlchemy**
+<br>
+<br>
+<p align="left">
+  <a href="https://www.sqlalchemy.org/">
+    <img src="images/sqlalchemy.jpg" alt="SQlAclehemy" width="379" height="80">
+  </a>
+<br>
+<br>
+  
+  
+**Javascript** 
+<br>
+<br>
+<p align="left">
   <a href="https://www.javascript.com/">
-     JavaScript
+    <img src="images/javascript.svg" alt="Javascript" width="80" height="80">
   </a>
 <br>
 <br>
-  <a href="https://reactjs.org/">
-    ReactJS
-  </a>
-<br>  
+  
+  
+**Flask**
 <br>
-    <a href="https://redux.js.org/">
-    Redux
-  </a>
-<br>  
 <br>
-    <a href="https://www.python.org/">
-    Python
+<p align="left">
+  <a href="https://flask.palletsprojects.com/en/1.1.x/">
+    <img src="images/flask.svg" alt="Flask" width="80" height="80">
   </a>
-<br>  
- <br>
-    <a href="https://flask-sqlalchemy.palletsprojects.com/en/2.x//">
-    FlaskSqlAlchemy
-  </a>
+<br>
+<br>
+  
+  
+**PostGresSQL**
 <br>
 <br>
     <a href="https://www.postgresql.org/">
-    PostGresSQL
+    <img src="images/postgresql.svg" alt="Postgres" width="80" height="80">
   </a>
 <br> 
+<br>
+
+**React**
+<br>
+<br>
+<a href="https://reactjs.org/">
+<img src="images/react.svg" alt="React" width="80" height="80">
+</a>
+<br>  
+<br>
+
+**Redux**
+<br>
+<br>
+<a href="https://redux.js.org/">
+<img src="images/redux.svg" alt="Redux" width="80" height="80">
+</a>
 <br>
 
 <p/>
@@ -101,25 +175,64 @@ To get a local copy up and running follow these simple steps.
 This is an example of how to list things you need to use the software and how to install them.
 
 - npm
-  ```sh
+  ```bash
   npm install npm@latest -g
   ```
 
 ### Installation
 
 1. Clone the repo
-   ```sh
-   git clone https://github.com/jpremo/open_bar
+   ```bash
+   git clone https://github.com/nikhilmenon2/Learn2Cook
    ```
-2. Install NPM packages
-   ```sh
+2. Install NPM packages in /reactapp folder
+   ```bash
    npm install
    ```
-   
- 3. Run Pipenv Shell
- 
- 
+3. Install Pipenv Dependencies in root folder
+   ```bash
+     pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+   ```
+4. Create a **.env** file based on the example with proper settings for your
+   development environment
 
+5. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+
+6. Get into your pipenv, migrate your database, seed your database, and run your flask app
+
+   ```bash
+   pipenv shell
+   ```
+
+   ```bash
+   flask db upgrade
+   ```
+
+   ```bash
+   flask seed all
+   ```
+
+   ```bash
+   flask run
+   ```
+
+7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+
+---
+
+_IMPORTANT!_
+If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
+You can do this by running:
+
+```bash
+pipenv lock -r > requirements.txt
+```
+
+_ALSO IMPORTANT!_
+psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
+There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
+
+---
 
 <!-- LICENSE -->
 
@@ -127,4 +240,10 @@ This is an example of how to list things you need to use the software and how to
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
+<!-- CONTACT -->
 
+## Contact
+
+Email - nikhilmenon@comcast.net
+
+Project Link: [GitHub Project Link](https://github.com/nikhilmenon2/Learn2Cook)
