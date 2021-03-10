@@ -40,6 +40,25 @@ def photo_upload():
     return {"link": f"https://{BUCKET_NAME}.s3.amazonaws.com/{unique_filename}"}
 
 
+
+
+@user_routes.route('/profileImage', methods=["PUT"])
+def profileImage():
+    data = request.get_json(force=True)
+    profileImage = data["profileImage"]
+    id = data["id"]
+
+    if profileImage == None or profileImage == "undefined": 
+        profileImage = ''
+    
+    user = User.query.get(id)  
+    user.profileImg = profileImage
+    db.session.commit()
+    return user.to_dict()
+
+
+
+
 @user_routes.route('/<int:id>')
 @login_required
 def user(id):
@@ -56,8 +75,29 @@ def userNoAuth(id):
 @user_routes.route('/<int:id>/favorites')
 def userfavorites(id):
     user = User.query.get(int(id))
-    bars = user.to_dict()["favoriteBars"]
-    return {"favorites": bars}
+    bars = user.favoriteBars
+    barInfo = [bar.to_dict() for bar in bars]
+    for i in range(0, len(bars)): 
+        reviews_data = [review.to_dict() for review in bars[i].reviews]
+        
+        reviews_summary_data = {}
+        reviews_summary_data['overall'] = round(sum(
+            [review['overall'] for review in reviews_data]) / len(reviews_data), 1)
+        reviews_summary_data['food'] = round(sum(
+            [review['food'] for review in reviews_data]) / len(reviews_data), 1)
+        reviews_summary_data['service'] = round(sum(
+            [review['service'] for review in reviews_data]) / len(reviews_data), 1)
+        reviews_summary_data['ambience'] = round(sum(
+            [review['ambience'] for review in reviews_data]) / len(reviews_data), 1)
+        reviews_summary_data['value'] = round(sum(
+            [review['value'] for review in reviews_data]) / len(reviews_data), 1)
+        reviews_summary_data['review_total'] = len(reviews_data)
+
+        barInfo[i]["review_total"] = reviews_summary_data["review_total"]
+        barInfo[i]["ratings"] = reviews_summary_data
+
+        # print("\n", reviews, "\n")
+    return {"favorites": barInfo}
 
 
 @user_routes.route('/<int:userId>/favorites/<int:barId>/delete', methods=["DELETE"])

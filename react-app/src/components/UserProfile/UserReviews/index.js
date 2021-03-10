@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
-import Review from "../../Bar/Reviews/Review/Review.js";
 import ReviewClone from "./ReviewClone"
 import "./index.css";
 
 const UserReviews = ({reviews, user}) => {
 
+    // const [bars, setBars] = useState({});
+
+    // useEffect(() => {
+    //     (async () => {
+    //         const response = await fetch(`/api/bars/getallbars`);
+    //         const bars = await response.json();
+    //         setBars(bars);
+    //     })();
+    // }, [])
 
 
     return (

@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './PhotoUpload.css'
+import {setUser} from '../../store/session'
 
-const PhotoUpload = ({ setter, value, defaultValue }) => {
+const PhotoUpload = ({ setter, value, defaultValue, profilePage = false }) => {
     const dispatch = useDispatch()
     const [currentImage, setCurrentImage] = useState(defaultValue)
     const [linkOpen, setLinkOpen] = useState(false)
     const [linkText, setLinkText] = useState('')
     const [file, setFile] = useState('')
+    const user = useSelector((state) => state.session.user)
 
     const upload = async (file) => {
         let response = await fetch(`/api/users/photos`, {
@@ -18,6 +20,18 @@ const PhotoUpload = ({ setter, value, defaultValue }) => {
         response = await response.json()
         setter(response.link)
         setCurrentImage(response.link)
+
+        if(profilePage && user) {
+            let res = await fetch(`/api/users/profileImage`, {
+                method: "PUT",
+                headers: {
+            "Content-Type": "application/json",
+        },
+                body: JSON.stringify({id: user.id, profileImage: response.link})
+            })
+            let data = await res.json()
+            dispatch(setUser(data))
+        }
     }
 
     const attachFile = (e) => {
@@ -54,21 +68,32 @@ const PhotoUpload = ({ setter, value, defaultValue }) => {
         setLinkOpen(false)
     }
 
-    const cancelChanges = (e) => {
+    const cancelChanges = async (e) => {
         e.preventDefault()
         setter(defaultValue)
         setCurrentImage(defaultValue)
+        if (profilePage && user) {
+            let res = await fetch(`/api/users/profileImage`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ id: user.id, profileImage: defaultValue })
+            })
+            let data = await res.json()
+            dispatch(setUser(data))
+        }
     }
-    
+
     return (
         <div className='photo-upload-wrapper'>
             <img className='profile-img-preview' src={currentImage} onError={imageErrorCheck} />
             <div className='photo-upload-buttons'>
-                <button className={linkOpen ? 'photo-upload-button selected' : 'photo-upload-button'} onClick={openLink}><i class="fas fa-paperclip"></i></button>
+                <button className={linkOpen ? 'photo-upload-button selected' : 'photo-upload-button'} onClick={openLink}><i className="fas fa-paperclip"></i></button>
                 <button className='photo-upload-button' onClick={openUpload}>
-                    <i class="fas fa-arrow-up"></i>
+                    <i className="fas fa-arrow-up"></i>
                 </button>
-                <button className={currentImage !== defaultValue ? 'photo-upload-button' : 'photo-upload-button disabled'} onClick={cancelChanges}><i class="fas fa-ban"></i></button>
+                <button className={currentImage !== defaultValue ? 'photo-upload-button' : 'photo-upload-button disabled'} onClick={cancelChanges}><i className="fas fa-ban"></i></button>
             </div>
             {linkOpen &&
                 <>
@@ -79,7 +104,7 @@ const PhotoUpload = ({ setter, value, defaultValue }) => {
                         value={linkText}
                         placeholder='URL'
                     ></input>
-                <button className='photo-upload-button' onClick={updateImage}>Change</button>
+                    <button className='photo-upload-button' onClick={updateImage}>Change</button>
                 </>
             }
         </div>

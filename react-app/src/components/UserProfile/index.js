@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoginModal, setCreateBarModal } from "../../store/modal"
+import PhotoUpload from "../PhotoUpload/PhotoUpload.js"
 import Favorites from "./Favorites"
 import UserReviews from "./UserReviews"
 
@@ -15,6 +16,9 @@ function User() {
     const dispatch = useDispatch();
     const [user, setUser] = useState({});
     const [reviews, setReviews] = useState({})
+    const [profilePic, setProfilePic] = useState("")
+
+
     // Notice we use useParams here instead of getting the params
     // From props.
     const { userId } = useParams();
@@ -71,6 +75,7 @@ function User() {
                 <div id="user-intro">
                     <div id="img-box">
                         <img alt="nope" src={user.profileImg} />
+                        <PhotoUpload defaultValue={user.profileImg} setter={setProfilePic} profilePage={true}/>
                     </div>
                     <div id="user-info-box">
                         <div id="user-info-text">

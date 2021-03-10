@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { userData } from '../../../store/users';
 import { barDataDisplay } from '../../../store/bars';
@@ -8,10 +8,16 @@ const ReviewClone = ({ props }) => {
 
 //   console.log(props)
 
+  const [bar, setBar] = useState({});
+
   const dispatch = useDispatch()
   const users = useSelector(state => state.users.users);
-  const bar = useSelector(state => state.bars[1])
-  console.log(bar)
+  // const bar = useSelector(state => state.bars)
+  if(bar) {
+    console.log(bar)
+  }
+  // console.log(bar[1].bar)
+  // console.log(bar.bar) <------ Undefined
 
   let user;
 
@@ -30,7 +36,10 @@ const ReviewClone = ({ props }) => {
     if (props !== null && typeof props !== 'undefined') {
       (async () => {
         await dispatch(userData(props.userId))
-        await dispatch(barDataDisplay(props.barId))
+        // await dispatch(barDataDisplay(props.barId))
+        const response = await fetch(`/api/bars/${props.barId}`)
+        const bar = await response.json();
+        setBar(bar[1].bar);
       })();
     }
   }, [dispatch, props]);
@@ -41,11 +50,11 @@ const ReviewClone = ({ props }) => {
     <div className='BorderTop Review review-spacing'>
       <div id='review_left'>
         <div className='review_center'>
-          <span id='first-name'>{ bar !== null && typeof user !== 'undefined' ? user.firstName : null }</span>
+          <span id='first-name'>{ bar && bar.name }</span>
           <span>{ props !== null && typeof user !== 'undefined' ? user.lastName : null }</span>
         </div>
         <div className='review_center'>
-          <img id='profile-img' src={props !== null && typeof user !== 'undefined' ? user.profileImg : null} alt=''/>
+          <img id='profile-img' src={bar && bar.bannerImg} alt=''/>
         </div>
       </div>
       <div id='review_right'>
