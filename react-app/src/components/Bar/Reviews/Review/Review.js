@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import './review.css'
 import { userData } from '../../../../store/users'
+import { NavLink } from "react-router-dom"
 
 export default function Review({ props }) {
 
@@ -36,7 +37,9 @@ export default function Review({ props }) {
           <span>{ props !== null && typeof user !== 'undefined' ? user.lastName : null }</span>
         </div>
         <div className='review_center'>
-          <img id='profile-img' src={props !== null && typeof user !== 'undefined' ? user.profileImg : null} alt=''/>
+          <NavLink to={`/users/${props.userId}`}>
+            <img id='profile-img' src={props !== null && typeof user !== 'undefined' ? user.profileImg : null} alt=''/>
+          </NavLink>
         </div>
       </div>
       <div id='review_right'>
