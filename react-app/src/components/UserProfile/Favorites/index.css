@@ -2,10 +2,14 @@
     /* background-color: rgb(255, 222, 112); */ 
     padding: 50px;
     border: 2px solid black;
-    min-width: 600px;
-    max-width: 1260px
+    border-radius: 10px;
+    min-width: 1260px;
+    
 }
 
+p {
+    font-size: 30px;
+}
 
 #cards {
     display: flex;

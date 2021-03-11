@@ -5,8 +5,7 @@ import { setCreateBarModal } from "../../../store/modal"
 import "./index.css"
 
 
-//useParams might not work here. Probably need to use state in redux
-//grab session id. more secure anyway.
+
 
 const CreateBar = () => {
     // const { userId } = useParams()
@@ -21,7 +20,7 @@ const CreateBar = () => {
     const [zipcode, setZipcode] = useState("")
     const [barSeats, setBarSeats] = useState(0)
     const [bannerImg, setBannerImg] = useState("")
-    const [ownerId, setOwnerId] = useState()
+    // const [ownerId, setOwnerId] = useState()
     const [errors, setErrors] = useState([])
 
     const userId = useSelector(state => state.session.user.id)

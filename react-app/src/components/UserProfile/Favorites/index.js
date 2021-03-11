@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from "react-router-dom";
 import { fetchUserFavorites, deleteFavorite } from "../../../store/favorites"
 import BarBox from "../../Home/BarBox"
 import "./index.css"
@@ -9,12 +8,8 @@ import "./index.css"
 const FavoriteCards = ({ userFav, hidden, params }) => {
 
     const barId = userFav.id
-    const img = userFav.bannerImg
-    const name = userFav.name
-    // const seats = userFav.barSeats
-    const street = userFav.street
-    // const state = userFav.state
-    // const phone = userFav.phoneNumber
+
+
 
 
     const dispatch = useDispatch()
@@ -65,7 +60,7 @@ const Favorites = ({ sessionUser, params }) => {
     return (
         <>
             <div id="favorite-container">
-                <h1>Users FAVORITES</h1>
+                <p>Favorite Bars</p>
                 <div id="cards">
                     {!userFavorites && <p>Loading...</p>}
                     {userFavorites && userFavorites.map(userFav => {
