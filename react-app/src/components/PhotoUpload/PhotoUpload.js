@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './PhotoUpload.css'
-import {setUser} from '../../store/session'
+import { setUser } from '../../store/session'
 
 const PhotoUpload = ({ setter, value, defaultValue, profilePage = false }) => {
     const dispatch = useDispatch()
@@ -21,13 +21,13 @@ const PhotoUpload = ({ setter, value, defaultValue, profilePage = false }) => {
         setter(response.link)
         setCurrentImage(response.link)
 
-        if(profilePage && user) {
+        if (profilePage && user) {
             let res = await fetch(`/api/users/profileImage`, {
                 method: "PUT",
                 headers: {
-            "Content-Type": "application/json",
-        },
-                body: JSON.stringify({id: user.id, profileImage: response.link})
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ id: user.id, profileImage: response.link })
             })
             let data = await res.json()
             dispatch(setUser(data))
@@ -61,9 +61,20 @@ const PhotoUpload = ({ setter, value, defaultValue, profilePage = false }) => {
         e.target.src = 'http://simpleicon.com/wp-content/uploads/user1.png'
     }
 
-    const updateImage = (e) => {
+    const updateImage = async (e) => {
         e.preventDefault()
         setter(linkText)
+        if (profilePage && user) {
+            let res = await fetch(`/api/users/profileImage`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ id: user.id, profileImage: linkText })
+            })
+            let data = await res.json()
+            dispatch(setUser(data))
+        }
         setCurrentImage(linkText)
         setLinkOpen(false)
     }

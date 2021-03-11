@@ -15,7 +15,8 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-height: 200px;
+    /* min-height: 200px; */
+    margin: 20px 0;
 }
 
 #user-profile-container #below-intro {
@@ -27,7 +28,7 @@
 }
 
 #user-profile-container img{
-    height: 200px;
+    /* height: 200px; */
     /* padding: 10px; */
 }
 
@@ -64,4 +65,11 @@ text-decoration: none;
 
 #create-bar-button:hover {
     color: rgb(200, 140, 0);
+}
+
+#user-intro-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px;
 }
