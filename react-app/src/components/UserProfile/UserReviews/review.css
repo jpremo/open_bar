@@ -1,0 +1,31 @@
+#ericks-profile-img {
+    padding: 1em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 10%;
+    
+  }
+  
+  #ericks-first-name {
+    margin: 25px;
+
+  
+  }
+  
+  .ericks-review_center {
+    text-align: center;
+
+  }
+  
+  #review_left {
+    margin-right: 1em;
+    width: 10em;
+  }
+
+  #ericks-review_right {
+    margin-left: 100px;
+    margin-top: 25px;
+  }

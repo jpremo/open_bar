@@ -1,25 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from "react-router-dom";
 import { fetchUserFavorites, deleteFavorite } from "../../../store/favorites"
+import BarBox from "../../Home/BarBox"
 import "./index.css"
 
 
 const FavoriteCards = ({ userFav, hidden, params }) => {
 
     const barId = userFav.id
-    const img = userFav.bannerImg
-    const name = userFav.name
-    // const seats = userFav.barSeats
-    const street = userFav.street
-    // const state = userFav.state
-    // const phone = userFav.phoneNumber
-    
+
+
+
 
     const dispatch = useDispatch()
 
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         dispatch(deleteFavorite(barId, params))
     }
@@ -28,16 +24,10 @@ const FavoriteCards = ({ userFav, hidden, params }) => {
     return (
         <>
             <div id="card">
-                <button id="unfavorite-button" hidden={hidden} 
+                <button id="unfavorite-button" hidden={hidden}
                     onClick={handleSubmit}>unfavorite</button>
-                <NavLink to={`/bars/${barId}`}>
-                    <img alt="nope" src={img} />
-                    <div id="bar-info-container">
-                        <h4>{name}</h4>
-                        <h5>{street}</h5>
-                        {/* <h5>{`Total Number of Seats ${seats}`}</h5> */}
-                    </div>
-                </NavLink>
+                {!userFav && <p>user does not have favorites yet</p>}
+                {userFav && <BarBox bar={userFav} /> }
             </div>
         </>
     )
@@ -70,7 +60,7 @@ const Favorites = ({ sessionUser, params }) => {
     return (
         <>
             <div id="favorite-container">
-                <h4>Users FAVORITES</h4>
+                <p>Favorite Bars</p>
                 <div id="cards">
                     {!userFavorites && <p>Loading...</p>}
                     {userFavorites && userFavorites.map(userFav => {

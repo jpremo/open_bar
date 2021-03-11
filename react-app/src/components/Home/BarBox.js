@@ -1,10 +1,12 @@
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import React from 'react'
 import './Home.css'
 
-function BarBox({bar}) {
+function BarBox({ bar }) {
+
     let stars = Math.round(bar.ratings.overall * 2)
     const starsArr = []
+
     for (let i = 0; i < 5; i++) {
         if (stars <= 0) {
             starsArr.push('')
@@ -16,7 +18,8 @@ function BarBox({bar}) {
         stars -= 2;
     }
 
-    return(
+
+    return (
         <NavLink to={`/bars/${bar.id}`} style={{ textDecoration: 'none' }}>
         <div className='bar-box-home'>
         <div>

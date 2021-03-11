@@ -1,16 +1,40 @@
 #user-profile-container {
-    background-color: rgb(255, 204, 93);
-    height: 225px;
+    /* background-color: rgb(255, 204, 93); */
+    height: 100%;
+    /* max-width: 1000px; */
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
     margin: 0;
+    /* border: 2px solid black; */
+}
+
+#user-profile-container #user-intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* min-height: 200px; */
+    margin: 20px 0;
+}
+
+#user-profile-container #below-intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid black;
 }
 
 #user-profile-container img{
-    height: 200px;
-    padding: 10px;
+    /* height: 200px; */
+    /* padding: 10px; */
 }
 
+#user-profile-container a{
+text-decoration: none;
+}
 
 #user-info-text {
     padding-left: 25px;
@@ -24,24 +48,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(255, 189, 35);
+    background-color: rgba(8, 59, 102, 0.7);
     border-radius: 10px;
-    color :black
-    
 }
 
-
-#create-bar-button a {
+#create-bar-button h4 {
     text-decoration: none;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: large;
-    color: black;
+    color: white;
 }
 
-#create-bar-button a:hover {
-    
+#create-bar-button h4:hover {
     color: rgb(255, 255, 255)
 }
+
 #create-bar-button:hover {
     color: rgb(200, 140, 0);
+}
+
+#user-intro-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px;
 }

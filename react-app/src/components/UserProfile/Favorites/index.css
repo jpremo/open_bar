@@ -1,38 +1,40 @@
 #favorite-container {
-    background-color: rgb(255, 222, 112);
-    margin: 0;
-
-   
+    /* background-color: rgb(255, 222, 112); */ 
+    padding: 50px;
+    border: 2px solid black;
+    border-radius: 10px;
+    min-width: 1260px;
+    
 }
+
+p {
+    font-size: 30px;
+}
+
 #cards {
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
+    justify-content: center;
  }
 
 
 #card {
-    max-width: 225px;
-    width: 225px;
-    height: 350px;
-    background-color: rgb(235, 235, 235);
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    border-radius: 5px;
-    flex: 0 1 24%;
-    /* padding: 10px; */
+
+    padding: 10px;
     margin: 10px
 
 }
 
 #card img {
-    width: 225px;
+    width: 250px;
+    min-height: 250px;
     border-radius: 5px 5px 0 0;
+    padding: 0;
 }
 
-#card:hover {
+/* #card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
-  }
+  } */
 
 #card a{
     text-decoration: none;

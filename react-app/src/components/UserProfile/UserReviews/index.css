@@ -1,0 +1,14 @@
+#user-reviews-container {
+    border: 2px solid black;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    min-width: 1360px
+}
+
+#user-reviews-container p {
+    font-size: 30px;
+
+    margin-left: 50px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}

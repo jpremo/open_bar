@@ -33,13 +33,19 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
+
         nums = []
         for b in self.favoriteBars:
             nums.append(b.to_dict())
+
         res = []
         for r in self.reservations:
             res.append(r.to_dict())
-        print('res\n\n', res)
+
+        rev = []
+        for v in self.reviews:
+            rev.append(v.to_dict())
+        
         # res = json.loads(res)
         return {
             "id": self.id,
@@ -49,7 +55,8 @@ class User(db.Model, UserMixin):
             "profileImg": self.profileImg,
             "email": self.email,
             "favoriteBars": nums,
-            "reservations": res
+            "reservations": res,
+            "reviews": rev
         }
 
     def to_dict_essentials(self):

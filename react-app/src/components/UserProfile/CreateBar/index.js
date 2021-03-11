@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux';
+import { setCreateBarModal } from "../../../store/modal"
 import "./index.css"
 
 
-//useParams might not work here. Probably need to use state in redux
-//grab session id. more secure anyway.
+
 
 const CreateBar = () => {
     // const { userId } = useParams()
-    const history = useHistory()
+    const history = useHistory();
+    const dispatch = useDispatch();
 
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
@@ -19,7 +20,7 @@ const CreateBar = () => {
     const [zipcode, setZipcode] = useState("")
     const [barSeats, setBarSeats] = useState(0)
     const [bannerImg, setBannerImg] = useState("")
-    const [ownerId, setOwnerId] = useState()
+    // const [ownerId, setOwnerId] = useState()
     const [errors, setErrors] = useState([])
 
     const userId = useSelector(state => state.session.user.id)
@@ -65,18 +66,18 @@ const CreateBar = () => {
         }
         const tt = window.tt
 
-       
-            let loc = await tt.services.fuzzySearch({
-                key: 'g0ZS3ih3olA15iG2cSglfY1YrEJO8DKR',
-                query: `${formInfo.street} ${formInfo.state} ${formInfo.zipcode}`
-            }).go()
 
-            formInfo.longitude = loc.results[0].position.lng
-            formInfo.latitude = loc.results[0].position.lat
-           
-            //defaulting to new york
-            // coordString = '-73.93,40.73'
-    
+        let loc = await tt.services.fuzzySearch({
+            key: 'g0ZS3ih3olA15iG2cSglfY1YrEJO8DKR',
+            query: `${formInfo.street} ${formInfo.state} ${formInfo.zipcode}`
+        }).go()
+
+        formInfo.longitude = loc.results[0].position.lng
+        formInfo.latitude = loc.results[0].position.lat
+
+        //defaulting to new york
+        // coordString = '-73.93,40.73'
+
         let newBar = await fetch("/api/bars/create", {
             method: "POST",
             header: {
@@ -97,6 +98,9 @@ const CreateBar = () => {
         setZipcode(0)
     }
 
+    const cancel = (e) => {
+        dispatch(setCreateBarModal(false))
+    }
 
 
 
@@ -104,12 +108,13 @@ const CreateBar = () => {
 
         <div id="create-bar-container">
             <form id="new-bar-form" onSubmit={onSubmit}>
-                <h2>Add Your Bar info</h2>
-                <ul id="errors">
+                <h2 className='modal-title'>Add Your Bar info</h2>
+                <ul className='modal-error-container'>
                     {errors.map(error => (
                         <li key={error}>{error}</li>
                     ))}
                 </ul>
+                <div className='modal-form-div'>
                 <input type="text" name="name" placeholder="Bar or Restaurant Name"
                     onChange={(e) => setName(e.target.value)} value={name} />
                 <textarea type="text" name="description" placeholder="Tell the world about your bar"
@@ -127,7 +132,9 @@ const CreateBar = () => {
                     onChange={(e) => setBarSeats(e.target.value)} value={barSeats} />
                 <input type="text" name="bannerImg" placeholder="Input banner image url"
                     onChange={(e) => setBannerImg(e.target.value)} value={bannerImg} />
-                <button type="submit">Create bar</button>
+                <button className='modal-link modal-button' type="submit">Create bar</button>
+                <button className='modal-link modal-button' onClick={cancel}> Close</button>
+                </div>
             </form>
         </div>
 
