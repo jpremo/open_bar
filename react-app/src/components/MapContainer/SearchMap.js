@@ -62,8 +62,6 @@ const SearchMap = ({center, bars}) => {
 
   return (
     <div className='map-outer-div' ref={outerDiv}>
-     <LoadScript
-       googleMapsApiKey='AIzaSyBB_qz7gdLnQ9rBYBbQafFjWqx7gyIIJVI'>
         <GoogleMap
           mapContainerStyle={mapStyles}
           zoom={12}
@@ -74,7 +72,6 @@ const SearchMap = ({center, bars}) => {
                 )
             })}
        </GoogleMap>
-     </LoadScript>
     </div>
   )
 }

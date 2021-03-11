@@ -4,7 +4,7 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-
+import { LoadScript } from "@react-google-maps/api";
 import UserProfile from "./components/UserProfile";
 import UserList from "./components/UserList";
 import Bar from "./components/Bar/Bar"
@@ -32,40 +32,54 @@ function App() {
     return null;
   }
 
-  return (
-    <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} />
-      <Switch>
-        <Route path="/login" exact={true}>
-          <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-         </Route>
-        <Route path="/" exact={true}>
-          <Home />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
-        </Route>
-        <Route path="/bars/create" exact={true}>
-          <CreateBar />
-        </Route>
-        <Route path="/bars/:barId" exact={true}>
-          <Bar />
-        </Route>
-        <Route path="/search" exact={true}>
-          <SearchResults authenticated={authenticated} setAuthenticated={setAuthenticated} />
-        </Route>
-        <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
-          <UserProfile />
-        </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
+  console.log(process.env.REACT_APP_GOOGLE_API_KEY);
 
-      </Switch>
-    </BrowserRouter>
+
+  return (
+    <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
+      <BrowserRouter>
+        <NavBar setAuthenticated={setAuthenticated} />
+        <Switch>
+          <Route path="/login" exact={true}>
+            <LoginForm
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          </Route>
+          <Route path="/" exact={true}>
+            <Home />
+          </Route>
+          <Route path="/sign-up" exact={true}>
+            <SignUpForm
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          </Route>
+          <Route path="/bars/create" exact={true}>
+            <CreateBar />
+          </Route>
+          <Route path="/bars/:barId" exact={true}>
+            <Bar />
+          </Route>
+          <Route path="/search" exact={true}>
+            <SearchResults
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          </Route>
+          <ProtectedRoute
+            path="/users/:userId"
+            exact={true}
+            authenticated={authenticated}
+          >
+            <UserProfile />
+          </ProtectedRoute>
+          <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+            <h1>My Home Page</h1>
+          </ProtectedRoute>
+        </Switch>
+      </BrowserRouter>
+    </LoadScript>
   );
 }
 

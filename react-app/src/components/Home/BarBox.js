@@ -21,24 +21,23 @@ function BarBox({ bar }) {
 
     return (
         <NavLink to={`/bars/${bar.id}`} style={{ textDecoration: 'none' }}>
-            <div className='bar-box-home'>
-                <div>
-                    <img id="picture-bar-box" src={bar.bannerImg} alt='' />
-                </div>
-                <div id="info-bar-box">
-                    <h1>{bar.name}</h1>
-                    <div className='home-star-container'>
-                        {starsArr.map((el, ind) => {
-                            return (
-                                <div className={`star ${el}`} key={ind}>
-                                    <i className="fas fa-star fa-xs" id='innerstar-1' style={{ color: 'white', paddingBottom: '1px', paddingRight: '1px', opacity: '1' }}></i>
-                                </div>)
-                        })}
-                        <div className='home-review-number'>{(bar.review_total === 1) ? `1 Review` : `${bar.review_total} Reviews`}</div>
-                    </div>
-
-                </div>
-            </div>
+        <div className='bar-box-home'>
+        <div>
+        <img className="picture-bar-box" src={bar.bannerImg} alt=''/>
+        </div>
+        <div id="info-bar-box">
+         <h1>{bar.name}</h1>
+            <div className='home-star-container'>
+                            {starsArr.map((el, ind) => {
+                                return (
+                                    <div className={`star ${el}`} key={ind}>
+                                        <i className="fas fa-star fa-xs" id='innerstar-1' style={{ color: 'white', paddingBottom: '1px', paddingRight: '1px', opacity: '1' }}></i>
+                                    </div>)
+                            })}
+                            <div className='home-review-number'>{(bar.review_total === 1) ? `1 Review` : `${bar.review_total} Reviews`}</div>
+                        </div>
+                        </div>
+        </div>
         </NavLink>
     )
 }
