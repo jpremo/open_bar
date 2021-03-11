@@ -108,12 +108,13 @@ const CreateBar = () => {
 
         <div id="create-bar-container">
             <form id="new-bar-form" onSubmit={onSubmit}>
-                <h2>Add Your Bar info</h2>
-                <ul id="errors">
+                <h2 className='modal-title'>Add Your Bar info</h2>
+                <ul className='modal-error-container'>
                     {errors.map(error => (
                         <li key={error}>{error}</li>
                     ))}
                 </ul>
+                <div className='modal-form-div'>
                 <input type="text" name="name" placeholder="Bar or Restaurant Name"
                     onChange={(e) => setName(e.target.value)} value={name} />
                 <textarea type="text" name="description" placeholder="Tell the world about your bar"
@@ -131,8 +132,9 @@ const CreateBar = () => {
                     onChange={(e) => setBarSeats(e.target.value)} value={barSeats} />
                 <input type="text" name="bannerImg" placeholder="Input banner image url"
                     onChange={(e) => setBannerImg(e.target.value)} value={bannerImg} />
-                <button type="submit">Create bar</button>
-                <div className='modal-link modal-button' onClick={cancel}> Close</div>
+                <button className='modal-link modal-button' type="submit">Create bar</button>
+                <button className='modal-link modal-button' onClick={cancel}> Close</button>
+                </div>
             </form>
         </div>
 
