@@ -10,17 +10,25 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 1em;
+  margin: 1em auto;
+  overflow: auto;
+  width: 80%;
 }
 
 #leftColumn {
   /* flex: 2 1 auto; */
+  /* flex-shrink: 0; */
   margin: 1em;
+  /* overflow: auto; */
+  width: 50%;
 }
 
 #rightColumn {
   /* flex: 1 1 auto; */
+  /* flex-shrink: 0; */
   margin: 1em;
+  /* overflow: auto; */
+  width: 50%;
 }
 
 .BorderBottom {
