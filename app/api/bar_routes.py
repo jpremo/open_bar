@@ -44,7 +44,6 @@ def bar(barId):
 @bar_routes.route('/create', methods=['POST'])
 def create():
     data = request.get_json(force=True)
-    print(data)
     data["dayAndTime"] = json.dumps(data["dayAndTime"])
     newBar = Bar(**data)
     db.session.add(newBar)

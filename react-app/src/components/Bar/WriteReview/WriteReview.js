@@ -34,7 +34,6 @@ export default function WriteReview({ barId, user }) {
   let overallPlaceholder;
 
   if (reviewPresent !== undefined) {
-    console.log('here', reviewPresent)
     overallPlaceholder = reviewPresent['overall'];
   }
 
